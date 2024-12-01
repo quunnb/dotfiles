@@ -1,0 +1,54 @@
+set searchurls.g https://www.google.com/search?q=%s
+set searchurls.gi https://www.google.com/search?tbm=isch&q=%s
+set searchurls.gimg https://lens.google.com/uploadbyurl?url=
+set searchurls.gmap https://www.google.com/maps/search/%s
+set searchurls.map https://www.google.com/maps/search/%s
+set searchurls.re https://old.reddit.com/search?q=%s&include_over_18=on
+set searchurls.w https://en.wikipedia.org/wiki/%s
+set searchurls.we https://en.wikipedia.org/wiki/%s
+set searchurls.ws https://fi.wikipedia.org/wiki/%s
+set searchurls.ud https://www.urbandictionary.com/define.php?term=%s
+set searchurls.forvo https://forvo.com/search/%s/
+
+# dics
+set searchurls.word https://en.wiktionary.org/wiki/%s
+set searchurls.ety https://www.etymonline.com/search?q=%s
+
+# english
+set searchurls.fien https://redfoxsanakirja.fi/sanakirja/-/s/fin/eng/%s
+set searchurls.enfi https://redfoxsanakirja.fi/sanakirja/-/s/eng/fin/%s
+set searchurls.me https://www.merriam-webster.com/dictionary/%s
+
+#french
+set searchurls.fifr https://redfoxsanakirja.fi/sanakirja/-/s/fin/fra/%s
+set searchurls.frfi https://redfoxsanakirja.fi/sanakirja/-/s/fra/fin/%s
+set searchurls.enfr https://redfoxsanakirja.fi/sanakirja/-/s/eng/fra/%s
+set searchurls.fren https://redfoxsanakirja.fi/sanakirja/-/s/fra/eng/%s
+
+#spanish
+set searchurls.fisp https://redfoxsanakirja.fi/sanakirja/-/s/fin/spa/%s
+set searchurls.spfi https://redfoxsanakirja.fi/sanakirja/-/s/spa/fin/%s
+set searchurls.ensp https://redfoxsanakirja.fi/sanakirja/-/s/eng/spa/%s
+set searchurls.spen https://redfoxsanakirja.fi/sanakirja/-/s/spa/eng/%s
+
+# italy
+set searchurls.itfi https://redfoxsanakirja.fi/sanakirja/-/s/ita/fin/%s
+set searchurls.fiit https://redfoxsanakirja.fi/sanakirja/-/s/fin/ita/%s
+set searchurls.iten https://redfoxsanakirja.fi/sanakirja/-/s/ita/eng/%s
+set searchurls.enit https://redfoxsanakirja.fi/sanakirja/-/s/eng/ita/%s
+
+#swedish
+set searchurls.fisv https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
+set searchurls.fisw https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
+set searchurls.svfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
+set searchurls.swfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
+
+# japan
+set searchurls.jpfi https://redfoxsanakirja.fi/sanakirja/-/s/jpn/fin/%s
+set searchurls.fijp https://redfoxsanakirja.fi/sanakirja/-/s/fin/jpn/%s
+set searchurls.jpen https://redfoxsanakirja.fi/sanakirja/-/s/jpn/eng/%s
+set searchurls.enjp https://redfoxsanakirja.fi/sanakirja/-/s/eng/jpn/%s
+
+#movies
+set searchurls.imdb https://www.imdb.com/find/?q=%s
+set searchurls.rt https://www.rottentomatoes.com/search?search=%s

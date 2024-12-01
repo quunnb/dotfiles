@@ -1,0 +1,7 @@
+#
+# ~/.xprofile
+#
+
+setxkbmap -config $HOME/.config/ficode/ficode-pinky.conf
+xset r rate 333 40
+

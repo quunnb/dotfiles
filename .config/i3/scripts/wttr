@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+city=$(< ~/.config/data/location)
+echo $(curl -s wttr.in/$city?format=3)
