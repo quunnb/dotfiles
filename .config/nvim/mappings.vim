@@ -28,6 +28,10 @@ xnoremap < <gv
 xnoremap <C-a> <C-a>gv
 xnoremap <C-x> <C-x>gv
 
+" Move selected lines
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
+
 " For Finnish keyboards
 noremap , ;
 noremap ; ,
@@ -40,17 +44,21 @@ nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>
 " Disable/enable automatic comments
 nnoremap <Leader>com :set formatoptions-=cro<CR>
 nnoremap <Leader>C :set formatoptions+=cro<CR>
-inoremap <C-c> <Esc>:set formatoptions-=cro<CR>a<Space>
+inoremap <C-c> <Cmd>set formatoptions-=cro<CR>a<Space>
 
 " Hide search highlights
 nnoremap <Leader><Leader> :nohls<CR>
 
-" Open / reload (source) vimrc
-nnoremap <Leader>vi :e $MYVIMRC<CR>
-nnoremap <Leader>re :source $MYVIMRC<CR>
+" Open / source vimrc un such
+nnoremap <Leader>vim :e $MYVIMRC<CR>
+nnoremap <Leader>map :e ~/.config/nvim/mappings.vim<CR>
+nnoremap <Leader>plug :e ~/.config/nvim/plugings.vim<CR>
 
-" Fix spelling
-inoremap <C-s> <Esc>:set spell<CR>a<C-x><C-s>
+" Set spell automagically
+inoremap <C-s> <Cmd>set spell<CR><C-x><C-s>
+inoremap <C-x><C-s> <Cmd>set spell<CR><C-x><C-s>
+inoremap <C-x>s <Cmd>set spell<CR><C-x>s
+
 " Autocomplete line
 inoremap <C-l> <C-x><C-l>
 
@@ -72,7 +80,7 @@ nnoremap Q <NOP>
 " Buffer navigation
 nnoremap <Leader>j :bn<CR>
 nnoremap <Leader>k :bp<CR>
-nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>dd :bd<CR>
 
 " Get color hex value from .Xresources and replace color word under cursor
 nnoremap <Leader>x :call GetXresColor()<CR>
@@ -84,22 +92,18 @@ cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Delete>
 
-" Insert newline
-nnoremap <CR> mzo<Esc>g`z<Down>
-" Insert newline above
-nnoremap <Leader><CR> mzO<Esc>g`z
-
 " Upper-/lowercase word
 nnoremap <Leader>u guiw
 nnoremap <Leader>U gUiw
 
-" Insert datetime
-nnoremap <Leader>date :put =strftime('%d.%m.%Y %H:%M')<CR>
+" Insert date and time
+nnoremap <Leader>date :put =strftime('%d.%m.%Y')<CR>
+nnoremap <Leader>time :put =strftime('%H:%M')<CR>
 
 " Open terminal
 nnoremap <Leader>t :vertical terminal<CR>
 
-" Inc-/decrement hex or alpha characters
+" Enable/disable hex or alpha characters increment/decrement
 nnoremap <Leader>ia :set nrformats+=alpha<CR>
 nnoremap <Leader>iA :set nrformats-=alpha<CR>
 nnoremap <Leader>ih :set nrformats+=hex<CR>
@@ -111,9 +115,13 @@ nnoremap ZZ :q
 " Erase redundant spaces"
 xnoremap <Leader>_ :s/ \+/ /g<CR>gv:s/ $//g<CR>
 
-" Sort selection
+" Sort selection alphabetically or numerically
 xnoremap <Leader>so :sort<CR>
 xnoremap <Leader>sn :sort n<CR>
+
+" For local/global replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " "VIM-SURROUND"
 nnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
@@ -125,6 +133,15 @@ nnoremap <Leader>[ :execute "normal \<Plug>YsurroundiW["<CR>
 nnoremap <Leader>} :execute "normal \<Plug>YsurroundiW}"<CR>
 nnoremap <Leader>{ :execute "normal \<Plug>YsurroundiW{"<CR>
 
+xnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
+xnoremap <Leader>" :execute "normal \<Plug>YsurroundiW\""<CR>
+xnoremap <Leader>) :execute "normal \<Plug>YsurroundiW)"<CR>
+xnoremap <Leader>( :execute "normal \<Plug>YsurroundiW("<CR>
+xnoremap <Leader>] :execute "normal \<Plug>YsurroundiW]"<CR>
+xnoremap <Leader>[ :execute "normal \<Plug>YsurroundiW["<CR>
+xnoremap <Leader>} :execute "normal \<Plug>YsurroundiW}"<CR>
+xnoremap <Leader>{ :execute "normal \<Plug>YsurroundiW{"<CR>
+
 " "EASY-ALIGN"
 nmap <Leader>a <Plug>(EasyAlign)
 xmap <Leader>a <Plug>(EasyAlign)
@@ -134,26 +151,26 @@ nmap <Leader>a=k mzvi}:EasyAlign = { 'stick_to_left': 0, 'left_margin': 1 }<CR>`
 nmap <Leader>a=h mzvi}:EasyAlign = { 'stick_to_left': 1, 'left_margin': 0 }<CR>`z
 
 " "SUBVERSIVE"
-nmap s           <Plug>(SubversiveSubstitute)
-nmap S           <Plug>(SubversiveSubstituteToEndOfLine)
-nmap ss          <Plug>(SubversiveSubstituteLine)
-nmap <Leader>s   <Plug>(SubversiveSubvertRange)
-nmap <Leader>ss  <Plug>(SubversiveSubvertWordRange)
-nmap <Leader>cs  <Plug>(SubversiveSubstituteRangeConfirm)
+nmap s <Plug>(SubversiveSubstitute)
+nmap S <Plug>(SubversiveSubstituteToEndOfLine)
+nmap ss <Plug>(SubversiveSubstituteLine)
+nmap <Leader>s <Plug>(SubversiveSubvertRange)
+nmap <Leader>ss <Plug>(SubversiveSubvertWordRange)
+nmap <Leader>cs <Plug>(SubversiveSubstituteRangeConfirm)
 nmap <Leader>css <Plug>(SubversiveSubstituteWordRangeConfirm)
-xmap <Leader>s   <Plug>(SubversiveSubvertRange)
-xmap s           <Plug>(SubversiveSubstitute)
-xmap p           <Plug>(SubversiveSubstitute)
-xmap P           <Plug>(SubversiveSubstitute)
-xmap <Leader>cs  <Plug>(SubversiveSubstituteRangeConfirm)
+xmap <Leader>s <Plug>(SubversiveSubvertRange)
+xmap s <Plug>(SubversiveSubstitute)
+xmap p <Plug>(SubversiveSubstitute)
+xmap P <Plug>(SubversiveSubstitute)
+xmap <Leader>cs <Plug>(SubversiveSubstituteRangeConfirm)
 
 " "YOINK"
-nmap <C-n>  <Plug>(YoinkPostPasteSwapBack)
-nmap <C-p>  <Plug>(YoinkPostPasteSwapForward)
-nmap p      <Plug>(YoinkPaste_p)
-nmap P      <Plug>(YoinkPaste_P)
-nmap gp     <Plug>(YoinkPaste_gp)
-nmap gP     <Plug>(YoinkPaste_gP)
+nmap <C-n> <Plug>(YoinkPostPasteSwapBack)
+nmap <C-p> <Plug>(YoinkPostPasteSwapForward)
+nmap p <Plug>(YoinkPaste_p)
+nmap P <Plug>(YoinkPaste_P)
+nmap gp <Plug>(YoinkPaste_gp)
+nmap gP <Plug>(YoinkPaste_gP)
 
 " "COLORIZER"
 nnoremap <Leader>col :ColorToggle<CR>
@@ -196,11 +213,12 @@ nmap <Leader>bin <Plug>RadicalCoerceToBinary
 " "Codeium"
 nnoremap <Leader>cod :CodeiumToggle<CR>
 nnoremap <Leader>cha :CodeiumChat<CR>
-imap <C-,> <Cmd>call codeium#CycleCompletions(1)<CR>
+imap <C-.> <Cmd>call codeium#CycleOrComplete()<CR>
 imap <C-.> <Cmd>call codeium#CycleCompletions(-1)<CR>
 
 " "Nerdtree"
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " "Goyo"
-nnoremap <Leader>go :Goyo<CR>
+nnoremap <Leader>goyo :Goyo<CR>
+

@@ -13,13 +13,18 @@
 
 
  call plug#begin()
+    Plug 'mattn/calendar-vim'
+    Plug 'mbbill/undotree'
+    " Plug 'mg979/vim-visual-multi'
+    Plug 'tpope/vim-characterize'
+    " Plug 'tpope/vim-fugitive'
     Plug 'Exafunction/codeium.vim'
-    " Plug 'amadeus/vim-convert-color-to'
-    " Plug 'cespare/vim-toml', { 'branch': 'main' }
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'amadeus/vim-convert-color-to'
+    Plug 'cespare/vim-toml', { 'branch': 'main' }
     Plug 'chrisbra/colorizer'
-    " Plug 'chrisbra/unicode.vim'
+    Plug 'chrisbra/unicode.vim'
     Plug 'christoomey/vim-titlecase'
-    Plug 'mhinz/neovim-remote'
     Plug 'dense-analysis/ale'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'glts/vim-magnum'
@@ -27,18 +32,18 @@
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
     Plug 'itchyny/lightline.vim'
     Plug 'jorengarenar/vim-mvvis'
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
     Plug 'junegunn/vim-easy-align'
-    " Plug 'mg979/vim-visual-multi'
-    " Plug 'mattn/calendar-vim'
-    " Plug 'mbbill/undotree'
     Plug 'mcchrish/nnn.vim'
-    " Plug 'othree/html5.vim'
-    " Plug 'pangloss/vim-javascript'
+    Plug 'mhinz/neovim-remote'
+    Plug 'othree/html5.vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'preservim/nerdtree'
     Plug 'psliwka/vim-smoothie'
     Plug 'rhysd/rust-doc.vim'
     Plug 'romainl/vim-cool'
-    Plug 'preservim/nerdtree'
     Plug 'rose-pine/vim'
     Plug 'rust-lang/rust.vim'
     Plug 'sheerun/vim-polyglot'
@@ -47,16 +52,12 @@
     Plug 'svermeulen/vim-yoink'
     Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-abolish' " required by VIM-SUBVERSIVE
-    " Plug 'tpope/vim-characterize'
     Plug 'tpope/vim-commentary'
-    " Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tridactyl/vim-tridactyl'
     Plug 'vimwiki/vimwiki'
     Plug 'wsdjeg/vim-fetch'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'junegunn/goyo.vim'
  call plug#end()
 
 
@@ -73,7 +74,7 @@ let g:easy_align_ignore_unmatched=0
 " "VIM MARKDOWN PREVIEW"
 let g:mkdp_echo_preview_url = 1
 let vim_markdown_preview_toggle=2
-let vim_markdown_preview_hotkey='<A-m>'
+let vim_markdown_preview_hotkey='<M-m>'
 let vim_markdown_preview_browser='.local/bin/browser'
 
 " "VIM-TITLECASE"
@@ -139,16 +140,27 @@ let g:lightline = {
 
 " "CODEIUM"
 " All filetypes disabled by default
-let g:codeium_filetypes_disabled_by_default = v:true
+" let g:codeium_filetypes_disabled_by_default = v:true
+" let g:codeium_enabled = v:false
 " ...except for these
-let g:codeium_filetypes = {
-    \ "rust": v:true,
-    \ "typescript": v:true,
-    \ "python": v:true,
-    \ "go": v:true,
-    \ }
+" let g:codeium_filetypes = {
+"     \ "rust": v:true,
+"     \ "typescript": v:true,
+"     \ "python": v:true,
+"     \ "go": v:true,
+"     \ }
+
+let g:codeium_manual = v:true
 
 " "ALE"
 " This keeps the 'gutter' always on so that window size keeps the same between errors/no errors
 let g:ale_sign_column_always = 1
 
+" "Goyo"
+let g:goyo_width = 120
+let g:goyo_height = 100
+let g:goyo_linenr = 0
+
+" "vim-go"
+let g:go_fmt_autosave = 0
+let g:go_auto_type_info = 1

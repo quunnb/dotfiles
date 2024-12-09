@@ -13,6 +13,7 @@
  */
 
     --tridactyl-font-family:          "Inconsolata";
+    --tridactyl-font-size:            12pt;
     --tridactyl-cmdl-font-family:     var(--tridactyl-font-family);
     --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
     --tridactyl-vs-font-family:       var(--tridactyl-font-family);
@@ -81,7 +82,7 @@
 }
 
 #completions table {
-    font-size:      0.8rem;
+    font-size:      1.8rem;
     font-weight:    200;
     border-spacing: 0;
     table-layout:   fixed;
@@ -187,7 +188,7 @@
 /*     color:       var(--Rose)               !important; */
 /*     border:      unset                     !important; */
 /*     border:      1px var(--Foam) solid     !important; */
-/*     font-family: "ShureTechMono Nerd Font" !important; */
+/*     font-family: "Inconsolata"             !important; */
 /*     font-size:   14pt                      !important; */
 /*     padding:     0.8ex                     !important; */
 /* } */

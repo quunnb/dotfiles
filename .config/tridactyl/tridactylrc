@@ -16,7 +16,7 @@ bind / fillcmdline find
 bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext 1 -?
-bind <Space>s nohlsearch
+bind <Space><Space> nohlsearch
 
 bind   --mode=ex <C-a> text.beginning_of_line
 unbind --mode=ex <C-c>

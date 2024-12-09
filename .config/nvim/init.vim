@@ -33,14 +33,37 @@ if has("persistent_undo")
     set undofile
 endif
 
+" set list
+set autochdir
 set clipboard=unnamedplus
+set expandtab
+set shiftwidth=4
+set sidescroll=8
 set foldmethod=marker
-set list
+set listchars=tab:>-,trail:·,nbsp:_
 set nostartofline
 set number
 set relativenumber
-set sidescroll=8
-set autochdir
+set scrolloff=5
+set shiftround
+set smartcase
+set smartindent
+set softtabstop=4
+set tabstop=4
 set wildmode=list:longest,list:full
 
 colorscheme rosepine
+
+" Use xsel if possible
+let g:clipboard = {
+      \   'name': 'xsel_override',
+      \   'copy': {
+      \      '+': 'xsel --input --clipboard',
+      \      '*': 'xsel --input --primary',
+      \    },
+      \   'paste': {
+      \      '+': 'xsel --output --clipboard',
+      \      '*': 'xsel --output --primary',
+      \   },
+      \   'cache_enabled': 1,
+      \ }

@@ -24,22 +24,22 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (0, 300)
+    width = (0, 256)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = (0, 512)
 
     # Position the notification in the bottom right corner
     origin = bottom-right
 
     # Offset from the origin
-    offset = 24x51
+    offset = 32x32
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 1
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 2
+    notification_limit = 5
 
     ### Progress bar ###
 
@@ -63,7 +63,7 @@
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
-    indicate_hidden = no
+    indicate_hidden = yes
 
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
@@ -74,7 +74,7 @@
     # notifications.
     # Set to 0 to disable.
     # If gap_size is greater than 0, this setting will be ignored.
-    separator_height = 2
+    separator_height = 4
 
     # Padding between text and separator.
     padding = 8
@@ -87,7 +87,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 4
 
     # Defines color of the frame around the notification window.
     frame_color = "#9ccfd8"
