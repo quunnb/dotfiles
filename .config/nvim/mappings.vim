@@ -10,6 +10,8 @@ nnoremap Y y$
 " run q macro
 nnoremap Q @q
 
+nnoremap ' `
+
 " Move per visual line
 nnoremap j gj
 nnoremap k gk
@@ -40,6 +42,9 @@ noremap ; ,
 nnoremap <F3> :set list!<CR>
 "Remove all trailing whitespace
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>
+" Remove extra spaces from selection / line
+nnoremap <Leader>xs :s/\S\zs\s\{2,}/ /g<CR> :s/ \([,\.]\)/\1/g<CR>
+xnoremap <Leader>xs :s/\S\zs\s\{2,}/ /g<CR>gv :s/ \([,\.]\)/\1/g<CR>
 
 " Disable/enable automatic comments
 nnoremap <Leader>com :set formatoptions-=cro<CR>
@@ -49,10 +54,11 @@ inoremap <C-c> <Cmd>set formatoptions-=cro<CR>a<Space>
 " Hide search highlights
 nnoremap <Leader><Leader> :nohls<CR>
 
-" Open / source vimrc un such
+" Open / source vimrc and such
 nnoremap <Leader>vim :e $MYVIMRC<CR>
+nnoremap <Leader>viso :so $MYVIMRC<CR>
 nnoremap <Leader>map :e ~/.config/nvim/mappings.vim<CR>
-nnoremap <Leader>plug :e ~/.config/nvim/plugings.vim<CR>
+nnoremap <Leader>plug :e ~/.config/nvim/plugins.vim<CR>
 
 " Set spell automagically
 inoremap <C-s> <Cmd>set spell<CR><C-x><C-s>
@@ -66,16 +72,9 @@ inoremap <C-l> <C-x><C-l>
 nnoremap n nzz
 nnoremap N Nzz
 
-" Open non-existing file
-noremap gf :e <cfile><CR>
-
 " Insert current path
 nnoremap <Leader>p :put=expand('%:p:~')<CR>
 nnoremap <Leader>P :put=expand('%:p')<CR>
-
-" Hic sunt dracones
-cmap Q<CR> q<CR>
-nnoremap Q <NOP>
 
 " Buffer navigation
 nnoremap <Leader>j :bn<CR>
@@ -92,16 +91,27 @@ cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Delete>
 
-" Upper-/lowercase word
-nnoremap <Leader>u guiw
-nnoremap <Leader>U gUiw
+" Transpose words
+nmap <M-t> cxiwgecxiw
+imap <M-t> <Esc>cxiwgecxiwa
+" Transpose characters
+imap <C-t> <ESC><Left>xpa
+
+" Upper-/lowercase word (emacs bindings)
+nnoremap <M-l> guiw
+nnoremap <M-u> gUiw
+
+" Flip array indices
+nmap <M-]>t cxi]F]cxi]
+imap <M-]>t <Esc>cxi]F]cxi]a
+" testing[x][y] -> testing[y][x]
 
 " Insert date and time
-nnoremap <Leader>date :put =strftime('%d.%m.%Y')<CR>
-nnoremap <Leader>time :put =strftime('%H:%M')<CR>
+nnoremap <Leader>da :put =strftime('%d.%m.%Y')<CR>
+nnoremap <Leader>ti :put =strftime('%H:%M')<CR>
 
 " Open terminal
-nnoremap <Leader>t :vertical terminal<CR>
+nnoremap <Leader>te :vertical terminal<CR>
 
 " Enable/disable hex or alpha characters increment/decrement
 nnoremap <Leader>ia :set nrformats+=alpha<CR>
@@ -119,9 +129,6 @@ xnoremap <Leader>_ :s/ \+/ /g<CR>gv:s/ $//g<CR>
 xnoremap <Leader>so :sort<CR>
 xnoremap <Leader>sn :sort n<CR>
 
-" For local/global replace
-nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
-nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " "VIM-SURROUND"
 nnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
@@ -146,9 +153,19 @@ xnoremap <Leader>{ :execute "normal \<Plug>YsurroundiW{"<CR>
 nmap <Leader>a <Plug>(EasyAlign)
 xmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a:k mzvi}:EasyAlign : { 'stick_to_left': 0, 'left_margin': 1 }<CR>`z
+nmap <Leader>a:: mzvi}:EasyAlign : { 'stick_to_left': 0, 'left_margin': 1 }<CR>`z
+xmap <Leader>a:: :EasyAlign : { 'stick_to_left': 0, 'left_margin': 1 }<CR>`z
+
 nmap <Leader>a:h mzvi}:EasyAlign : { 'stick_to_left': 1, 'left_margin': 0 }<CR>`z
+xmap <Leader>a:h :EasyAlign : { 'stick_to_left': 1, 'left_margin': 0 }<CR>
+
 nmap <Leader>a=k mzvi}:EasyAlign = { 'stick_to_left': 0, 'left_margin': 1 }<CR>`z
+nmap <Leader>a== mzvi}:EasyAlign = { 'stick_to_left': 0, 'left_margin': 1 }<CR>`z
+xmap <Leader>a== :EasyAlign = { 'stick_to_left': 0, 'left_margin': 1 }<CR>
+
 nmap <Leader>a=h mzvi}:EasyAlign = { 'stick_to_left': 1, 'left_margin': 0 }<CR>`z
+xmap <Leader>a=h :EasyAlign = { 'stick_to_left': 1, 'left_margin': 0 }<CR>
+
 
 " "SUBVERSIVE"
 nmap s <Plug>(SubversiveSubstitute)
@@ -173,11 +190,7 @@ nmap gp <Plug>(YoinkPaste_gp)
 nmap gP <Plug>(YoinkPaste_gP)
 
 " "COLORIZER"
-nnoremap <Leader>col :ColorToggle<CR>
-
-" "FZF"
-nnoremap <Leader>f :call fzf#run({'sink': 'e'})<CR>
-nnoremap <Leader>F :FZF ~<CR>
+nnoremap <Leader>co :ColorToggle<CR>
 
 " "ALE"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -188,37 +201,36 @@ nnoremap <Leader>D :ALEDetail<CR>
 " "nnn"
 nnoremap <Leader>o :NnnPicker %:p:h<CR>
 
-" "RADICAL defaults"
+" "RADICAL"
 " nmap gA <Plug>RadicalView
 " xmap gA <Plug>RadicalView
-nmap <Leader>dec <Plug>RadicalCoerceToDecimal
-nmap <Leader>hex <Plug>RadicalCoerceToHex
-nmap <Leader>oct <Plug>RadicalCoerceToOctal
-nmap <Leader>bin <Plug>RadicalCoerceToBinary
+nmap <Leader>de <Plug>RadicalCoerceToDecimal
+nmap <Leader>he <Plug>RadicalCoerceToHex
+nmap <Leader>oc <Plug>RadicalCoerceToOctal
+nmap <Leader>bi <Plug>RadicalCoerceToBinary
 
-" "EXCHANGE defaults"
+" "EXCHANGE"
 " nremap cx  <Plug>Exchange
 " nremap cxx <Plug>Exchange_line
 " xremap X   <Plug>Exchange_selection
 
-" "VIM-COMMENTARY defaults"
+" "VIM-COMMENTARY"
 " gcc Comment out a line
 " gc  Comment out a selection / motion
 
-" "VIM-TITLECASE defaults"
+" "VIM-TITLECASE"
 " nmap <Leader>gz  <Plug>Titlecase
 " nmap <Leader>gzz <Plug>TitlecaseLine
 " vmap <Leader>gz  <Plug>Titlecase
+" TODO: cycle between camel, snake and Pascal case with one binding
+nnoremap <silent> <Leader>camel mq:s/_\(\w\)/\U\1/g<CR>g`q
+nnoremap <silent> <Leader>snake mq:s/\([A-Z]\)/_\L\1/gI<CR>g`q
 
 " "Codeium"
 nnoremap <Leader>cod :CodeiumToggle<CR>
 nnoremap <Leader>cha :CodeiumChat<CR>
-imap <C-.> <Cmd>call codeium#CycleOrComplete()<CR>
-imap <C-.> <Cmd>call codeium#CycleCompletions(-1)<CR>
-
-" "Nerdtree"
-nnoremap <C-t> :NERDTreeToggle<CR>
+imap <M-.> <Cmd>call codeium#CycleOrComplete()<CR>
+imap <M-,> <Cmd>call codeium#CycleCompletions(-1)<CR>
 
 " "Goyo"
 nnoremap <Leader>goyo :Goyo<CR>
-

@@ -46,11 +46,13 @@ set number
 set relativenumber
 set scrolloff=5
 set shiftround
-set smartcase
+set ignorecase
 set smartindent
 set softtabstop=4
 set tabstop=4
 set wildmode=list:longest,list:full
+set spelllang=en_us
+set spell
 
 colorscheme rosepine
 

@@ -103,7 +103,7 @@ bindsym $mod+Shift+Ctrl+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
 # reload the configuration file
 bindsym $mod+Ctrl+Shift+r reload
 
-# restart i3 inplace (preserves your layout/session, can be used to update i3)
+# restart i3 in-place (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
 
 # backlight control
@@ -311,6 +311,7 @@ for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 for_window [class="(?i)anki" title="Edit Current"] floating enable
 for_window [class="(?i)anki" title="Browse *"] floating enable
+for_window [class="(?i)simple(?i)screen(?i)recorder"] floating enable
 
 # set size of floating window
 # for_window [class=".*"] resize set 640 480

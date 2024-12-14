@@ -19,7 +19,6 @@
     Plug 'tpope/vim-characterize'
     " Plug 'tpope/vim-fugitive'
     Plug 'Exafunction/codeium.vim'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'amadeus/vim-convert-color-to'
     Plug 'cespare/vim-toml', { 'branch': 'main' }
     Plug 'chrisbra/colorizer'
@@ -33,6 +32,7 @@
     Plug 'itchyny/lightline.vim'
     Plug 'jorengarenar/vim-mvvis'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'junegunn/vim-easy-align'
@@ -47,7 +47,6 @@
     Plug 'rose-pine/vim'
     Plug 'rust-lang/rust.vim'
     Plug 'sheerun/vim-polyglot'
-    Plug 'skywind3000/asyncrun.vim'
     Plug 'svermeulen/vim-subversive'
     Plug 'svermeulen/vim-yoink'
     Plug 'tommcdo/vim-exchange'
@@ -81,7 +80,6 @@ let vim_markdown_preview_browser='.local/bin/browser'
 let g:titlecase_excluded_words = ["and", "as", "as if", "as long as", "at", "but", "by", "even if", "for", "from", "if", "if only", "in", "into", "like", "near", "now that", "nor", "of", "off", "on", "on top of", "once", "onto", "or", "out of", "over", "past", "so", "so that", "than", "that", "till", "to", "up", "upon", "with", "when", "yet"] 
 
 " "COLORIZER"
-" Don't colorize colornames
 let g:colorizer_colornames=0
 
 " "YOINK"
@@ -89,35 +87,6 @@ let  g:yoinkIncludeDeleteOperations=1
 
 " "RUSTFMT"
 let g:rustfmt_autosave = 0
-
-" "FZF"
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" FLOATING WINDOW
-" Required:
-" - width [float range [0 ~ 1]] or [integer range [8 ~ ]]
-" - height [float range [0 ~ 1]] or [integer range [4 ~ ]]
-"
-" Optional:
-" - xoffset [float default 0.5 range [0 ~ 1]]
-" - yoffset [float default 0.5 range [0 ~ 1]]
-" - relative [boolean default v:false]
-" - border [string default 'rounded']: Border style
-"   - 'rounded' / 'sharp' / 'horizontal' / 'vertical' / 'top' / 'bottom' / 'left' / 'right'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
-" "AsyncRun"
-" open quickfix window automatically when AsyncRun is executed
-" set the quickfix window 6 lines height.
-let g:asyncrun_open = 6
-" ring the bell to notify you job finished
-let g:asyncrun_bell = 1
-" Try to recognize root folder
-let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs'] 
 
 " "LIGHTLINE"
 let g:lightline = { 'colorscheme': 'rosepine' }

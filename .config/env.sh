@@ -54,43 +54,6 @@ export LAT="$(<~/.config/data/latitude)"
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
 
-# fzf
-if [ -x /usr/bin/fzf ]; then
-
-    [ -f /usr/share/fzf/key-bindings.bash ] && . /usr/share/fzf/key-bindings.bash
-    [ -f /usr/share/fzf/completion.bash   ] && . /usr/share/fzf/completion.bash
-    [ -f ~/.config/fzf/fzf.sh             ] && . ~/.config/fzf/fzf.sh
-    [ -f ~/.bash_completion/alacritty     ] && . ~/.bash_completion/alacritty.bash
-
-    FZF_DEFAULT_COMMAND='find .'
-    FZF_IGNORE="
-    .cache
-    .cargo
-    .cert
-    .cfg
-    .chromium
-    .git
-    .icons
-    .librewolf
-    .mozilla
-    .pcloud
-    tmp
-    pCloudDrive
-    "
-
-    for dir in $FZF_IGNORE; do
-        FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND -name $dir -prune -o"
-    done
-
-    export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -type d -print"
-    export FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND -type f -print"
-
-    # Remap CTRL-T to CTRL-X CTRL-T
-    bind "$(bind -s | grep __fzf_select | sed 's/\\C-t/\\C-x\\C-t/')"
-    bind '"\C-t": transpose-chars'
-
-fi
-
 # nnn
 BLK="0B" CHR="0B" DIR="05" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"

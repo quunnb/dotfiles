@@ -7,7 +7,6 @@ echo "$(date +%T) open  ~/.bash_aliases" >> ~/.log/rc.log
 
 alias o='xdg-open'
 
-
 [ -x /usr/bin/nvim ] && alias vim='nvim'
 
 if [ -x /usr/bin/nvr ]; then
@@ -15,6 +14,9 @@ if [ -x /usr/bin/nvr ]; then
     alias nvim='e'
     alias vim='e'
 fi
+
+# nvim server socket hangs often
+alias rmsocket='rm /tmp/nvimsocket'
 
 # Use vim server instance
 # alias v='vim --servername VIMSERVER --remote-silent'
