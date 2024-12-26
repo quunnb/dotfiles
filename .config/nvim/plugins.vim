@@ -3,47 +3,33 @@
 " 
 
 " "VIM-PLUG AUTO-INSTALL"
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
- let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
- if empty(glob(data_dir . '/autoload/plug.vim'))
-     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs 
-         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
- endif
-
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
  call plug#begin()
-    Plug 'mattn/calendar-vim'
     Plug 'mbbill/undotree'
-    " Plug 'mg979/vim-visual-multi'
     Plug 'tpope/vim-characterize'
-    " Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive'
     Plug 'Exafunction/codeium.vim'
     Plug 'amadeus/vim-convert-color-to'
-    Plug 'cespare/vim-toml', { 'branch': 'main' }
     Plug 'chrisbra/colorizer'
     Plug 'chrisbra/unicode.vim'
     Plug 'christoomey/vim-titlecase'
     Plug 'dense-analysis/ale'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'glts/vim-magnum'
     Plug 'glts/vim-radical'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
     Plug 'itchyny/lightline.vim'
-    Plug 'jorengarenar/vim-mvvis'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'junegunn/vim-easy-align'
-    Plug 'mcchrish/nnn.vim'
     Plug 'mhinz/neovim-remote'
-    Plug 'othree/html5.vim'
-    Plug 'pangloss/vim-javascript'
-    Plug 'preservim/nerdtree'
-    Plug 'psliwka/vim-smoothie'
-    Plug 'rhysd/rust-doc.vim'
-    Plug 'romainl/vim-cool'
     Plug 'rose-pine/vim'
     Plug 'rust-lang/rust.vim'
     Plug 'sheerun/vim-polyglot'
@@ -62,7 +48,7 @@
 
 " "VIMWIKI"
 " Use .md files for vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/.vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " Make vimwiki markdown links have extension .md for native vim navigation
 let g:vimwiki_markdown_link_ext = 1
 
@@ -124,6 +110,12 @@ let g:codeium_manual = v:true
 " "ALE"
 " This keeps the 'gutter' always on so that window size keeps the same between errors/no errors
 let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_detail_to_floating_preview = 1
+" Disable linting for all minified JS files.
+let g:ale_pattern_options = {'\.min.js$': {'ale_enabled': 0}}
+let g:ale_floating_preview = 1
+let g:ale_list_vertical = 1
 
 " "Goyo"
 let g:goyo_width = 120

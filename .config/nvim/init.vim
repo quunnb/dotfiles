@@ -1,5 +1,5 @@
 "
-" ~/.config/init.vim
+" ~/.config/nvim/init.vim
 "
 
 filetype on
@@ -15,7 +15,6 @@ let config_list = [
       \ 'mappings.vim',
       \ 'autocmds.vim',
       \ 'abbreviations.vim',
-      \ 'plugin_settings/*.vim'
       \]
 
 for files in config_list
@@ -52,7 +51,8 @@ set softtabstop=4
 set tabstop=4
 set wildmode=list:longest,list:full
 set spelllang=en_us
-set spell
+set nospell
+
 
 colorscheme rosepine
 

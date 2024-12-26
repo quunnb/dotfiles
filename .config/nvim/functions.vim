@@ -1,3 +1,7 @@
+"
+" ~/.config/nvim/functions.vim
+"
+
 " Delete closed captions
 function! DeleteCC()
     :%s/[ -]\{,2}\[.*\] \?//g<CR>
@@ -20,6 +24,7 @@ function! GetXresColor()
     execute "normal! ciw" . l:hex
 endfunction
 
+" Replace some colors (in some wikipedia svg maps)
 function! ReplaceColors()
     :%s/#C6ECFF/#1f1d2e/ig " sea
     :%s/#B2DDF2/#1f1d2e/ig

@@ -13,10 +13,10 @@ c.downloads.position = 'bottom'
 
 c.auto_save.session = True
 
-c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.preferred_color_scheme = 'dark'
 
-c.editor.command = ['alacritty', '-e', 'vim', '-p', '{}' ]
+c.editor.command = ['alacritty', '-e', 'nvim', '-p', '{}' ]
 
 c.input.insert_mode.auto_leave = True
 c.input.insert_mode.auto_load = True
@@ -25,7 +25,7 @@ c.scrolling.smooth = False
 
 c.window.hide_decoration = True
 
-c.tabs.position = "top"
+c.tabs.position = "right"
 c.tabs.show = "always"
 c.tabs.background = True
 c.tabs.select_on_remove = "last-used"

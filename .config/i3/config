@@ -3,7 +3,10 @@
 #
 
 
-font pango: Inconsolata 12
+font pango: Monocraft 12
+# font pango: Inconsolata 12
+# font pango: CozetteVector 12
+# font pango: Terminess Nerd Font 12
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -185,6 +188,13 @@ bindsym $mod+Shift+Ctrl+Print exec --no-startup-id ~/.local/bin/screenshot.sh ed
 bindsym $mod+Shift+c exec --no-startup-id ~/.local/bin/pretty_fen.sh
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/analyze_fen.sh
 
+# Bluetooth
+bindsym $mod+b exec --no-startup-id dmenu-bluetooth
+
+# Start/kill keylog
+bindsym F11 exec --no-startup-id llk && notify-send "logging started..."
+bindsym F12 exec --no-startup-id llkk && notify-send "logging ended"
+
 # bindsym $mod+Shift+Ctrl+t exec --no-startup-id ~/.local/bin/testing.sh
 
 ##########################################
@@ -206,23 +216,37 @@ set $ws10 "10"
 
 
 # bind program to workspace and focus to them on startup:
+# #ws1
 # assign [class="(?i)alacritty"] $ws1
 # assign [class="(?i)thunar"] $ws1
 
-# assign [class="(?i)firefox"] $ws2
+#ws2
+assign [class="(?i)firefox"] $ws2
 
-# assign [class="(?i)anki"] $ws3
+#ws3
+assign [class="(?i)anki"] $ws3
 
-# assign [class="(?i)free(?i)tube"] $ws4
+# ws4
+assign [class="(?i)free(?i)tube"] $ws4
 
+# ws5
 assign [class="(?i)telegram(?i)desktop"] $ws5
 assign [class="(?i)kotatogram-(?i)desktop"] $ws5
 assign [class="(?i)zap(?i)zap"] $ws5
 
-# assign [class="(?i)signal"] $ws7
+# ws6
+assign [class="(?i)gimp"] $ws6
+
+# ws7
+assign [class="(?i)signal"] $ws7
 assign [class="(?i)signal(?)(?i)beta"] $ws7
 
+# ws8
 assign [class="(?i)vesktop"] $ws8
+assign [class="(?i)discord"] $ws8
+
+#ws9
+assign [class="(?i)protonvpn-app"] $ws9
 
 
 # automatic set focus new window if it opens on another workspace than the current:
@@ -286,7 +310,6 @@ exec --no-startup-id /usr/bin/dunst
 exec_always --no-startup-id autotiling
 
 # Autostart apps
-exec --no-startup-id sleep 1 && ~/scripts/is_up.sh &
 exec --no-startup-id sleep 1 && unclutter --jitter 5 --timeout 2 --start-hidden --ignore-scrolling
 exec --no-startup-id sleep 1 && brightnessctl --restore
 exec --no-startup-id sleep 3 && redshift
@@ -312,7 +335,7 @@ for_window [window_role="About"] floating enable
 for_window [class="(?i)anki" title="Edit Current"] floating enable
 for_window [class="(?i)anki" title="Browse *"] floating enable
 for_window [class="(?i)simple(?i)screen(?i)recorder"] floating enable
-
+for_window [class="(?i)protonvpn-app"] floating enable
 # set size of floating window
 # for_window [class=".*"] resize set 640 480
 for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480
@@ -381,12 +404,14 @@ client.urgent           $red     $black $black  $red      $red
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
+    font pango: Monocraft 16
     # font pango: ShureTechMono Nerd Font 14
     # font pango: CozetteVector 16
+    # font pango: Terminess Nerd Font 16
     # font pango: Monaspace Krypton 16
     # font pango: Monaspace Krypton ExtraLight 16
     # font pango: Monaspace Neon Light 16
-    font pango: Inconsolata 16
+    # font pango: Inconsolata 16
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position top
     #tray_output primary

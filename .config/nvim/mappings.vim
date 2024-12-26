@@ -7,10 +7,21 @@ let mapleader = " "
 " Y you have to be such a snowflake
 nnoremap Y y$
 
-" run q macro
+" Run q macro
 nnoremap Q @q
 
+" You always want to go to the right column, no?
 nnoremap ' `
+
+" Keep cursorlike in the middle when moving
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Keep the position after past
+nmap yyp yymzp`z<Down>
+nmap yyP yymzP`z<Down>
 
 " Move per visual line
 nnoremap j gj
@@ -24,7 +35,7 @@ nnoremap gk k
 vnoremap gj j
 vnoremap gk k
 
-" Keep visual selection
+" Keep visual selection when indenting and inc-/decrementing
 xnoremap > >gv
 xnoremap < <gv
 xnoremap <C-a> <C-a>gv
@@ -34,7 +45,7 @@ xnoremap <C-x> <C-x>gv
 xnoremap J :m '>+1<CR>gv=gv
 xnoremap K :m '<-2<CR>gv=gv
 
-" For Finnish keyboards
+" For Finnish keyboards more logical movement direction
 noremap , ;
 noremap ; ,
 
@@ -60,7 +71,7 @@ nnoremap <Leader>viso :so $MYVIMRC<CR>
 nnoremap <Leader>map :e ~/.config/nvim/mappings.vim<CR>
 nnoremap <Leader>plug :e ~/.config/nvim/plugins.vim<CR>
 
-" Set spell automagically
+" Set spell automagically when wanting to autocomplete
 inoremap <C-s> <Cmd>set spell<CR><C-x><C-s>
 inoremap <C-x><C-s> <Cmd>set spell<CR><C-x><C-s>
 inoremap <C-x>s <Cmd>set spell<CR><C-x>s
@@ -69,8 +80,8 @@ inoremap <C-x>s <Cmd>set spell<CR><C-x>s
 inoremap <C-l> <C-x><C-l>
 
 " Keep search matches in the middle of the window
-nnoremap n nzz
-nnoremap N Nzz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Insert current path
 nnoremap <Leader>p :put=expand('%:p:~')<CR>
@@ -91,20 +102,20 @@ cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Delete>
 
-" Transpose words
+" Transpose words (Requires 
 nmap <M-t> cxiwgecxiw
 imap <M-t> <Esc>cxiwgecxiwa
 " Transpose characters
 imap <C-t> <ESC><Left>xpa
 
 " Upper-/lowercase word (emacs bindings)
-nnoremap <M-l> guiw
-nnoremap <M-u> gUiw
+nnoremap <M-l> gue
+nnoremap <M-u> gUe
 
-" Flip array indices
+" Flip array indice with the previous
 nmap <M-]>t cxi]F]cxi]
 imap <M-]>t <Esc>cxi]F]cxi]a
-" testing[x][y] -> testing[y][x]
+" testing[y][x] -> testing[y][x]
 
 " Insert date and time
 nnoremap <Leader>da :put =strftime('%d.%m.%Y')<CR>
@@ -132,6 +143,7 @@ xnoremap <Leader>sn :sort n<CR>
 
 " "VIM-SURROUND"
 nnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
+nnoremap <Leader>` :execute "normal \<Plug>YsurroundiW`"<CR>
 nnoremap <Leader>" :execute "normal \<Plug>YsurroundiW\""<CR>
 nnoremap <Leader>) :execute "normal \<Plug>YsurroundiW)"<CR>
 nnoremap <Leader>( :execute "normal \<Plug>YsurroundiW("<CR>
@@ -141,6 +153,7 @@ nnoremap <Leader>} :execute "normal \<Plug>YsurroundiW}"<CR>
 nnoremap <Leader>{ :execute "normal \<Plug>YsurroundiW{"<CR>
 
 xnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
+xnoremap <Leader>` :execute "normal \<Plug>YsurroundiW`"<CR>
 xnoremap <Leader>" :execute "normal \<Plug>YsurroundiW\""<CR>
 xnoremap <Leader>) :execute "normal \<Plug>YsurroundiW)"<CR>
 xnoremap <Leader>( :execute "normal \<Plug>YsurroundiW("<CR>
@@ -185,7 +198,9 @@ xmap <Leader>cs <Plug>(SubversiveSubstituteRangeConfirm)
 nmap <C-n> <Plug>(YoinkPostPasteSwapBack)
 nmap <C-p> <Plug>(YoinkPostPasteSwapForward)
 nmap p <Plug>(YoinkPaste_p)
-nmap P <Plug>(YoinkPaste_P)
+nmap yyp yymz<Plug>(YoinkPaste_p)`z<Down>
+nmap yyP yymz<Plug>(YoinkPaste_P)`z<Down>
+nmap yyP <Plug>(YoinkPaste_P)
 nmap gp <Plug>(YoinkPaste_gp)
 nmap gP <Plug>(YoinkPaste_gP)
 
@@ -193,13 +208,14 @@ nmap gP <Plug>(YoinkPaste_gP)
 nnoremap <Leader>co :ColorToggle<CR>
 
 " "ALE"
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <Leader>A :ALEToggle<CR>
-nnoremap <Leader>D :ALEDetail<CR>
-
-" "nnn"
-nnoremap <Leader>o :NnnPicker %:p:h<CR>
+nmap <silent> <C-k>     <Plug>(ale_previous_wrap)
+nmap <silent> <C-j>     <Plug>(ale_next_wrap)
+nmap          <Leader>A <Plug>(ale_toggle)
+nmap          <Leader>D <Plug>(ale_detail)
+nmap          gt <Plug>(ale_go_to_type_definition)
+nmap          gd <Plug>(ale_go_to_definition)
+nmap          gr <Plug>(ale_find_references)
+nmap          <Leader>r <Plug>(ale_rename)
 
 " "RADICAL"
 " nmap gA <Plug>RadicalView

@@ -5,18 +5,12 @@
 # Log entry
 echo "$(date +%T) open  ~/.bash_aliases" >> ~/.log/rc.log
 
+alias e='nvim'
 alias o='xdg-open'
+alias r='ranger'
+alias cat='bat'
 
 [ -x /usr/bin/nvim ] && alias vim='nvim'
-
-if [ -x /usr/bin/nvr ]; then
-    alias e='nvr -s'
-    alias nvim='e'
-    alias vim='e'
-fi
-
-# nvim server socket hangs often
-alias rmsocket='rm /tmp/nvimsocket'
 
 # Use vim server instance
 # alias v='vim --servername VIMSERVER --remote-silent'
@@ -57,7 +51,7 @@ if [ -x /usr/bin/exa ]; then
 fi
 
 # Disable wget history file at $HOME
-alias wget='wget --no-hsts'
+alias wget='wget --hsts-file $HOME/.config/wget/wget-hsts'
 
 # Dotfile git
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -73,8 +67,12 @@ alias destroy='shred -zu'
 alias yt='yt-dlp'
 alias dl='yt-dlp'
 
+# Download best mp4 if available
+alias ytmp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b"'
+
 # Download the best audio
 alias yta='yt-dlp -x'
+# Download best mp3
 alias ytmp3='yt-dlp -x --audio-format mp3'
 
 # Download max size video

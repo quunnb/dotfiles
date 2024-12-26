@@ -15,8 +15,9 @@ export HISTIGNORE='yt-dlp *:encfs *:ls *'
 
 # Add ~/.local/bin/ to PATH
 export PATH="$HOME/.local/bin:$PATH"
-# Add custom search scripts to PATH for dmenu
-export PATH="$HOME/.local/bin/search:$PATH"
+# Add Emacs commands to path
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export EDITOR=nvim
@@ -61,6 +62,8 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 export NNN_FIFO='/tmp/nnn.fifo'
 export NNN_TMPFILE='/tmp/.lastd'
 export NNN_TERMINAL='/usr/bin/alacritty'
+
+export LS_COLORS='always'
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log

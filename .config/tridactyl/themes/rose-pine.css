@@ -12,8 +12,9 @@
  * Took tringle.css from quisquama (see line 195-->)
  */
 
-    --tridactyl-font-family:          "Inconsolata";
-    --tridactyl-font-size:            12pt;
+    --tridactyl-font-family:          "Monocraft";
+    /* --tridactyl-font-family:          "Inconsolata Regular"; */
+    --tridactyl-font-size:            16pt;
     --tridactyl-cmdl-font-family:     var(--tridactyl-font-family);
     --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
     --tridactyl-vs-font-family:       var(--tridactyl-font-family);
@@ -180,18 +181,6 @@
     background: var(--Rose);
     color:      var(--Base);
 }
-
-/* .TridactylStatusIndicator { */
-/*     position:    fixed                     !important; */
-/*     bottom:      0                         !important; */
-/*     background:  var(--tridactyl-bg)       !important; */
-/*     color:       var(--Rose)               !important; */
-/*     border:      unset                     !important; */
-/*     border:      1px var(--Foam) solid     !important; */
-/*     font-family: "Inconsolata"             !important; */
-/*     font-size:   14pt                      !important; */
-/*     padding:     0.8ex                     !important; */
-/* } */
 
 /* What follows is from: */
 /* https://gist.github.com/quisquama/0f8ad71c24eccdc739e8e4a434452f2e */
