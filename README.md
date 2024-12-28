@@ -1,9 +1,9 @@
-# demiaus' dotfiles
+# dotfiles
 - operating system: [endeavouros](https://endeavouros.com/)
 - window manager: [i3](https://i3wm.org/)
 - shell: [bash](https://www.gnu.org/software/bash/)
 - terminal emulator: [alacritty](https://github.com/alacritty/alacritty)
-- file manager: [nnn](https://github.com/jarun/nnn) & thunar
+- file manager: [ranger](https://github.com/ranger/ranger) & thunar
 - text editor: [neovim](https://neovim.io/)
 - document viewer: [zathura](https://git.pwmt.org/pwmt/zathura)
 - image viewer: [imv](https://sr.ht/~exec64/imv/)
