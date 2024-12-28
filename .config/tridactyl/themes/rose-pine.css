@@ -14,7 +14,7 @@
 
     --tridactyl-font-family:          "Monocraft";
     /* --tridactyl-font-family:          "Inconsolata Regular"; */
-    --tridactyl-font-size:            16pt;
+    --tridactyl-font-size:            12pt;
     --tridactyl-cmdl-font-family:     var(--tridactyl-font-family);
     --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
     --tridactyl-vs-font-family:       var(--tridactyl-font-family);

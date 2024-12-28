@@ -11,15 +11,13 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
  call plug#begin()
-    Plug 'mbbill/undotree'
-    Plug 'tpope/vim-characterize'
-    Plug 'tpope/vim-fugitive'
     Plug 'Exafunction/codeium.vim'
     Plug 'amadeus/vim-convert-color-to'
     Plug 'chrisbra/colorizer'
     Plug 'chrisbra/unicode.vim'
     Plug 'christoomey/vim-titlecase'
     Plug 'dense-analysis/ale'
+    Plug 'fatih/vim-go'
     Plug 'glts/vim-magnum'
     Plug 'glts/vim-radical'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
@@ -29,7 +27,7 @@ endif
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'junegunn/vim-easy-align'
-    Plug 'mhinz/neovim-remote'
+    Plug 'mbbill/undotree'
     Plug 'rose-pine/vim'
     Plug 'rust-lang/rust.vim'
     Plug 'sheerun/vim-polyglot'
@@ -37,7 +35,9 @@ endif
     Plug 'svermeulen/vim-yoink'
     Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-abolish' " required by VIM-SUBVERSIVE
+    Plug 'tpope/vim-characterize'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tridactyl/vim-tridactyl'

@@ -5,10 +5,10 @@ CLEAR='#26233a'
 DEFAULT='#ebbcba'
 TEXT='#9ccfd8'
 WRONG='#eb6f92'
-VERIFYING='#31748f'
+VERIFYING='#9ccfd8'
 
 PICTURE="/tmp/screen_locked.png"
-scrot /tmp/screen_locked.png
+maim /tmp/screen_locked.png
 mogrify -sample 25% -scale 400% $PICTURE
 
 i3lock -i $PICTURE \
