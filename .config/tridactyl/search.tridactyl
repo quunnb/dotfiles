@@ -9,6 +9,7 @@ set searchurls.we https://en.wikipedia.org/wiki/%s
 set searchurls.ws https://fi.wikipedia.org/wiki/%s
 set searchurls.ud https://www.urbandictionary.com/define.php?term=%s
 set searchurls.forvo https://forvo.com/search/%s/
+set searchurls.go https://pkg.go.dev/%s
 
 # dics
 set searchurls.word https://en.wiktionary.org/wiki/%s
@@ -37,11 +38,12 @@ set searchurls.fiit https://redfoxsanakirja.fi/sanakirja/-/s/fin/ita/%s
 set searchurls.iten https://redfoxsanakirja.fi/sanakirja/-/s/ita/eng/%s
 set searchurls.enit https://redfoxsanakirja.fi/sanakirja/-/s/eng/ita/%s
 
-#swedish
+# swedish
 set searchurls.fisv https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
 set searchurls.fisw https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
 set searchurls.svfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
 set searchurls.swfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
+# set searchurls.svfi https://en.bab.la/dictionary/swedish-english/%s
 
 # japan
 set searchurls.jpfi https://redfoxsanakirja.fi/sanakirja/-/s/jpn/fin/%s
@@ -49,6 +51,6 @@ set searchurls.fijp https://redfoxsanakirja.fi/sanakirja/-/s/fin/jpn/%s
 set searchurls.jpen https://redfoxsanakirja.fi/sanakirja/-/s/jpn/eng/%s
 set searchurls.enjp https://redfoxsanakirja.fi/sanakirja/-/s/eng/jpn/%s
 
-#movies
+# movies
 set searchurls.imdb https://www.imdb.com/find/?q=%s
 set searchurls.rt https://www.rottentomatoes.com/search?search=%s

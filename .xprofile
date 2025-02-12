@@ -2,6 +2,6 @@
 # ~/.xprofile
 #
 
-setxkbmap -config $HOME/.config/ficode/ficode.conf
+setxkbmap -config $HOME/.config/xkb/keymap.conf
 xset r rate 333 40
 

@@ -5,6 +5,7 @@
 # Log entry
 echo "$(date +%T) open  ~/.config/env.sh" >> ~/.log/rc.log
 
+
 # Big history file to go with the prefix history search functionality
 export HISTSIZE=500000
 export HISTFILESIZE=100000
@@ -20,11 +21,13 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 
-export EDITOR=nvim
+# export EDITOR=nvim
+export EDITOR='nvr -s'
 export VISUAL=$EDITOR
 export SUDO_EDITOR=$EDITOR
 export BROWSER=$HOME/.local/bin/browser
 export TERMINAL=alacritty
+export GIT_EDITOR='nvr -cc split --remote-wait'
 # Format 'less'
 export LESS='-Mri#8j.5'
 #             |||| `- center on search matches
@@ -32,6 +35,9 @@ export LESS='-Mri#8j.5'
 #             ||`---- case-insensitive search unless pattern contains uppercase
 #             |`----- parse color codes
 #             `------ show more information in prompt
+
+# Maim styling for screenshots
+export MAIM_OPTIONS="--color=0.611,0.811,0.847 --bordersize=3.0 --select --hidecursor --nodrag"
 
 # Supress 'less' history file
 export LESSHISTFILE=/dev/null
@@ -55,15 +61,14 @@ export LAT="$(<~/.config/data/latitude)"
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
 
-# nnn
-BLK="0B" CHR="0B" DIR="05" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-
-export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_TMPFILE='/tmp/.lastd'
-export NNN_TERMINAL='/usr/bin/alacritty'
-
 export LS_COLORS='always'
+
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,bg:#191724,hl:#ebbcba
+	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log

@@ -1,1 +1,302 @@
-/home/ami/.local/share/Anki2/User 1/collection.media/_main.css
+<style>
+
+#body {
+  background-color: var(--Overlay);
+}
+
+.container {
+  height: 840px;
+  position: relative;
+  border: 3px dotted var(--Iris);
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 16px;
+}
+img {
+  object-fit: contain;
+}
+.card {
+  font-family: default_font !important;
+  font-size: 22px;
+}
+.card.nightMode {
+  background-color: var(--Overlay);
+}
+.header {
+  grid-area: header;
+  align-content: center;
+  padding: 16px;
+  margin: 16px;
+  border: dotted 4px var(--HiLight_M);
+  text-align: center;
+  font-size: 120%;
+  background: var(--Surface);
+}
+.header img {
+  object-fit: contain;
+  height: 40px;
+}
+.header .swe {
+  border: solid 4px var(--Gold);
+  padding: 8px;
+  background: var(--Pine);
+  color: var(--Gold);
+}
+.header .eng {
+  border: solid 4px var(--Overlay);
+  padding: 8px;
+  background: var(--Pine);
+  color: var(--Love);
+}
+.header .fin {
+  border: solid 4px var(--Overlay);
+  padding: 8px;
+  background: var(--Text);
+  color: var(--Pine);
+}
+.box {
+  display: grid;
+  text-align: left;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
+  width: 600px;
+  border: dotted 4px var(--Pine);
+  padding: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.hr {
+  grid-area: hr;
+  align-content: center;
+  margin: 16px;
+}
+.top {
+  display: grid;
+  grid-area: top;
+  border: dotted 4px var(--Iris);
+  align-content: end;
+  align-self: end;
+  height: max-content;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 16px;
+}
+.question {
+  display: grid;
+  padding: 32px;
+  margin: 8px;
+  min-width: 600px;
+  text-align: center;
+  justify-content: center;
+  justify-self: center;
+  border: dotted 4px var(--Love);
+}
+.question p {
+  text-align: center;
+}
+.question span {
+  display: grid;
+  text-align: left;
+}
+.center_text p {
+  text-align: center;
+}
+.center_text span {
+  display: grid;
+  text-align: left;
+}
+.extra p {
+  text-align: center;
+}
+.extra span {
+  display: grid;
+  text-align: left;
+}
+.question img {
+  height: 400px;
+}
+.answer {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  justify-self: center;
+  min-width: 600px;
+  border: dotted 4px var(--Foam);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 32px;
+  margin: 8px;
+}
+.top_answer {
+  justify-self: center;
+  border: dotted 4px var(--Foam);
+  padding: 16px;
+}
+.top_answer img {
+  max-height: 240px;
+}
+.bottom {
+  display: grid;
+  grid-area: bottom;
+  height: max-content;
+  border: dotted 4px var(--Gold);
+  align-content: top;
+  justify-content: center;
+  padding: 16px;
+}
+.bottom .left {
+  align-self: start;
+  justify-self: end;
+}
+.bottom .right {
+  align-self: start;
+  justify-self: start;
+}
+.bottom img {
+  max-height: 240px;
+}
+.left {
+  display: grid;
+  margin-right: 8px;
+  padding: 16px;
+  border: dotted 4px var(--HiLight_M);
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+  align-items: center;
+}
+.top .left {
+  align-self: end;
+  justify-self: end;
+}
+.right {
+  display: grid;
+  margin-left: 8px;
+  padding: 16px;
+  border: dotted 4px var(--HiLight_M);
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+  align-items: center;
+}
+.top .right {
+  align-self: end;
+  justify-self: start;
+}
+.right img {
+  max-height: 400px;
+}
+.extra {
+  font-size: 80%;
+  font-style: italic;
+  text-align: center;
+  align-content: center;
+}
+.namn {
+  padding: 4px;
+  font-size: 80%;
+  font-style: italic;
+}
+.vim_mode {
+  font-size: 80%;
+  font-style: italic;
+  margin: 16px;
+}
+hr {
+  all: unset;
+  display: block;
+  margin: 16px;
+  height: 2px;
+  background: var(--Rose);
+}
+
+  /* TEXT STYLES */
+
+.cloze {
+  color: var(--Foam);
+  font-weight: bold;
+}
+.hl {
+  color: var(--Foam);
+  font-weight: bold;
+  margin: 4px;
+}
+.hl-rose {
+  color: var(--Rose);
+  margin: 4px;
+}
+.comment {
+  color: var(--Subtle);
+  font-style: italic;
+  margin: 8px;
+}
+input[type="text"] {
+  background-color: var(--Overlay);
+  font-family: default_font;
+  border: 4px solid var(--Rose);
+  padding: 8px;
+  transition-duration: 0.5s;
+  border-radius: 0px !important;
+  font-size: 100%;
+  /*max-width: 320px;*/
+}
+input:focus[type="text"] {
+  border-radius: 0px;
+  font-size: 100%;
+  font-family: default_font;
+  background-color: var(--Base);
+  border: 4px solid var(--Foam);
+  padding: 8px;
+  transition-duration: 0.5s;
+}
+#typeans {
+  font-size: 24px;
+  font-family: default_font;
+  text-align: center;
+  color: var(--Text);
+}
+.typeGood {
+  color: var(--Foam);
+  background: transparent;
+  text-decoration: underline var(--Foam);
+}
+.typeMissed {
+  color: var(--Gold);
+  background: transparent;
+  text-decoration: underline var(--Gold);
+}
+.typeBad {
+  color: var(--Love);
+  background: transparent;
+  text-decoration: underline var(--Love);
+}
+
+@font-face {
+  font-family: default_font;
+  src: url("_monocraft.otf");
+}
+:root {
+  --map_color:      #26233a;
+  --map_hl_color:   #9ccfd8;
+  --map_hl_borders: #eb6f92;
+  --map_bg_color:   #1f1d2e;
+  --map_borders:    #ebbcba;
+
+  --Base:       #191724;
+  --Surface:    #1f1d2e;
+  --Overlay:    #26233a;
+  --Love:       #eb6f92;
+  --Iris:       #c4a7e7;
+  --Gold:       #f6c177;
+  --Pine:       #31748f;
+  --Rose:       #ebbcba;
+  --Foam:       #9ccfd8;
+  --Text:       #e0def4;
+  --Muted:      #6e6a86;
+  --Subtle:     #908caa;
+  --HiLight_L:  #21202e;
+  --HiLight_M:  #403d52;
+  --HiLight_H:  #524f67;
+}
+
+</style>

@@ -5,16 +5,36 @@
 # Log entry
 echo "$(date +%T) open  ~/.bash_aliases" >> ~/.log/rc.log
 
-alias e='nvim'
+
 alias o='xdg-open'
 alias r='ranger'
 alias cat='bat'
+# alias y='yazi'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+alias ....='cd ../../..'
+alias ...='cd ../..'
+alias ..='cd ..'
+
+if [ -x /usr/bin/nvr ]; then
+    alias nvim='nvr -s'
+    alias e='nvr -s'
+    alias vim='nvr -s'
+fi
 
 [ -x /usr/bin/nvim ] && alias vim='nvim'
 
 # Use vim server instance
 # alias v='vim --servername VIMSERVER --remote-silent'
-# alias b='vim --servername VIMSERVER --remote-silent ~/buffer'
+alias b='nvr -s ~/scratchbuffer'
 alias hx='helix'
 
 # Sudo stuff
@@ -44,6 +64,7 @@ alias paru='paru --color=always'
 alias ls='ls -p'
 
 if [ -x /usr/bin/exa ]; then
+    alias l=exa
     alias ls='exa'
     alias lsd='exa --only-dirs'
     alias lsf='exa --only-files'
@@ -62,10 +83,6 @@ alias :wq='exit'
 
 # Write with zeros and delete
 alias destroy='shred -zu'
-
-# yt-dlp
-alias yt='yt-dlp'
-alias dl='yt-dlp'
 
 # Download best mp4 if available
 alias ytmp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b"'

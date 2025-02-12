@@ -1,6 +1,7 @@
 # 
 # ~/.config/zathura/zathurarc
-#
+
+set selection-clipboard clipboard
 
 map r reload
 map p print

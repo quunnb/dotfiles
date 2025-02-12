@@ -4,12 +4,23 @@
 
 " Make sure that unsetting an option here also resets it in the running session
 sanitise tridactyllocal tridactylsync
-set profiledir "opwldmxe.default-release"
 colourscheme rose-pine
 set newtab about:blank
 
 " Make t open the selection with tabopen
 bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
+
+" " Vim movement for COLEMAK
+" bind <A-n> scrollline 10
+" bind <A-e> scrollline -10
+" bind <A-i> scrollpx 50
+" bind <A-h> scrollpx -50
+
+" for QWERTY
+set hintchars fjdkslaöeiwomvcxzytp
+" for COLEMAK
+" set hintchars tnseriaovmcufyw
+set incsearch trua
 
 " Make search great again
 bind / fillcmdline find
@@ -42,9 +53,6 @@ bind K tabprev
 bind o fillcmdline open
 bind O fillcmdline tabopen
 
-bind <Space>a hint -A
-bind <Space>i hint -i
-
 bind --mode=ex <C-j> ex.next_completion
 bind --mode=ex <C-k> ex.prev_completion
 
@@ -64,7 +72,7 @@ unbindurl ^http(s)?:\/\/(www\.)?chess\.com\/.*$  f
 set hintdelay 100
 set smoothscroll true
 
-" Use st to open vim
+" Use alacritty to open vim
 set editorcmd alacritty -e vim
 
 source ~/.config/tridactyl/search.tridactyl

@@ -63,18 +63,18 @@ bindcode $mod+Shift+18    move container to workspace  $ws9
 bindcode $mod+Shift+19    move container to workspace  $ws10
 
 mode "resize" {
-       bindsym h resize shrink width 10 px or 10 ppt
-       bindsym j resize grow height 10 px or 10 ppt
-       bindsym k resize shrink height 10 px or 10 ppt
-       bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-       bindsym Return mode "default"
-       bindsym Escape mode "default"
-       bindsym space mode "default"
-       bindsym a mode "default"
-       bindsym s mode "default"
-       bindsym d mode "default"
-       bindsym f mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym space mode "default"
+        bindsym a mode "default"
+        bindsym s mode "default"
+        bindsym d mode "default"
+        bindsym f mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -82,15 +82,15 @@ bindsym $mod+r mode "resize"
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym s exec --no-startup-id i3exit suspend, mode "default"
+        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id i3exit reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 bindsym $mod+Pause mode "$mode_system"
 
@@ -173,7 +173,6 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 ## App shortcuts
 # bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+f exec --no-startup-id /usr/bin/thunar
-bindsym $mod+e exec ~/.local/bin/dmenu-emoji.sh
 
 # Zoom
 bindsym $mod+z exec --no-startup-id /usr/bin/slop -r crosshair
@@ -184,16 +183,19 @@ bindsym $mod+Print exec --no-startup-id ~/.local/bin/screenshot.sh clip
 bindsym $mod+Shift+Print exec --no-startup-id ~/.local/bin/screenshot.sh save
 bindsym $mod+Shift+Ctrl+Print exec --no-startup-id ~/.local/bin/screenshot.sh edit
 
+# OCR
+bindsym $mod+Shift+o exec --no-startup-id ~/.local/bin/OCR.sh edit
+
 # Chess
 bindsym $mod+Shift+c exec --no-startup-id ~/.local/bin/pretty_fen.sh
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/analyze_fen.sh
 
+# Webserch on highlight / clipboard content
+bindsym $mod+s exec --no-startup-id ~/.local/bin/websearch.sh primary
+bindsym $mod+Shift+s exec --no-startup-id ~/.local/bin/websearch.sh clipboard
+
 # Bluetooth
 bindsym $mod+b exec --no-startup-id dmenu-bluetooth
-
-# Start/kill keylog
-bindsym F11 exec --no-startup-id llk && notify-send "logging started..."
-bindsym F12 exec --no-startup-id llkk && notify-send "logging ended"
 
 # bindsym $mod+Shift+Ctrl+t exec --no-startup-id ~/.local/bin/testing.sh
 
@@ -405,35 +407,35 @@ client.urgent           $red     $black $black  $red      $red
 # (plus the system information i3status finds out, if available)
 bar {
     font pango: Monocraft 16
-    # font pango: ShureTechMono Nerd Font 14
-    # font pango: CozetteVector 16
-    # font pango: Terminess Nerd Font 16
-    # font pango: Monaspace Krypton 16
-    # font pango: Monaspace Krypton ExtraLight 16
-    # font pango: Monaspace Neon Light 16
-    # font pango: Inconsolata 16
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    position top
-    #tray_output primary
-    tray_padding 0
+# font pango: ShureTechMono Nerd Font 14
+# font pango: CozetteVector 16
+# font pango: Terminess Nerd Font 16
+# font pango: Monaspace Krypton 16
+# font pango: Monaspace Krypton ExtraLight 16
+# font pango: Monaspace Neon Light 16
+# font pango: Inconsolata 16
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        position top
+#tray_output primary
+        tray_padding 0
 
-    # When strip_workspace_numbers is set to yes,
-    # any workspace that has a name of the form
-    # “[n][:][NAME]” will display only the name.
-    strip_workspace_numbers yes
-    # strip_workspace_name no
+# When strip_workspace_numbers is set to yes,
+# any workspace that has a name of the form
+# “[n][:][NAME]” will display only the name.
+        strip_workspace_numbers yes
+# strip_workspace_name no
 
-    colors {
-        separator          #c4a7e7
-        background         #191724
-        statusline         #e0def4
+        colors {
+                separator          #c4a7e7
+                background         #191724
+                statusline         #e0def4
 
 #                           border  bg      txt     indicator
-        focused_workspace   #191724 #191724 #9ccfd8 #c4a7e7
-        active_workspace    #191724 #191724 #ebbcba #c4a7e7
-        inactive_workspace  #191724 #191724 #908caa #c4a7e7
-        urgent_workspace    #191724 #191724 #eb6f92 #c4a7e7
-    }
+                focused_workspace   #191724 #191724 #9ccfd8 #c4a7e7
+                active_workspace    #191724 #191724 #ebbcba #c4a7e7
+                inactive_workspace  #191724 #191724 #908caa #c4a7e7
+                urgent_workspace    #191724 #191724 #eb6f92 #c4a7e7
+        }
 }
 
 
@@ -441,7 +443,6 @@ bar {
 # Application menu handled by dmenu: #
 ######################################
 
-# bindsym $mod+p exec --no-startup-id dmenu_run_history -l 3
-bindsym $mod+p exec --no-startup-id dmenu_run_history -l 3
-
-
+bindsym $mod+o exec --no-startup-id dmenu_run_history -l 4
+bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort
+bindsym $mod+e exec --no-startup-id ~/scripts/fzf_emoji_dmenu.sh
