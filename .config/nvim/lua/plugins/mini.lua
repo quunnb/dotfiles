@@ -6,8 +6,6 @@ return {
   {
     'echasnovski/mini.nvim',
     config = function()
-      -- Add animation
-      require('mini.animate').setup()
       -- Move selection around
       require('mini.move').setup()
       -- Defaults:
@@ -46,10 +44,13 @@ return {
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+
       -- Show buffers as a tabline
       require('mini.tabline').setup()
+
       -- Visualize indentation
       require('mini.indentscope').setup()
+
       -- Save sessions
       require('mini.sessions').setup()
       -- {
@@ -80,11 +81,18 @@ return {
       --   verbose = { read = false, write = true, delete = true },
       -- }
       -- }
+
       -- Align text
-      require('mini.align').setup()
+      local align = require 'mini.align'
+      align.setup {
+        mappings = {
+          start = '<leader>a',
+          start_with_preview = '<leader>A',
+        },
+      }
+
       --  Statusline
       local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their

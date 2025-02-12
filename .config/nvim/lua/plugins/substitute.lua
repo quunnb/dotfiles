@@ -14,9 +14,21 @@ return {
       vim.keymap.set('n', 'ss', require('substitute').line, { noremap = true }),
       vim.keymap.set('n', 'S', require('substitute').eol, { noremap = true }),
       vim.keymap.set('x', 's', require('substitute').visual, { noremap = true }),
-      vim.keymap.set('n', '<leader>s', require('substitute.range').operator, { noremap = true }),
-      vim.keymap.set('x', '<leader>s', require('substitute.range').visual, { noremap = true }),
-      vim.keymap.set('n', '<leader>ss', require('substitute.range').word, { noremap = true }),
+
+      -- System clipboard
+      vim.keymap.set({ 'n', 'x' }, '<leader>s', function()
+        require('substitute').operator { register = '+' }
+      end),
+      { noremap = true },
+      -- vim.keymap.set({ 'n', 'x' }, '<leader>ss', function()
+      vim.keymap.set('x', '<leader>ss', function()
+        require('substitute').line { register = '+' }
+      end),
+      { noremap = true },
+      vim.keymap.set('n', '<leader>S', function()
+        require('substitute').eol { register = '+' }
+      end),
+      { noremap = true },
 
       -- Exchange
       vim.keymap.set('n', 'sx', require('substitute.exchange').operator, { noremap = true }),

@@ -3,18 +3,21 @@
 --
 
 return {
-  { -- Autoformat
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>fo',
+        '<leader>fmt',
         function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
+          require('conform').format {
+            async = true,
+            lsp_format = 'fallback',
+          }
         end,
-        mode = '',
-        desc = '[F]ormat buffer',
+        mode = { 'n', 'x' },
+        desc = '[F]or[m]a[t] buffer / selection',
       },
     },
     opts = {
@@ -36,12 +39,19 @@ return {
         }
       end,
       formatters_by_ft = {
+        bash = { 'shellharden', 'shfmt' },
+        css = { 'prettier' },
+        go = { 'gofumpt', 'goimports', 'gofmt' },
+        html = { 'prettier' },
+        javascript = { 'prettier' },
+        json = { 'prettier' },
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        markdown = { 'markdownlint', 'prettier' },
+        python = { 'ruff', 'black' },
+        rust = { 'rustfmt' },
+        svelte = { 'prettier' },
+        typescript = { 'prettier' },
+        yaml = { 'prettier' },
       },
     },
   },

@@ -11,10 +11,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
---  Schedule the setting after `UiEnter` because it can increase startup-time.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- --  Schedule the setting after `UiEnter` because it can increase startup-time.
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
+--
 
 vim.opt.termguicolors = true
 
@@ -34,6 +35,7 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hls = false
+vim.opt.gdefault = true
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -44,9 +46,6 @@ vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
 vim.opt.updatetime = 250
-
--- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -62,14 +61,15 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.wrap = false
 vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
+-- vim.opt.wrap = false
+-- vim.opt.sidescrolloff = 8
 
 vim.opt.wildmode = 'list:longest,full'
 
--- Don't use Tab or enable Codeium by default
-vim.g.codeium_no_map_tab = true
+-- Don't enable Codeium by default
 vim.g.codeium_enabled = false
+-- Don't use Tab with Codeium
+vim.g.codeium_no_map_tab = true
 
 -- vim: ts=2 sts=2 sw=2 et

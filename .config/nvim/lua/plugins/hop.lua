@@ -13,8 +13,8 @@ return {
       quit_key = '<Esc>',
       -- case_insensitive = false,
       -- uppercase_labels = true,
-      vim.keymap.set('n', '<Leader>w', ':HopWord<CR>', { noremap = true }),
-      vim.keymap.set('n', '<Leader>h', ':HopChar1<CR>', { noremap = true }),
+      vim.keymap.set('n', '<leader>w', ':HopWord<CR>', { noremap = true }),
+      vim.keymap.set('n', '<leader>h', ':HopChar1<CR>', { noremap = true }),
       vim.keymap.set('n', 'f', ':HopChar1CurrentLine<CR>', { noremap = true }),
       vim.keymap.set('n', 't', 'function() require"hop".hint_char1({ current_line_only = true, hint_offset = -1})', { noremap = true }),
       vim.keymap.set(
