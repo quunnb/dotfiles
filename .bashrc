@@ -11,6 +11,7 @@ echo "$(date +%T) open  ~/.bashrc" >> ~/.log/rc.log
 
 [ -f ~/.config/env.sh ] && source ~/.config/env.sh
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.config/git/git-promp.sh ] && source ~/.config/git/git-prompt.sh
 [ -f /usr/share/doc/pkgfile/command-not-found.bash ] && source /usr/share/doc/pkgfile/command-not-found.bash
 
 PS1="\[\033[36m\]$PS1\[\033[00m\]"
@@ -58,6 +59,8 @@ fi
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
+# Enable starship bash prompt
+eval "$(starship init bash)"
 
 # Log exit
 echo "$(date +%T) close ~/.bashrc" >> ~/.log/rc.log

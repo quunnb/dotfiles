@@ -13,6 +13,8 @@ config.bind('xb',             'config-cycle statusbar.show always never')
 config.bind('xx',             'config-cycle statusbar.show always never ;; config-cycle tabs.show always switching')
 config.bind('go',             'download-open')
 config.bind('<Ctrl-Shift-u>', 'spawn --userscript qute-bitwarden')
+config.bind('j', 'scroll-px 0 80')
+config.bind('k', 'scroll-px 0 -80')
 
 # Insert mode
 config.bind('gi', 'mode-enter insert ;; jseval --quiet var inputs = document.getElementsByTagName("input"); for(var i = 0; i < inputs.length; i++) { var hidden = false; for(var j = 0; j < inputs[i].attributes.length; j++) { hidden = hidden || inputs[i].attributes[j].value.includes("hidden"); }; if(!hidden) { inputs[i].focus(); break; } }')

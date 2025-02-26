@@ -1,6 +1,5 @@
 :root {
-
-/* Rosé Pine Theme for Tridactyl
+  /* Rosé Pine Theme for Tridactyl
  *
  * Combined Unikitty-dark file by Chris Kempson (http://chriskempson.com)
  * with hex from "Rosé Pine" by Emilia Dunfelt <sayhi@dunfelt.se>
@@ -12,240 +11,240 @@
  * Took tringle.css from quisquama (see line 195-->)
  */
 
-    --tridactyl-font-family:          "Monocraft";
-    /* --tridactyl-font-family:          "Inconsolata Regular"; */
-    --tridactyl-font-size:            12pt;
-    --tridactyl-cmdl-font-family:     var(--tridactyl-font-family);
-    --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
-    --tridactyl-vs-font-family:       var(--tridactyl-font-family);
-    --tridactyl-cmplt-font-family:    var(--tridactyl-font-family);
+  --tridactyl-font-family: "Monocraft";
+  --tridactyl-font-size: 14pt;
+  --tridactyl-cmdl-font-family: var(--tridactyl-font-family);
+  --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
+  --tridactyl-vs-font-family: var(--tridactyl-font-family);
+  --tridactyl-cmplt-font-family: var(--tridactyl-font-family);
 
-    --Base:    #191724; /* Base    */
-    --Overlay: #1f1d2e; /* Overlay */
-    --Surface: #26233a; /* Surface */
-    /* --base03:  #555169; */
-    --Muted:   #6e6a86; /* Muted   */
-    --base05:  #e0def4; /* Text    */
-    /* --base06:  #f0f0f3; */
-    /* --base07:  #c5c3ce; */
-    /* --base08:  #e2e1e7; */
-    --Love:    #eb6f92; /* Love    */
-    --Gold:    #f6c177; /* Gold    */
-    --Rose:    #ebbcba; /* Rose    */
-    --Pine:    #31748f; /* Pine    */
-    --Foam:    #9ccfd8; /* Foam    */
-    --Iris:    #c4a7e7; /* Iris    */
-    /* --base0F:  #e5e5e5; */
+  --Base: #191724; /* Base    */
+  --Overlay: #1f1d2e; /* Overlay */
+  --Surface: #26233a; /* Surface */
+  /* --base03:  #555169; */
+  --Muted: #6e6a86; /* Muted   */
+  --base05: #e0def4; /* Text    */
+  /* --base06:  #f0f0f3; */
+  /* --base07:  #c5c3ce; */
+  /* --base08:  #e2e1e7; */
+  --Love: #eb6f92; /* Love    */
+  --Gold: #f6c177; /* Gold    */
+  --Rose: #ebbcba; /* Rose    */
+  --Pine: #31748f; /* Pine    */
+  --Foam: #9ccfd8; /* Foam    */
+  --Iris: #c4a7e7; /* Iris    */
+  /* --base0F:  #e5e5e5; */
 
-    --tridactyl-container-color-blue:      var(--Pine);
-    --tridactyl-container-color-turquoise: var(--Foam);
-    --tridactyl-container-color-green:     var(--Foam);
-    --tridactyl-container-color-yellow:    var(--Gold);
-    --tridactyl-container-color-orange:    var(--Gold);
-    --tridactyl-container-color-red:       var(--Love);
-    --tridactyl-container-color-pink:      var(--Love);
-    --tridactyl-container-color-purple:    var(--Iris);
+  --tridactyl-container-color-blue: var(--Pine);
+  --tridactyl-container-color-turquoise: var(--Foam);
+  --tridactyl-container-color-green: var(--Foam);
+  --tridactyl-container-color-yellow: var(--Gold);
+  --tridactyl-container-color-orange: var(--Gold);
+  --tridactyl-container-color-red: var(--Love);
+  --tridactyl-container-color-pink: var(--Love);
+  --tridactyl-container-color-purple: var(--Iris);
 
-    --tridactyl-fg:               var(--Rose);
-    --tridactyl-bg:               var(--Overlay);
-    --tridactyl-url-fg:           var(--Rose);
-    --tridactyl-url-bg:           var(--Base);
-    --tridactyl-highlight-box-bg: var(--Rose);
-    --tridactyl-highlight-box-fg: var(--Base);
+  --tridactyl-fg: var(--Rose);
+  --tridactyl-bg: var(--Overlay);
+  --tridactyl-url-fg: var(--Rose);
+  --tridactyl-url-bg: var(--Base);
+  --tridactyl-highlight-box-bg: var(--Rose);
+  --tridactyl-highlight-box-fg: var(--Base);
 
-    /* Hint character tags */
-    --tridactyl-hintspan-fg: var(--Base) !important;
-    --tridactyl-hintspan-bg: var(--Foam) !important;
+  /* Hint character tags */
+  --tridactyl-hintspan-fg: var(--Base) !important;
+  --tridactyl-hintspan-bg: var(--Foam) !important;
 
-    /* Element Highlights */
-    --tridactyl-hint-active-fg:      none;
-    --tridactyl-hint-active-bg:      none;
-    --tridactyl-hint-active-outline: none;
-    --tridactyl-hint-bg:             none;
-    --tridactyl-hint-outline:        none;
+  /* Element Highlights */
+  --tridactyl-hint-active-fg: none;
+  --tridactyl-hint-active-bg: none;
+  --tridactyl-hint-active-outline: none;
+  --tridactyl-hint-bg: none;
+  --tridactyl-hint-outline: none;
 }
 
 #command-line-holder {
-    order:  1;
-    border: 1px solid var(--Foam);
-    color:  var(--tridactyl-bg);
+  order: 1;
+  border: 1px solid var(--Foam);
+  color: var(--tridactyl-bg);
 }
 
 #tridactyl-input {
-    padding:      1rem;
-    color:        var(--Foam);
-    background:   var(--tridactyl-bg);
-    width:        90%;
-    font-size:    1.5rem;
-    line-height:  1.5;
-    padding-left: unset;
-    padding:      1rem;
+  padding: 1rem;
+  color: var(--Foam);
+  background: var(--tridactyl-bg);
+  width: 90%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  padding-left: unset;
+  padding: 1rem;
 }
 
 #completions table {
-    font-size:      1.8rem;
-    font-weight:    200;
-    border-spacing: 0;
-    table-layout:   fixed;
-    padding:        1rem;
-    padding-top:    1rem;
-    padding-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 200;
+  border-spacing: 0;
+  table-layout: fixed;
+  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 #completions > div {
-    max-height: calc(20 * var(--option-height));
-    min-height: calc(10 * var(--option-height));
+  max-height: calc(20 * var(--option-height));
+  min-height: calc(10 * var(--option-height));
 }
 
 /* COMPLETIONS */
 
 #completions {
-    --option-height: 1.4em;
-    color:           var(--tridactyl-fg);
-    background:      var(--tridactyl-bg);
-    display:         inline-block;
-    font-size:       unset;
-    font-weight:     200;
-    overflow:        hidden;
-    width:           100%;
-    border-top:      unset;
-    order:           2;
+  --option-height: 1.4em;
+  color: var(--tridactyl-fg);
+  background: var(--tridactyl-bg);
+  display: inline-block;
+  font-size: unset;
+  font-weight: 200;
+  overflow: hidden;
+  width: 100%;
+  border-top: unset;
+  order: 2;
 }
 
 #completions .HistoryCompletionSource {
-    max-height: unset;
-    min-height: unset;
+  max-height: unset;
+  min-height: unset;
 }
 
 #completions .HistoryCompletionSource table {
-    width:          100%;
-    font-size:      9pt;
-    border-spacing: 0;
-    table-layout:   fixed;
+  width: 100%;
+  font-size: 9pt;
+  border-spacing: 0;
+  table-layout: fixed;
 }
 
 #completions .BmarkCompletionSource {
-    max-height: unset;
-    min-height: unset;
+  max-height: unset;
+  min-height: unset;
 }
 
 #completions table tr td.prefix,
 #completions table tr td.privatewindow,
 #completions table tr td.container,
 #completions table tr td.icon {
-        display: none;
+  display: none;
 }
 
 #completions .BufferCompletionSource table {
-    width:          unset;
-    font-size:      unset;
-    border-spacing: unset;
-    table-layout:   unset;
+  width: unset;
+  font-size: unset;
+  border-spacing: unset;
+  table-layout: unset;
 }
 
 #completions table tr .title {
-    width: 50%;
+  width: 50%;
 }
 
 #completions table tr {
-    white-space:   nowrap;
-    overflow:      hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #completions .sectionHeader {
-    background:     unset;
-    font-weight:    200;
-    border-bottom:  unset;
-    padding:        1rem !important;
-    padding-left:   unset;
-    padding-bottom: 0.2rem;
+  background: unset;
+  font-weight: 200;
+  border-bottom: unset;
+  padding: 1rem !important;
+  padding-left: unset;
+  padding-bottom: 0.2rem;
 }
 
 #cmdline_iframe {
-    position:   fixed                           !important;
-    top:        25%                             !important;
-    left:       10%                             !important;
-    z-index:    2147483647                      !important;
-    width:      80%                             !important;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px !important;
-    bottom:     unset;
+  position: fixed !important;
+  top: 25% !important;
+  left: 10% !important;
+  z-index: 2147483647 !important;
+  width: 80% !important;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 20px !important;
+  bottom: unset;
 }
 
 #completions .focused {
-    background: var(--Rose);
-    color:      var(--Base);
+  background: var(--Rose);
+  color: var(--Base);
 }
 
 #completions .focused .url {
-    background: var(--Rose);
-    color:      var(--Base);
+  background: var(--Rose);
+  color: var(--Base);
 }
 
 /* What follows is from: */
 /* https://gist.github.com/quisquama/0f8ad71c24eccdc739e8e4a434452f2e */
 
 .TridactylStatusIndicator {
-    /* NOTE: we can't change the size of the border directly in container tabs
+  /* NOTE: we can't change the size of the border directly in container tabs
      * because the span for the status indicator sets "style = ... !important".
      *
      * HACK: we effectively set the border using size and scale together
      **/
-    --mode-indicator-size: 20pt;
-    --mode-indicator-scale: 2.0;
-    --mode-indicator-width: var(--mode-indicator-size);
-    --mode-indicator-height: calc(var(--mode-indicator-size) / 2);
-    --mode-indicator-offset: calc(var(--mode-indicator-width) / 2), calc(var(--mode-indicator-height)/  2);
+  --mode-indicator-size: 20pt;
+  --mode-indicator-scale: 2;
+  --mode-indicator-width: var(--mode-indicator-size);
+  --mode-indicator-height: calc(var(--mode-indicator-size) / 2);
+  --mode-indicator-offset: calc(var(--mode-indicator-width) / 2),
+    calc(var(--mode-indicator-height) / 2);
 
-    border: none !important;
-    border-radius: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
 
-    right: 0 !important;
-    bottom: 0 !important;
-    position: fixed !important;
-    width: var(--mode-indicator-width) !important;
-    height: var(--mode-indicator-height)  !important;
-    transform: translate(var(--mode-indicator-offset)) rotate(-45deg) scale(var(--mode-indicator-scale)) !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  position: fixed !important;
+  width: var(--mode-indicator-width) !important;
+  height: var(--mode-indicator-height) !important;
+  transform: translate(var(--mode-indicator-offset)) rotate(-45deg)
+    scale(var(--mode-indicator-scale)) !important;
 
-    opacity: 0.5 !important;
-    font-size: 0pt !important;
-    color: var(--tridactyl-bg) !important;
-    background: var(--tridactyl-bg) !important;
-
+  opacity: 0.5 !important;
+  font-size: 0pt !important;
+  color: var(--tridactyl-bg) !important;
+  background: var(--tridactyl-bg) !important;
 }
 
 /* when mouse is hovering over status indicator */
 .TridactylStatusIndicator.TridactylInvisible {
-    opacity: 0.0 !important;
-    background: var(--tridactyl-bg) !important;
+  opacity: 0 !important;
+  background: var(--tridactyl-bg) !important;
 }
 
 /* normal mode */
 .TridactylStatusIndicator.TridactylModenormal {
-    background: var(--tridactyl-bg) !important;
+  background: var(--tridactyl-bg) !important;
 }
 
 /* ignore mode */
 .TridactylStatusIndicator.TridactylModeignore {
-    background: var(--Love) !important;
+  background: var(--Love) !important;
 }
 
 /* visual mode */
 .TridactylStatusIndicator.TridactylModevisual {
-    background: var(--Base) !important;
+  background: var(--Base) !important;
 }
 
 /* input mode */
 .TridactylStatusIndicator.TridactylModeinput {
-    background: var(--Pine) !important;
+  background: var(--Pine) !important;
 }
 
 /* insert mode */
 .TridactylStatusIndicator.TridactylModeinsert {
-    background: var(--Foam) !important;
+  background: var(--Foam) !important;
 }
 
 /* hint mode */
 .TridactylStatusIndicator.TridactylModehint {
-    background: var(--Iris) !important;
+  background: var(--Iris) !important;
 }

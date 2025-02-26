@@ -28,6 +28,7 @@ export SUDO_EDITOR=$EDITOR
 export BROWSER=$HOME/.local/bin/browser
 export TERMINAL=alacritty
 export GIT_EDITOR='nvr -cc split --remote-wait'
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # Format 'less'
 export LESS='-Mri#8j.5'
 #             |||| `- center on search matches
