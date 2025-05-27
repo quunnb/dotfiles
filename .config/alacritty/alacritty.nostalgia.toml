@@ -1,0 +1,67 @@
+[font]
+size = 10
+normal = { family = "ShureTechMono Nerd Font", style = "Regular" }
+
+[window]
+decorations = "None"
+opacity = 0.95
+# startup_mode = "Maximized"
+startup_mode = "Windowed"
+blur = true
+padding = { x = 8, y = 8 }
+
+[colors.primary]
+background = "#d9d5ba"
+foreground = "#444444"
+
+[colors.normal]
+black = "#d9d5ba"
+red = "#825b69"
+green = "#69825b"
+yellow = "#82755b"
+blue = "#5b6982"
+magenta = "#755b82"
+cyan = "#5b8275"
+white = "#494949"
+
+[colors.bright]
+black = "#333333"
+red = "#bda0aa"
+green = "#aabda0"
+yellow = "#bdb3a0"
+blue = "#7484a2"
+magenta = "#b3a0bd"
+cyan = "#a0bdb3"
+white = "#494847"
+
+[colors.dim]
+black = "#333333"
+red = "#bda0aa"
+green = "#aabda0"
+yellow = "#bdb3a0"
+blue = "#7484a2"
+magenta = "#b3a0bd"
+cyan = "#a0bdb3"
+white = "#494847"
+
+[colors.selection]
+text       = 'CellForeground'
+background = '#825b69'
+
+[colors.cursor]
+cursor = '#5b8275'
+
+[colors.hints]
+start = { foreground = '#E0E0E0', background = '#825b69' }
+end   = { foreground = '#E0E0E0', background = '#825b69' }
+
+[cursor]
+style.blinking = "On"
+
+[keyboard]
+bindings = [
+   { key = "n", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
+
+# TODO: Open filepaths
+

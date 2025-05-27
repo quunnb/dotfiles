@@ -3,5 +3,4 @@
 #
 
 setxkbmap -config $HOME/.config/xkb/keymap.conf
-xset r rate 333 40
-
+xset r rate 256 32

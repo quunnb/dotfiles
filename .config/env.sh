@@ -14,21 +14,18 @@ export HISTCONTROL="erasedups:ignoreboth"
 export HISTTIMEFORMAT='%F %T - '
 export HISTIGNORE='yt-dlp *:encfs *:ls *'
 
-# Add ~/.local/bin/ to PATH
+# Add things to PATH
 export PATH="$HOME/.local/bin:$PATH"
-# Add Emacs commands to path
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# export EDITOR=nvim
-export EDITOR='nvr -s'
-export VISUAL=$EDITOR
+export EDITOR='vim'
+export VISUAL='emacsclient'
 export SUDO_EDITOR=$EDITOR
 export BROWSER=$HOME/.local/bin/browser
 export TERMINAL=alacritty
-export GIT_EDITOR='nvr -cc split --remote-wait'
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export GIT_EDITOR='vim'
 # Format 'less'
 export LESS='-Mri#8j.5'
 #             |||| `- center on search matches
@@ -38,7 +35,7 @@ export LESS='-Mri#8j.5'
 #             `------ show more information in prompt
 
 # Maim styling for screenshots
-export MAIM_OPTIONS="--color=0.611,0.811,0.847 --bordersize=3.0 --select --hidecursor --nodrag"
+export MAIM_OPTIONS="--color=1.0,0.0,0.0 --bordersize=3.0 --select --hidecursor --nodrag"
 
 # Supress 'less' history file
 export LESSHISTFILE=/dev/null
@@ -46,30 +43,39 @@ export LESSHISTFILE=/dev/null
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
 # MAC-addresses of some BT-devices
-export MAC_NURA="$(<~/.config/data/nura.mac)"
-export MAC_CUBE66="$(<~/.config/data/cube66.mac)"
-export MAC_BTR011="$(<~/.config/data/btr011.mac)"
-export MAC_JBL="$(<~/.config/data/jbl.mac)"
+[ -f ~/.config/data/nura.mac ] && export MAC_NURA="$(<~/.config/data/nura.mac)"
+[ -f ~/.config/data/cube66.mac ] && export MAC_CUBE66="$(<~/.config/data/cube66.mac)"
+[ -f ~/.config/data/btr011.mac ] && export MAC_BTR011="$(<~/.config/data/btr011.mac)"
+[ -f ~/.config/data/jbl.mac ] && export MAC_JBL="$(<~/.config/data/jbl.mac)"
 
 # IPs
-export PI_IP="$(<~/.config/data/pi.ip)"
+[ -f ~/.config/data/pi.ip ] && export PI_IP="$(<~/.config/data/pi.ip)"
 
 # location
-export CITY="$(<~/.config/data/location)"
-export LON="$(<~/.config/data/longitude)"
-export LAT="$(<~/.config/data/latitude)"
+[ -f ~/.config/data/location ] && export CITY="$(<~/.config/data/location)"
+[ -f ~/.config/data/longitude ] && export LON="$(<~/.config/data/longitude)"
+[ -f ~/.config/data/latitude ] && export LAT="$(<~/.config/data/latitude)"
 
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
 
-export LS_COLORS='always'
+# Dark theme please
+export GTK_THEME=0xF00BAE:dark
+export GTK2_RC_FILES=$HOME/.local/share/themes/0xF00BAE/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
 
-export FZF_DEFAULT_OPTS="
-	--color=fg:#908caa,bg:#191724,hl:#ebbcba
-	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
-	--color=border:#403d52,header:#31748f,gutter:#191724
-	--color=spinner:#f6c177,info:#9ccfd8
-	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+export FZF_CTRL_T_OPTS="
+    --walker-skip .git,node_modules,target,.go,.cache,.steam,Steam,.npm,.yarn
+    --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target,.go,.cache,.steam,Steam,.npm,.yarn
+  --preview 'tree -C {}'"
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log

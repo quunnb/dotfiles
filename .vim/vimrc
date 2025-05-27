@@ -6,102 +6,87 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
+set nocompatible
+set hidden
+set viminfo+=n~/.vim/viminfo
+try
+    set undodir=~/.cache/vim/undo
+    set undofile
+catch
+endtry
 
 " PLUGINS {{{ //////////////////////////////////////////////////////////////////
 
 " "VIM-PLUG AUTO-INSTALL"
 
- let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
- if empty(glob(data_dir . '/autoload/plug.vim'))
-     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs 
-         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
- endif
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
- call plug#begin()
-    Plug 'Exafunction/codeium.vim'
-    " Plug 'amadeus/vim-convert-color-to'
-    " Plug 'cespare/vim-toml', { 'branch': 'main' }
+call plug#begin()
+    Plug 'mg979/vim-visual-multi'
+    Plug 'AlessandroYorba/Sierra'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'bling/vim-bufferline'
     Plug 'chrisbra/colorizer'
-    " Plug 'chrisbra/unicode.vim'
-    Plug 'christoomey/vim-titlecase'
     Plug 'dense-analysis/ale'
-    " Plug 'dylanaraps/fff.vim'
-    " Plug 'evanleck/vim-svelte', {'branch': 'main'}
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'glts/vim-magnum'
     Plug 'glts/vim-radical'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
-    Plug 'itchyny/lightline.vim'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'jorengarenar/vim-mvvis'
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'junegunn/vim-easy-align'
-    " Plug 'mg979/vim-visual-multi'
-    " Plug 'mattn/calendar-vim'
-    " Plug 'mbbill/undotree'
-    Plug 'mcchrish/nnn.vim'
-    " Plug 'othree/html5.vim'
-    " Plug 'pangloss/vim-javascript'
+    Plug 'mattn/calendar-vim'
+    Plug 'mbbill/undotree'
+    Plug 'preservim/nerdtree'
     Plug 'psliwka/vim-smoothie'
     Plug 'rhysd/rust-doc.vim'
     Plug 'romainl/vim-cool'
-    Plug 'preservim/nerdtree'
-    Plug 'rose-pine/vim'
-    " Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim'
     Plug 'sheerun/vim-polyglot'
-    " Plug 'skywind3000/asyncrun.vim'
     Plug 'svermeulen/vim-subversive'
     Plug 'svermeulen/vim-yoink'
+    Plug 'tinted-theming/tinted-vim'
     Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-abolish' " required by VIM-SUBVERSIVE
-    " Plug 'tpope/vim-characterize'
+    Plug 'tpope/vim-characterize'
     Plug 'tpope/vim-commentary'
-    " Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tridactyl/vim-tridactyl'
     Plug 'vimwiki/vimwiki'
     Plug 'wsdjeg/vim-fetch'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'junegunn/goyo.vim'
- call plug#end()
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-session'
+call plug#end()
 
 
 ""}}}////////////////////////////////////////////////////////////////////////////
 
 " {{{ SETTINGS /////////////////////////////////////////////////////////////////
 
-set nocompatible
-set clipboard=unnamedplus
-set hidden
-set viminfo+=n~/.vim/viminfo
-set nostartofline
-set undodir=~/.vim/undo
-if has("persistent_undo")
-   let target_path = expand('~/.vim/undo')
-    if !isdirectory(target_path)
-        call mkdir(target_path, "p", 0700)
-    endif
-    let &undodir=target_path
-    set undofile
-endif
-
 " "VISUAL"
 set number
 set relativenumber
-set cursorline
-set cursorcolumn
-" set colorcolumn=100
 set colorcolumn=0
 set lazyredraw
+
 set listchars=tab:>-,trail:·,nbsp:_
 set list
+
 set sidescroll=8
 set noshowmatch
 set nospell
 set tws=100x50
+set noshowmode
+set nostartofline
+set scrolloff=100
 
 " "CMDLINE"
 set showcmd
@@ -109,10 +94,19 @@ set showmode
 set laststatus=2
 
 " "TABS"
-set shiftwidth=4
-set tabstop=4
+"
+" "Team Spaces"
 set softtabstop=4
+set shiftwidth=4
 set expandtab
+set smarttab
+
+" "Team Tabs"
+" set tabstop=4
+" set shiftwidth=4
+" set softtabstop=0
+" set noexpandtab
+
 set smartindent
 set shiftround
 
@@ -122,48 +116,46 @@ set hlsearch
 set ignorecase
 set smartcase
 set wildmenu
-set wildmenu
 set wildmode=list:longest,list:full
 set shortmess-=S
-set autochdir
-set nowrapscan
 
 " "WRAP & FOLD"
 set wrap
-set foldmethod=marker
 
 " "COMMENTS"
 set formatoptions-=c
+
+" "CLIPBOARD"
+set clipboard=unnamedplus
 
 
 " }}} //////////////////////////////////////////////////////////////////////////
 
 " COLORS {{{ ///////////////////////////////////////////////////////////////////
 
-if $TERM == 'linux'
-    hi ColorColumn  ctermfg=1    ctermbg=0
-    hi TabLineFill  ctermfg=0    ctermbg=0
-    hi TabLineSel   ctermfg=2    ctermbg=0
-    hi StatusLine   ctermfg=0    ctermbg=2
-    hi StatusLine   ctermfg=0    ctermbg=2
-    hi StatusLineNC ctermfg=0    ctermbg=4
-    hi CursorColumn ctermfg=NONE ctermbg=8
-    hi CursorLine   ctermfg=NONE ctermbg=8
-else
-    set termguicolors
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set background=dark
-    " set background=light
-    colorscheme rosepine
-    " colorscheme rosepine_moon
-    " colorscheme rosepine_dawn
-endif
+" set background=light
+set termguicolors
+colorscheme base16-windows-nt
+highlight SpecialKey guifg=#333333
 
-if !has('gui_running')
-  set t_Co=256
-endif
+let g:loaded_matchparen=1
 
+" Customize fzf colors to match the color scheme                                          
+" - fzf#wrap translates this to a set of `--color` options                                 
+let g:fzf_colors =                                                                         
+\ { 'fg':      ['fg', 'Normal'],                                                           
+    \ 'bg':      ['bg', 'Normal'],                                                           
+    \ 'hl':      ['fg', 'Comment'],                                                          
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],                             
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],                                       
+    \ 'hl+':     ['fg', 'Statement'],                                                        
+    \ 'info':    ['fg', 'PreProc'],                                                          
+    \ 'border':  ['fg', 'Ignore'],                                                           
+    \ 'prompt':  ['fg', 'Conditional'],                                                      
+    \ 'pointer': ['fg', 'Exception'],                                                        
+    \ 'marker':  ['fg', 'Keyword'],                                                          
+    \ 'spinner': ['fg', 'Label'],                                                            
+    \ 'header':  ['fg', 'Comment'] } 
 
 " }}} //////////////////////////////////////////////////////////////////////////
 
@@ -191,49 +183,6 @@ function! GetXresColor()
     execute "normal! ciw" . l:hex
 endfunction
 
-function! ReplaceColors()
-    :%s/#C6ECFF/#1f1d2e/ig " sea
-    :%s/#B2DDF2/#1f1d2e/ig
-    :%s/#B0DBF1/#1f1d2e/ig
-    :%s/#A9D6EB/#1f1d2e/ig
-    :%s/#9ECCE3/#1f1d2e/ig
-    :%s/#8DBFD6/#1f1d2e/ig
-    :%s/#77ADC5/#1f1d2e/ig
-    :%s/#5B97B1/#1f1d2e/ig
-    :%s/#3B7D98/#1f1d2e/ig
-    :%s/#17607D/#1f1d2e/ig
-    :%s/#024F6D/#1f1d2e/ig
-    :%s/#fff/#1f1d2e/ig
-    :%s/#FDFBE5/#26233a/ig " land
-    :%s/#e0e0e0/#26233a/ig " land
-    :%s/#F9FAE6/#1f1d2e/ig
-    :%s/#F7F8E4/#1f1d2e/ig
-    :%s/#F0F1DF/#1f1d2e/ig
-    :%s/#E5E6D4/#1f1d2e/ig
-    :%s/#D4D5C6/#1f1d2e/ig
-    :%s/#BEBFB3/#1f1d2e/ig
-    :%s/#A2A39B/#1f1d2e/ig
-    :%s/#838480/#1f1d2e/ig
-    :%s/#656666/#1f1d2e/ig
-    :%s/#336733/#9ccfd8/ig " highlighted land
-    :%s/#73cd73/#c4a7e7/ig " disputed
-    :%s/#335033/#9ccfd8/ig " highlighted borders
-    :%s/#646464/#ebbcba/ig " borders
-    :%s/#0978AB/#ebbcba/ig " coast
-    :%s/#C12838/#9ccfd8/ig " focus
-    :%s/#FFFFFF/#ebbcba/ig " horizon
-
-    :%s/#F7DC6F/#f6c177/ig
-    :%s/#F0B27A/#ebbcba/ig
-    :%s/#D2B4DE/#c4a7e7/ig
-    :%s/#FF4500/#eb6f92/ig
-    :%s/#ADD8E6/#9ccfd8/ig
-    :%s/#FFFF00/#f6c177/ig
-    :%s/#A020F0/#c4a7e7/ig
-    :%s/#A545FF/#c4a7e7/ig
-    :%s/#FFC0CB/#ebbcba/ig
-    :%s/#000000/#191724/ig
-endfunction
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
@@ -241,11 +190,14 @@ endfunction
 
 let mapleader = " "
 
-" Y you have to be such a snowflake
+" Y like D
 nnoremap Y y$
 
 " run q macro
 nnoremap Q @q
+
+xnoremap <Leader>y "+y
+nnoremap <Leader>y "+y
 
 " Move per visual line
 nnoremap j gj
@@ -265,9 +217,9 @@ xnoremap < <gv
 xnoremap <C-a> <C-a>gv
 xnoremap <C-x> <C-x>gv
 
-" For Finnish keyboards
-noremap , ;
-noremap ; ,
+nnoremap > >>
+nnoremap < <<
+
 
 " Toggle show whitespace
 nnoremap <F3> :set list!<CR>
@@ -284,7 +236,7 @@ nnoremap <Leader><Leader> :nohls<CR>
 
 " Open / reload (source) vimrc
 nnoremap <Leader>vi :e $MYVIMRC<CR>
-nnoremap <Leader>re :source $MYVIMRC<CR>
+" nnoremap <Leader>re :source $MYVIMRC<CR>
 
 " Fix spelling
 inoremap <C-s> <Esc>:set spell<CR>a<C-x><C-s>
@@ -298,9 +250,9 @@ nnoremap N Nzz
 " Open non-existing file
 noremap gf :e <cfile><CR>
 
-" Insert current path
-nnoremap <Leader>p :put=expand('%:p:~')<CR>
-nnoremap <Leader>P :put=expand('%:p')<CR>
+" " System clipboard
+" nnoremap <Leader>p "+p
+" nnoremap <Leader>P "+P
 
 " Hic sunt dracones
 cmap Q<CR> q<CR>
@@ -309,7 +261,7 @@ nnoremap Q <NOP>
 " Buffer navigation
 nnoremap <Leader>j :bn<CR>
 nnoremap <Leader>k :bp<CR>
-nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>D :bd<CR>
 
 " Get color hex value from .Xresources and replace color word under cursor
 nnoremap <Leader>x :call GetXresColor()<CR>
@@ -392,34 +344,32 @@ nmap P      <Plug>(YoinkPaste_P)
 nmap gp     <Plug>(YoinkPaste_gp)
 nmap gP     <Plug>(YoinkPaste_gP)
 
-" "VISUAL-SPLIT"
-" xmap <C-W>gr    <Plug>(Visual-Split-VSResize)
-" xmap <C-W>gss   <Plug>(Visual-Split-VSSplit)
-" xmap <C-W>gsa   <Plug>(Visual-Split-VSSplitAbove)
-" xmap <C-W>gsb   <Plug>(Visual-Split-VSSplitBelow)
-
 " "COLORIZER"
 nnoremap <Leader>col :ColorToggle<CR>
 
 " "MVVIS"
-" vmap <C-h> <Plug>(MvVisLeft)
-" vmap <C-j> <Plug>(MvVisDown)
-" vmap <C-k> <Plug>(MvVisUp)
-" vmap <C-l> <Plug>(MvVisRight)
+vmap <C-h> <Plug>(MvVisLeft)
+vmap <C-j> <Plug>(MvVisDown)
+vmap <C-k> <Plug>(MvVisUp)
+vmap <C-l> <Plug>(MvVisRight)
 
 " "FZF"
-nnoremap <Leader>f :call fzf#run({'sink': 'e'})<CR>
-nnoremap <Leader>F :FZF ~<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :FZF ~<CR>
+nnoremap <silent> <Leader>/ :Rg<CR>
+nnoremap <silent> <Leader>B :Buffers<CR>
+" Exclude filenames from Rg
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " "ALE"
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <Leader>A :ALEToggle<CR>
-nnoremap <Leader>D :ALEDetail<CR>
-
-" "nnn"
-" Start n³ in the current file's directory
-nnoremap <Leader>o :NnnPicker %:p:h<CR>
+nnoremap <Leader>AA :ALEToggle<CR>
+nnoremap <Leader>Ad :ALEDetail<CR>
+nnoremap <Leader>Ar :ALERename<CR>
+nnoremap <Leader>AR :ALEFindReferences<CR>
+nnoremap <Leader>Ah :ALEGoToDefinition -split<CR>
+nnoremap <Leader>Av :ALEGoToDefinition -vsplit<CR>
 
 " "RADICAL defaults"
 " nmap gA <Plug>RadicalView
@@ -443,25 +393,12 @@ nmap <Leader>bin <Plug>RadicalCoerceToBinary
 " nmap <Leader>gzz <Plug>TitlecaseLine
 " vmap <Leader>gz  <Plug>Titlecase
 
-" "Codeium"
-nnoremap <Leader>cod :CodeiumToggle<CR>
-nnoremap <Leader>cha :CodeiumChat<CR>
-" imap <C-n> <Cmd>call codeium#CycleCompletions(1)<CR>
-" imap <C-p> <Cmd>call codeium#CycleCompletions(-1)<CR>
-imap <C-1> <Cmd>echo asdfasdf
-
 " "Nerdtree"
 nnoremap <C-t> :NERDTreeToggle<CR>
-
-" "Goyo"
-nnoremap <Leader>go :Goyo<CR>
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
 " OPTIONS {{{///////////////////////////////////////////////////////////////////
-
-" Disable parenhesis highlighting
-" let g:loaded_matchparen=1
 
 " "VIMWIKI"
 " Use .md files for vimwiki
@@ -479,12 +416,11 @@ let vim_markdown_preview_toggle=2
 let vim_markdown_preview_hotkey='<A-m>'
 let vim_markdown_preview_browser='.local/bin/browser'
 
-" "VIM-TITLECASE"
-let g:titlecase_excluded_words = ["and", "as", "as if", "as long as", "at", "but", "by", "even if", "for", "from", "if", "if only", "in", "into", "like", "near", "now that", "nor", "of", "off", "on", "on top of", "once", "onto", "or", "out of", "over", "past", "so", "so that", "than", "that", "till", "to", "up", "upon", "with", "when", "yet"] 
-
 " "COLORIZER"
 " Don't colorize colornames
 let g:colorizer_colornames=0
+" Leave colors on bufleave
+let g:colorizer_disable_bufleave = 1
 
 " "YOINK"
 let  g:yoinkIncludeDeleteOperations=1
@@ -492,15 +428,18 @@ let  g:yoinkIncludeDeleteOperations=1
 " "RUSTFMT"
 let g:rustfmt_autosave = 0
 
+" "RUSTFMT"
+let g:go_fmt_autosave = 0
+
 " "MVVIS - move selection"
 let g:MvVis_mappings = 0
 
 " "FZF"
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-x': 'split',
+\ 'ctrl-v': 'vsplit' }
 
 " FLOATING WINDOW
 " Required:
@@ -515,113 +454,62 @@ let g:fzf_action = {
 "   - 'rounded' / 'sharp' / 'horizontal' / 'vertical' / 'top' / 'bottom' / 'left' / 'right'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" "AsyncRun"
-" open quickfix window automatically when AsyncRun is executed
-" set the quickfix window 6 lines height.
-let g:asyncrun_open = 6
-" ring the bell to notify you job finished
-let g:asyncrun_bell = 1
-" Try to recognize root folder
-let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs'] 
-
-" "Lightline"
-" let g:lightline = { 'colorscheme': 'rosepine_custom' }
-let g:lightline = { 'colorscheme': 'rosepine' }
-" let g:lightline = { 'colorscheme': 'rosepine_dawn' }
-" let g:lightline = { 'colorscheme': 'rosepine_moon' }
-
-" "Codeium"
-
-function! CodeiumStatus()
-   return codeium#GetStatusString()
-endfunction
-
-let g:lightline = {
-      \ 'colorscheme': 'rosepine',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'codeium' ] ]
-      \ },
-      \ 'component_function': {
-      \   'codeium': 'CodeiumStatus'
-      \ },
-      \ }
-
-" All filetimes disabled by default
-let g:codeium_filetypes_disabled_by_default = v:true
-" ...except for these
-let g:codeium_filetypes = {
-    \ "rust": v:true,
-    \ "typescript": v:true,
-    \ "python": v:true,
-    \ "go": v:true,
-    \ }
-
 " "ALE"
 " This keeps the 'gutter' always on so that window size keeps the same between errors/no errors
-let g:ale_sign_column_always = 1
+let g:ale_enabled = 0
+" let g:ale_sign_column_always = 1
+
+" "VIM-SESSION"
+" Don't save hidden and unloaded buffers in sessions.
+set sessionoptions-=buffers
+let g:session_command_aliases = 1
+let g:session_autosave = 'no'
+
+" "VIM-BUFFERLINE"
+let g:bufferline_active_highlight = 'Removed'
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
 " AUTOCMDS {{{//////////////////////////////////////////////////////////////////
 
-command! Diary VimwikiDiaryIndex
-augroup vimwikigroup
+augroup AuCmds
+    " Clear
     autocmd!
-    " Automatically update links on read diary
-    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
-augroup end
 
-" PHP File Types (WordPress, use tabs)
-autocmd FileType php set noexpandtab
+    " GENERAL
 
-" Set up C build
-autocmd Filetype c call COptions()
-    " F10 to toggle quickfix window
-autocmd Filetype c nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
-    " Run single file
-autocmd Filetype c noremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/BUILD/$(VIM_FILENOEXT)" <CR>
-    " Build current project
-autocmd Filetype c noremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
-    " Run current project
-autocmd Filetype c noremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
-
-" Go
-
-
-" JS
-autocmd Filetype js set noexpandtab
-autocmd Filetype js set wrap
-
-" Svelte
-autocmd Filetype svelte set noexpandtab
-
-" Remember position of last edit and return on reopen
-if has("autocmd")
+    " Remember position of last edit and return on reopen
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
-" Go
-autocmd Filetype go noremap <silent> <F5> :!clear; go run %<CR>
+    " Don't add comment prefixes on newlines (i think)
+    au BufEnter * setlocal formatoptions-=cro
 
-" Disable CursorLine/-Column in inactive windows
-augroup CursorLine
-    au!
-    au VimEnter    * setlocal cursorline
-    au VimEnter    * setlocal cursorcolumn
-    au WinEnter    * setlocal cursorline
-    au WinEnter    * setlocal cursorcolumn
-    au BufWinEnter * setlocal cursorline
-    au BufWinEnter * setlocal cursorcolumn
-    au WinLeave    * setlocal nocursorline
-    au WinLeave    * setlocal nocursorcolumn
+    " FILETYPE
+
+    " Vim
+    au Filetype vim setlocal foldmethod=marker
+
+    " PHP File Types (WordPress, use tabs)
+    au FileType php setlocal noexpandtab
+
+    " JS, Svelte, CSS
+    au FileType js,svelte,css,html setlocal expandtab | setlocal wrap | setlocal shiftwidth=2 | setlocal tabstop=2
+
+    " Go
+    au Filetype go setlocal makeprg=go\ build
+    au Filetype go setlocal noexpandtab
+    au Filetype go setlocal tabstop=4
+    au Filetype go nnoremap <buffer> <silent> <F5> :!clear; go run %<CR>
+    au Filetype go iab <buffer> ife if err != nil {<CR>return err<CR>}<CR>
+    au Filetype go iab <buffer> ffi for i := 0; i<; i++ {<CR><CR>}<Esc>2k14li
+    au Filetype go iab <buffer> ffr for i, _ := range {<CR><CR>}<Esc>2kf{i
+    au Filetype go iab <buffer> inc include (<CR><CR>)<Esc>kcc
+    au Filetype go iab <buffer> {{{ {<CR><CR>}<Esc>kcc
+
+    " Python
+    au FileType python setlocal tabstop=4 | setlocal expandtab
+
 augroup END
-
-" Generic stuff at BufEnter
-au BufEnter * setlocal formatoptions-=cro
-
-" Start NERDTree and put the cursor back in the other window.
-" autocmd VimEnter * NERDTree | wincmd p
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
@@ -634,17 +522,18 @@ ab Calender Calendar
 ab Clera Clear
 ab Definately Definitely
 ab Harrass Harass
-ab Heigth Height 
-ab Intput Input 
+ab Heigth Height
+ab Intput Input
 ab Lenght Length
-ab Ligth Light 
+ab Ligth Light
 ab Sence Sense
 ab Successfull Successful
 ab Suprise Surprise
 ab Surprice Surprise
 ab Teh The
 ab Tihs This
-ab Widht Width 
+ab Widht Width
+ab Widht Width
 
 ab adn and
 ab agressive aggressive
@@ -652,21 +541,18 @@ ab calender calendar
 ab clera clear
 ab definately definitely
 ab harrass harass
-ab heigth height 
-ab intput input 
+ab heigth height
+ab intput input
 ab lenght length
-ab ligth light 
+ab ligth light
 ab sence sense
 ab successfull successful
 ab suprise surprise
 ab surprice surprise
 ab teh the
 ab tihs this
-ab widht width 
+ab widht width
 ab retrun return
-
-iab ife if err != nil {<CR><tab>return err<CR>}<CR>
-iab ffi for i := 0; i<; i++ {<CR><CR>}<esc>2k14li
 
 " }}}///////////////////////////////////////////////////////////////////////////
 

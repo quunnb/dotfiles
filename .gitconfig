@@ -1,0 +1,7 @@
+[core]
+	filemode = false
+[user]
+	name = quunnb
+	email = quunnb@amideus.fi
+[credential]
+	helper = store

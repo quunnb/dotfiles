@@ -7,9 +7,6 @@ echo "$(date +%T) open  ~/.bash_aliases" >> ~/.log/rc.log
 
 
 alias o='xdg-open'
-alias r='ranger'
-alias cat='bat'
-# alias y='yazi'
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -24,51 +21,32 @@ alias ....='cd ../../..'
 alias ...='cd ../..'
 alias ..='cd ..'
 
-if [ -x /usr/bin/nvr ]; then
-    alias nvim='nvr -s'
-    alias e='nvr -s'
-    alias vim='nvr -s'
-fi
-
-[ -x /usr/bin/nvim ] && alias vim='nvim'
-
 # Use vim server instance
-# alias v='vim --servername VIMSERVER --remote-silent'
-alias b='nvr -s ~/scratchbuffer'
+alias v='vim --servername VIMSERVER --remote-silent'
+alias vim='vim --servername VIMSERVER --remote-silent'
+alias vimrc='vim ~/.vim/vimrc'
 alias hx='helix'
+alias emacs='emacsclient -a emacs'
+alias e='emacsclient -a emacs'
 
 # Sudo stuff
 alias N='sudo -E nnn -dH'
 alias se='sudoedit'
 
-# Open some common rc-files
-alias vimrc='e ~/.config/nvim/init.vim'
-alias vimmap='e ~/.config/nvim/mappings.vim'
-alias vimplug='e ~/.config/nvim/plugins.vim'
-alias tridactylrc='e ~/.config/tridactyl/tridactylrc'
-
 # Open Vimwiki index
 alias ww='e ~/.vimwiki/index.md'
 
-# Send color information even into pipes for nicer formatting
-alias diff='diff --color=always' 
-alias grep='grep --color=always'
-alias ip='ip --color=always'
-alias pacman='pacman --color=always'
-alias paru='paru --color=always'
-
-[ -x /usr/bin/rg ] && alias grep='rg'
-[ -x /usr/bin/fd ] && alias find='fd'
-
-# Show directories with appended /
-alias ls='ls -p'
-
 if [ -x /usr/bin/exa ]; then
     alias l=exa
+    alias ll='exa -l'
     alias ls='exa'
     alias lsd='exa --only-dirs'
     alias lsf='exa --only-files'
     alias lsg='exa --git'
+else
+    # Show directories with appended /
+    alias ls='ls -p'
+    alias ll='ls -pl'
 fi
 
 # Disable wget history file at $HOME
@@ -113,15 +91,6 @@ alias nowdate='date +"%d-%m-%Y"' # current date in format dd-MM-YY
 # Reload keyboard config
 alias keyb=". ~/.xprofile"
 
-# VPN
-alias re='protonvpn-cli d; protonvpn-cli c -f'
-alias pNL='protonvpn-cli c --cc NL'
-alias pFI='protonvpn-cli c --cc FI'
-alias pSE='protonvpn-cli c --cc SE'
-alias pf='protonvpn-cli c -f'
-alias pr='protonvpn-cli c -r'
-alias pp2p='protonvpn-cli c --p2p'
-
 # Bluetooth
 alias btup='systemctl start bluetooth.service'
 alias btdn='systemctl stop bluetooth.service'
@@ -134,20 +103,23 @@ alias whitenoise='play -n synth whitenoise'
 alias pinknoise='play -n synth pinknoise'
 alias brownnoise='play -n synth brownnoise'
 
+# Terminal video
+alias mpv-cli='mpv --no-config --vo=tct'
+
+alias clock="tty-clock -Ssc"
+
 # Dictionary
 alias dic='sdcv'
-
-# Check if a program is running
-alias isup='ps aux | grep'
-
-# Project home
-alias kood="cd $HOME/kood"
-alias sprint="cd $HOME/kood/sprint"
 
 alias ssh-pi="ssh dietpi@$PI_IP"
 
 alias rust-repl=evcxr
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+[ ! -x /usr/bin/neofetch ] && [ -x /usr/bin/fastfetch ] && alias neofetch='fastfetch'
+alias neofetch='neofetch --source /etc/issue'
+
+alias se='sudoedit'
 
 # Log exit
 echo "$(date +%T) close ~/.bash_aliases" >> ~/.log/rc.log

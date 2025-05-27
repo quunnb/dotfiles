@@ -4,23 +4,14 @@
 
 " Make sure that unsetting an option here also resets it in the running session
 sanitise tridactyllocal tridactylsync
-colourscheme rose-pine
+colorscheme red
 set newtab about:blank
 
 " Make t open the selection with tabopen
 bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
 
-" " Vim movement for COLEMAK
-" bind <A-n> scrollline 10
-" bind <A-e> scrollline -10
-" bind <A-i> scrollpx 50
-" bind <A-h> scrollpx -50
-
-" for QWERTY
-set hintchars fjdkslaöeiwomvcxzytp
-" for COLEMAK
-" set hintchars tnseriaovmcufyw
-set incsearch trua
+set hintchars fdsarewvcxzq
+set incsearch true
 
 " Make search great again
 bind / fillcmdline find
