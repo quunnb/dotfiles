@@ -17,6 +17,7 @@ export HISTIGNORE='yt-dlp *:encfs *:ls *'
 # Add things to PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 
