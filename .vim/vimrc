@@ -506,6 +506,10 @@ augroup AuCmds
     au Filetype go iab <buffer> inc include (<CR><CR>)<Esc>kcc
     au Filetype go iab <buffer> {{{ {<CR><CR>}<Esc>kcc
 
+    " C
+    au Filetype c setlocal tabstop=4
+    au Filetype c setlocal noexpandtab
+
     " Python
     au FileType python setlocal tabstop=4 | setlocal expandtab
 
