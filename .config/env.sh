@@ -3,7 +3,7 @@
 #
 
 # Log entry
-echo "$(date +%T) open  ~/.config/env.sh" >> ~/.log/rc.log
+echo "$(date +%T) open ~/.config/env.sh" >> ~/.log/rc.log
 
 
 # Big history file to go with the prefix history search functionality
@@ -20,13 +20,14 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
+export DOT="$HOME/dotfiles"
 
-export EDITOR='vim'
-export VISUAL='emacsclient'
-export SUDO_EDITOR=$EDITOR
-export BROWSER=$HOME/.local/bin/browser
-export TERMINAL=alacritty
-export GIT_EDITOR='vim'
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -a emacs'
+export SUDO_EDITOR='/usr/bin/vim'
+export BROWSER="$HOME/.local/bin/browser"
+export TERMINAL='/usr/bin/alacritty'
+export GIT_EDITOR='/usr/bin/vim'
 # Format 'less'
 export LESS='-Mri#8j.5'
 #             |||| `- center on search matches
@@ -44,18 +45,18 @@ export LESSHISTFILE=/dev/null
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
 # MAC-addresses of some BT-devices
-[ -f ~/.config/data/nura.mac ] && export MAC_NURA="$(<~/.config/data/nura.mac)"
-[ -f ~/.config/data/cube66.mac ] && export MAC_CUBE66="$(<~/.config/data/cube66.mac)"
-[ -f ~/.config/data/btr011.mac ] && export MAC_BTR011="$(<~/.config/data/btr011.mac)"
-[ -f ~/.config/data/jbl.mac ] && export MAC_JBL="$(<~/.config/data/jbl.mac)"
+[ -f ~/.config/secrets/nura.mac ] && export MAC_NURA="$(<~/.config/secrets/nura.mac)"
+[ -f ~/.config/secrets/cube66.mac ] && export MAC_CUBE66="$(<~/.config/secrets/cube66.mac)"
+[ -f ~/.config/secrets/btr011.mac ] && export MAC_BTR011="$(<~/.config/secrets/btr011.mac)"
+[ -f ~/.config/secrets/jbl.mac ] && export MAC_JBL="$(<~/.config/secrets/jbl.mac)"
 
 # IPs
-[ -f ~/.config/data/pi.ip ] && export PI_IP="$(<~/.config/data/pi.ip)"
+[ -f ~/.config/secrets/pi.ip ] && export PI_IP="$(<~/.config/secrets/pi.ip)"
 
 # location
-[ -f ~/.config/data/location ] && export CITY="$(<~/.config/data/location)"
-[ -f ~/.config/data/longitude ] && export LON="$(<~/.config/data/longitude)"
-[ -f ~/.config/data/latitude ] && export LAT="$(<~/.config/data/latitude)"
+[ -f ~/.config/secrets/location ] && export CITY="$(<~/.config/secrets/location)"
+[ -f ~/.config/secrets/longitude ] && export LON="$(<~/.config/secrets/longitude)"
+[ -f ~/.config/secrets/latitude ] && export LAT="$(<~/.config/secrets/latitude)"
 
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
@@ -77,6 +78,9 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
+
+# APIs
+[ -f ~/.config/secrets/mistral_api_key ] && export MISTRAL_API_KEY="$(<~/.config/secrets/mistral_api_key)"
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log

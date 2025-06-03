@@ -1,7 +1,12 @@
 [core]
 	filemode = false
+	editor = vim
+	autocrlf = input
+	excludesFile = ~/.gitignore
 [user]
 	name = quunnb
 	email = quunnb@amideus.fi
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

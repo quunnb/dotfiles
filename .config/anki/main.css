@@ -41,6 +41,10 @@ pre {
   font-family: default_font;
 }
 
+p {
+  margin: 0;
+}
+
 img {
   object-fit: contain;
   float: center;

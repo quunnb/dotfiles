@@ -26,8 +26,7 @@ alias v='vim --servername VIMSERVER --remote-silent'
 alias vim='vim --servername VIMSERVER --remote-silent'
 alias vimrc='vim ~/.vim/vimrc'
 alias hx='helix'
-alias emacs='emacsclient -a emacs'
-alias e='emacsclient -a emacs'
+alias e='emacsclient --no-wait --reuse-frame --alternate-editor=vim'
 
 # Sudo stuff
 alias N='sudo -E nnn -dH'
