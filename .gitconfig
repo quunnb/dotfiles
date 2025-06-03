@@ -10,3 +10,27 @@
 	helper = store
 [init]
 	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[merge]
+	conflictstyle = zdiff3 
