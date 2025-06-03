@@ -10,9 +10,7 @@
 
 (package! tao-theme)
 (package! rainbow-mode)
-; (package! dap-dlv-go)
-(package! evil-tutor)
-(package! dap-mode)
+(package! gptel :recipe (:nonrecursive t))
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

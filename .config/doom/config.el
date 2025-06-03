@@ -90,3 +90,20 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq user-full-name "quunnb"
+      user-mail-address "quunnb@amideus.fi")
+
+(defun get-env-var (var-name)
+  (getenv var-name))
+
+(setq gptel-model   'mistral-medium-latest
+      gptel-backend
+      (gptel-make-openai "LeChat"   ;can be any name
+        :host "api.mistral.ai"
+        :endpoint "/v1/chat/completions"
+        :protocol "https"
+        :key (getenv "MISTRAL_API_KEY")
+        :models '("mistral-medium-latest")))
+
+
