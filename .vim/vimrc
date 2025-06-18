@@ -27,7 +27,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-    Plug 'mg979/vim-visual-multi'
     Plug 'AlessandroYorba/Sierra'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'bling/vim-bufferline'
@@ -43,8 +42,10 @@ call plug#begin()
     Plug 'junegunn/vim-easy-align'
     Plug 'mattn/calendar-vim'
     Plug 'mbbill/undotree'
+    Plug 'mg979/vim-visual-multi'
     Plug 'preservim/nerdtree'
     Plug 'psliwka/vim-smoothie'
+    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'rhysd/rust-doc.vim'
     Plug 'romainl/vim-cool'
     Plug 'rust-lang/rust.vim'
@@ -183,6 +184,11 @@ function! GetXresColor()
     execute "normal! ciw" . l:hex
 endfunction
 
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
@@ -354,7 +360,7 @@ vmap <C-k> <Plug>(MvVisUp)
 vmap <C-l> <Plug>(MvVisRight)
 
 " "FZF"
-nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>f :ProjectFiles<CR>
 nnoremap <silent> <Leader>F :FZF ~<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
 nnoremap <silent> <Leader>B :Buffers<CR>
@@ -428,9 +434,6 @@ let  g:yoinkIncludeDeleteOperations=1
 " "RUSTFMT"
 let g:rustfmt_autosave = 0
 
-" "RUSTFMT"
-let g:go_fmt_autosave = 0
-
 " "MVVIS - move selection"
 let g:MvVis_mappings = 0
 
@@ -477,6 +480,8 @@ augroup AuCmds
     autocmd!
 
     " GENERAL
+    
+    au BufEnter * silent! lcd %:p:h
 
     " Remember position of last edit and return on reopen
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
