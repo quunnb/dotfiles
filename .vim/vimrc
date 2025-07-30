@@ -28,11 +28,12 @@ endif
 
 call plug#begin()
     Plug 'AlessandroYorba/Sierra'
+    Plug 'SirVer/ultisnips'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'bling/vim-bufferline'
     Plug 'chrisbra/colorizer'
     Plug 'dense-analysis/ale'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'fatih/vim-go'
     Plug 'glts/vim-magnum'
     Plug 'glts/vim-radical'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
@@ -40,19 +41,16 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/vim-easy-align'
-    Plug 'mattn/calendar-vim'
     Plug 'mbbill/undotree'
     Plug 'mg979/vim-visual-multi'
+    Plug 'mzlogin/vim-markdown-toc'
     Plug 'preservim/nerdtree'
     Plug 'psliwka/vim-smoothie'
-    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-    Plug 'rhysd/rust-doc.vim'
     Plug 'romainl/vim-cool'
-    Plug 'rust-lang/rust.vim'
-    Plug 'sheerun/vim-polyglot'
+    Plug 'rose-pine/vim'
+    Plug 'sebdah/vim-delve'
     Plug 'svermeulen/vim-subversive'
     Plug 'svermeulen/vim-yoink'
-    Plug 'tinted-theming/tinted-vim'
     Plug 'tommcdo/vim-exchange'
     Plug 'tpope/vim-abolish' " required by VIM-SUBVERSIVE
     Plug 'tpope/vim-characterize'
@@ -61,10 +59,9 @@ call plug#begin()
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'tridactyl/vim-tridactyl'
-    Plug 'vimwiki/vimwiki'
+    Plug 'wolandark/vim-live-server', { 'do': 'sudo npm install -g live-server' }
     Plug 'wsdjeg/vim-fetch'
     Plug 'xolox/vim-misc'
-    Plug 'xolox/vim-session'
 call plug#end()
 
 
@@ -136,7 +133,7 @@ set clipboard=unnamedplus
 
 " set background=light
 set termguicolors
-colorscheme base16-windows-nt
+colorscheme rosepine
 highlight SpecialKey guifg=#333333
 
 let g:loaded_matchparen=1
@@ -160,7 +157,17 @@ let g:fzf_colors =
 
 " }}} //////////////////////////////////////////////////////////////////////////
 
-" FUNCTIONS {{{/////////////////////////////////////////////////////////////////
+" FUNCTIONS {{{////////////////////////////////////////////////////////////////
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 " Delete closed captions
 function! DeleteCC()
@@ -242,7 +249,6 @@ nnoremap <Leader><Leader> :nohls<CR>
 
 " Open / reload (source) vimrc
 nnoremap <Leader>vi :e $MYVIMRC<CR>
-" nnoremap <Leader>re :source $MYVIMRC<CR>
 
 " Fix spelling
 inoremap <C-s> <Esc>:set spell<CR>a<C-x><C-s>
@@ -256,10 +262,6 @@ nnoremap N Nzz
 " Open non-existing file
 noremap gf :e <cfile><CR>
 
-" " System clipboard
-" nnoremap <Leader>p "+p
-" nnoremap <Leader>P "+P
-
 " Hic sunt dracones
 cmap Q<CR> q<CR>
 nnoremap Q <NOP>
@@ -268,6 +270,9 @@ nnoremap Q <NOP>
 nnoremap <Leader>j :bn<CR>
 nnoremap <Leader>k :bp<CR>
 nnoremap <Leader>D :bd<CR>
+nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
 
 " Get color hex value from .Xresources and replace color word under cursor
 nnoremap <Leader>x :call GetXresColor()<CR>
@@ -278,15 +283,6 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Delete>
-
-" Insert newline
-nnoremap <CR> mzo<Esc>g`z<Down>
-" Insert newline above
-nnoremap <Leader><CR> mzO<Esc>g`z
-
-" Upper-/lowercase word
-nnoremap <Leader>u guiw
-nnoremap <Leader>U gUiw
 
 " Insert datetime
 nnoremap <Leader>date :put =strftime('%d.%m.%Y %H:%M')<CR>
@@ -307,8 +303,30 @@ nnoremap ZZ :q
 xnoremap <Leader>_ :s/ \+/ /g<CR>gv:s/ $//g<CR>
 
 " Sort selection
-xnoremap <Leader>so :sort<CR>
-xnoremap <Leader>sn :sort n<CR>
+xnoremap <silent> <Leader>so :sort<CR>
+xnoremap <silent> <Leader>sn :sort n<CR>
+
+" Window operations
+nnoremap <silent> <Leader>ws :split<CR>
+nnoremap <silent> <Leader>wv :vsplit<CR>
+nnoremap <silent> <Leader>wo :only<CR>
+nnoremap <silent> <Leader>wc :close<CR>
+nnoremap <silent> <Leader>ww <C-w><C-w>
+nnoremap <silent> <Leader>wh <C-w>h
+nnoremap <silent> <Leader>wj <C-w>j
+nnoremap <silent> <Leader>wk <C-w>k
+nnoremap <silent> <Leader>wl <C-w>l
+nnoremap <silent> <Leader>wH <C-w>H
+nnoremap <silent> <Leader>wJ <C-w>J
+nnoremap <silent> <Leader>wK <C-w>K
+nnoremap <silent> <Leader>wL <C-w>L
+
+" Quick fix window
+nnoremap <silent> <Leader>e :copen<CR>
+nnoremap <silent> <Leader>E :cclose<CR>
+nnoremap <silent> <Leader><CR> :cclose<CR>
+" nmap <silent> <Leader>wq <Plug>(qf_qf_switch)
+" nmap <silent> <Leader>q <Plug>(qf_qf_toggle)
 
 " "VIM-SURROUND"
 nnoremap <Leader>' :execute "normal \<Plug>YsurroundiW'"<CR>
@@ -353,29 +371,13 @@ nmap gP     <Plug>(YoinkPaste_gP)
 " "COLORIZER"
 nnoremap <Leader>col :ColorToggle<CR>
 
-" "MVVIS"
-vmap <C-h> <Plug>(MvVisLeft)
-vmap <C-j> <Plug>(MvVisDown)
-vmap <C-k> <Plug>(MvVisUp)
-vmap <C-l> <Plug>(MvVisRight)
-
 " "FZF"
 nnoremap <silent> <Leader>f :ProjectFiles<CR>
 nnoremap <silent> <Leader>F :FZF ~<CR>
 nnoremap <silent> <Leader>/ :Rg<CR>
-nnoremap <silent> <Leader>B :Buffers<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 " Exclude filenames from Rg
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-" "ALE"
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nnoremap <Leader>AA :ALEToggle<CR>
-nnoremap <Leader>Ad :ALEDetail<CR>
-nnoremap <Leader>Ar :ALERename<CR>
-nnoremap <Leader>AR :ALEFindReferences<CR>
-nnoremap <Leader>Ah :ALEGoToDefinition -split<CR>
-nnoremap <Leader>Av :ALEGoToDefinition -vsplit<CR>
 
 " "RADICAL defaults"
 " nmap gA <Plug>RadicalView
@@ -394,23 +396,44 @@ nmap <Leader>bin <Plug>RadicalCoerceToBinary
 " gcc Comment out a line
 " gc  Comment out a selection / motion
 
-" "VIM-TITLECASE defaults"
-" nmap <Leader>gz  <Plug>Titlecase
-" nmap <Leader>gzz <Plug>TitlecaseLine
-" vmap <Leader>gz  <Plug>Titlecase
-
 " "Nerdtree"
 nnoremap <C-t> :NERDTreeToggle<CR>
 
+" "Undotree"
+nnoremap <Leader>u :UndotreeToggle<CR>
+
+" "ALE"
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" map <C-j> :cnext<CR>
+" map <C-k> :cprevious<CR>
+nmap <Leader>la <Plug>(ale_toggle_buffer)
+nmap <Leader>lA <Plug>(ale_toggle)
+nmap <Leader>li <Plug>(ale_hover)
+nmap <Leader>lI <Plug>(ale_detail)
+nmap <Leader>lg <Plug>(ale_first)
+nmap <Leader>lG <Plug>(ale_last)
+nmap <Leader>lr <Plug>(ale_rename)
+nmap <Leader>lR <Plug>(ale_find_references)
+nmap <Leader>lfr <Plug>(ale_file_rename)
+nmap <Leader>ld <Plug>(ale_go_to_definition)
+
+nnoremap <Leader>c :cclose<CR>
+
+" "Fugitive"
+nmap <Leader>Gw :Gwrite<CR>
+nmap <Leader>Gm :Gmove<CR>
+nmap <Leader>Gr :Gread<CR>
+nmap <Leader>Gd :Gdiff<CR>
+nmap <Leader>GR :Gremove<CR>
+nmap <Leader>Gl :Git log<CR>
+nmap <Leader>Gb :Git blame<CR>
+nmap <Leader>Gc :Gcommit<CR>
+nmap <Leader>Gs :Git<CR>
+
 " }}}///////////////////////////////////////////////////////////////////////////
 
-" OPTIONS {{{///////////////////////////////////////////////////////////////////
-
-" "VIMWIKI"
-" Use .md files for vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-" Make vimwiki markdown links have extension .md for native vim navigation
-let g:vimwiki_markdown_link_ext = 1
+" OPTIONS {{{//////////////////////////////////////////////////////////////////
 
 " "EASY-ALIGN"
 " Also align comments
@@ -430,12 +453,6 @@ let g:colorizer_disable_bufleave = 1
 
 " "YOINK"
 let  g:yoinkIncludeDeleteOperations=1
-
-" "RUSTFMT"
-let g:rustfmt_autosave = 0
-
-" "MVVIS - move selection"
-let g:MvVis_mappings = 0
 
 " "FZF"
 " This is the default extra key bindings
@@ -457,30 +474,33 @@ let g:fzf_action = {
 "   - 'rounded' / 'sharp' / 'horizontal' / 'vertical' / 'top' / 'bottom' / 'left' / 'right'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" "ALE"
-" This keeps the 'gutter' always on so that window size keeps the same between errors/no errors
-let g:ale_enabled = 0
-" let g:ale_sign_column_always = 1
-
-" "VIM-SESSION"
-" Don't save hidden and unloaded buffers in sessions.
-set sessionoptions-=buffers
-let g:session_command_aliases = 1
-let g:session_autosave = 'no'
-
 " "VIM-BUFFERLINE"
 let g:bufferline_active_highlight = 'Removed'
+
+" "ALE"
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+
+" "VIM-GO"
+" let g:go_fmt_command="gopls"
+let g:go_fmt_command="goimports"
+let g:go_gopls_gofumpt=1
+" let g:go_list_type = "quickfix"
+" let g:go_metalinter_enabled = ['vet', 'revive', 'errcheck', 'gocritic']
+" let g:go_metalinter_deadline = "10s"
+" let g:go_auto_type_info = 1
 
 " }}}///////////////////////////////////////////////////////////////////////////
 
 " AUTOCMDS {{{//////////////////////////////////////////////////////////////////
 
 augroup AuCmds
+
     " Clear
     autocmd!
 
     " GENERAL
-    
+
     au BufEnter * silent! lcd %:p:h
 
     " Remember position of last edit and return on reopen
@@ -501,9 +521,7 @@ augroup AuCmds
     au FileType js,svelte,css,html setlocal expandtab | setlocal wrap | setlocal shiftwidth=2 | setlocal tabstop=2
 
     " Go
-    au Filetype go setlocal makeprg=go\ build
-    au Filetype go setlocal noexpandtab
-    au Filetype go setlocal tabstop=4
+    au BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
     au Filetype go nnoremap <buffer> <silent> <F5> :!clear; go run %<CR>
     au Filetype go iab <buffer> ife if err != nil {<CR>return err<CR>}<CR>
     au Filetype go iab <buffer> ffi for i := 0; i<; i++ {<CR><CR>}<Esc>2k14li
@@ -511,12 +529,147 @@ augroup AuCmds
     au Filetype go iab <buffer> inc include (<CR><CR>)<Esc>kcc
     au Filetype go iab <buffer> {{{ {<CR><CR>}<Esc>kcc
 
+    au FileType go nmap <buffer> <Leader>b :<C-u>call <SID>build_go_files()<CR>
+    au FileType go nmap <buffer> <Leader>R <Plug>(go-run)
+    au FileType go nmap <buffer> <Leader>r <Plug>(go-rename)
+    au FileType go nmap <buffer> <Leader>t  <Plug>(go-test)
+    au FileType go nmap <buffer> <Leader>T  <Plug>(go-test-func)
+    au FileType go nmap <buffer> <Leader>c <Plug>(go-coverage-toggle)
+    au FileType go nmap <buffer> <Leader>i <Plug>(go-info)
+
     " C
     au Filetype c setlocal tabstop=4
     au Filetype c setlocal noexpandtab
 
     " Python
     au FileType python setlocal tabstop=4 | setlocal expandtab
+
+    " Markdown
+    au FileType md setlocal shiftwidth=3 | setlocal tabstop=3 | setlocal expandtab
+
+    "LSP setup"
+    " let lspOpts = #{autoHighlightDiags: v:true}
+    " autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+    " let lspServers = [
+    "         \   #{
+    "         \       name: 'clang',
+    "         \       filetype: ['c', 'cpp'],
+    "         \       path: '/usr/bin/clangd',
+    "         \       args: ['--background-index', '--clang-tidy']
+    "         \   },
+    "         \   #{
+    "         \       name: 'gopls',
+    "         \       filetype: ['go', 'gomod'],
+    "         \       path: '/usr/bin/gopls',
+    "         \       args: ['serve'],
+    "         \       workspaceConfig: #{
+    "         \         gopls: #{
+    "         \           hints: #{
+    "         \             assignVariableTypes: v:true,
+    "         \             compositeLiteralFields: v:true,
+    "         \             compositeLiteralTypes: v:true,
+    "         \             constantValues: v:true,
+    "         \             functionTypeParameters: v:true,
+    "         \             parameterNames: v:true,
+    "         \             rangeVariableTypes: v:true
+    "         \           }
+    "         \         }
+    "         \       },
+    "         \       syncInit: v:true
+    "         \   },
+    "         \   #{
+    "         \       name: 'rustlang',
+    "         \       filetype: ['rs'],
+    "         \       path: '/usr/lib/rustup/bin/rust-analyzer',
+    "         \       args: [],
+    "         \       initializationOptions: #{
+    "         \           inlayHints: #{
+    "         \               typeHints: #{
+    "         \                   enable: v:true
+    "         \               },
+    "         \               parameterHints: #{
+    "         \                   enable: v:true
+    "         \               }
+    "         \           },
+    "         \       },
+    "         \       syncInit: v:true
+    "         \   },
+    "         \   #{
+    "         \       name: 'shls',
+    "         \       filetype: ['sh'],
+    "         \       path: '/usr/bin/bash-language-server',
+    "         \       args: []
+    "         \   },
+    "         \   #{
+    "         \       name: 'awkls',
+    "         \       filetype: ['awk'],
+    "         \       path: '/usr/bin/awk-language-server',
+    "         \       args: []
+    "         \   },
+    "         \   #{
+    "         \       name: 'cssls',
+    "         \       filetype: ['css'],
+    "         \       path: '/usr/bin/vscode-css-language-server',
+    "         \       args: []
+    "         \   },
+    "         \   #{
+    "         \       name: 'luals',
+    "         \       filetype: ['lua'],
+    "         \       path: '/usr/bin/lua-language-server',
+    "         \       args: [],
+    "         \       workspaceConfig: #{
+    "         \         Lua: #{
+    "         \           hint: #{
+    "         \             enable: v:true,
+    "         \           }
+    "         \         }
+    "         \       }
+    "         \   },
+    "         \   #{
+    "         \       name: 'pylsp',
+    "         \       filetype: ['python'],
+    "         \       path: '/usr/bin/pylsp',
+    "         \       args: []
+    "         \   },
+    "         \   #{
+    "         \       name: 'typescriptlang',
+    "         \       filetype: ['javascript', 'typescript'],
+    "         \       path: '/usr/bin/typescript-language-server',
+    "         \       args: ['--stdio'],
+    "         \   },
+    "         \   #{
+    "         \       name: 'vimls',
+    "         \       filetype: ['vim'],
+    "         \       path: '/usr/bin/vim-language-server',
+    "         \       args: ['--stdio'],
+    "         \   },
+    "         \   #{
+    "         \       name: 'htmlls',
+    "         \       filetype: ['html'],
+    "         \       path: '/usr/bin/vscode-html-language-server',
+    "         \       args: ['--stdio'],
+    "         \   },
+    "         \   #{
+    "         \       name: 'jsonls',
+    "         \       filetype: ['json'],
+    "         \       path: '/usr/bin/vscode-json-language-server',
+    "         \       args: ['--stdio'],
+    "         \   },
+    "         \   #{
+    "         \       name: 'yaml-language-server',
+    "         \       filetype: 'yaml',
+    "         \       path: '/usr/bin/yaml-language-server',
+    "         \       args: ['--stdio'],
+    "         \       workspaceConfig: #{
+    "         \           yaml: #{
+    "         \               schemas: {
+    "         \               }
+    "         \           }
+    "         \       }
+    "         \   },
+    "         \   ]
+    " autocmd User LspSetup call LspAddServer(lspServers)
 
 augroup END
 

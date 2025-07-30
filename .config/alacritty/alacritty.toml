@@ -13,49 +13,76 @@ blur = true
 padding = { x = 8, y = 8 }
 
 [colors.primary]
-background = "#000000"
-foreground = "#FFFFFF"
-
-[colors.normal]
-black   = "#000000"
-red     = "#DF0000"
-green   = "#00DF00"
-yellow  = "#DFDF00"
-blue    = "#0000DF"
-magenta = "#DF00DF"
-cyan    = "#00DFDF"
-white   = "#CFCFCF"
-
-[colors.bright]
-black   = "#666666"
-red     = "#FF0000"
-green   = "#00FF00"
-yellow  = "#FFFF00"
-blue    = "#0000FF"
-magenta = "#FF00FF"
-cyan    = "#00FFFF"
-white   = "#FFFFFF"
-
-[colors.dim]
-black   = "#111111"
-red     = "#BF0000"
-green   = "#00BF00"
-yellow  = "#BFBF00"
-blue    = "#0000BF"
-magenta = "#BF00BF"
-cyan    = "#00BFBF"
-white   = "#BFBFBF"
-
-[colors.selection]
-text       = 'CellForeground'
-background = '#FF0000'
+foreground = "#e0def4"
+background = "#191724"
+dim_foreground = "#908caa"
+bright_foreground = "#e0def4"
 
 [colors.cursor]
-cursor = '#FF0000'
+text = "#e0def4"
+cursor = "#524f67"
 
-[colors.hints]
-start = { foreground = '#000000', background = '#FF0000' }
-end   = { foreground = '#000000', background = '#FF0000' }
+[colors.vi_mode_cursor]
+text = "#e0def4"
+cursor = "#524f67"
+
+[colors.search.matches]
+foreground = "#908caa"
+background = "#26233a"
+
+[colors.search.focused_match]
+foreground = "#191724"
+background = "#ebbcba"
+
+[colors.hints.start]
+foreground = "#908caa"
+background = "#1f1d2e"
+
+[colors.hints.end]
+foreground = "#6e6a86"
+background = "#1f1d2e"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+foreground = "#e0def4"
+background = "#1f1d2e"
+
+[colors.selection]
+text       = "#e0def4"
+background = "#403d52"
+
+[colors.normal]
+black   = "#26233a"
+red     = "#eb6f92"
+green   = "#31748f"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#ebbcba"
+white   = "#e0def4"
+
+[colors.bright]
+black   = "#6e6a86"
+red     = "#eb6f92"
+green   = "#31748f"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#ebbcba"
+white   = "#e0def4"
+
+[colors.dim]
+black   = "#6e6a86"
+red     = "#eb6f92"
+green   = "#31748f"
+yellow  = "#f6c177"
+blue    = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan    = "#ebbcba"
+white   = "#e0def4"
 
 [cursor]
 style.blinking = "On"

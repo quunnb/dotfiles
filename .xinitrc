@@ -1,12 +1,12 @@
 #!/bin/sh
 
-prefix="/usr"
-exec_prefix="${prefix}"
+# prefix="/usr"
+# exec_prefix="${prefix}"
 xrdb="xrdb"
 xinitdir="/etc/X11/xinit"
-xclock="xclock"
-xterm="xterm"
-twm="twm"
+# xclock="xclock"
+# xterm="xterm"
+# twm="twm"
 xmodmap="xmodmap"
 
 userresources="$HOME/.Xresources"
@@ -50,11 +50,12 @@ if [ -d "$xinitdir"/xinitrc.d ] ; then
 fi
 
 xsettingsd &
-source ~/.xprofile
+. ~/.xprofile
 ~/.fehbg &
 thunar --daemon &
 dwmstatus &
 xss-lock slock &
 unclutter --jitter 10 --timeout 3 --ignore-scrolling &
 systemctl --user start app-protonvpn@autostart.service
-exec dwm
+# exec dwm
+exec i3

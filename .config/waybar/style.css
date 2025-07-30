@@ -10,6 +10,8 @@
  * Keyframes
  * -------------------------------------------------------------------------- */
 
+@import "./rose-pine.css";
+
 @keyframes blink-warning {
   70% {
     color: #6c8091;
@@ -17,7 +19,7 @@
 
   to {
     color: #6c8091;
-    background-color: #EFB8CC;
+    background-color: @rose;
   }
 }
 
@@ -28,7 +30,7 @@
 
   to {
     color: #6c8091;
-    background-color: #eb6f92;
+    background-color: @love;
   }
 }
 
@@ -48,8 +50,8 @@
 /* The whole bar */
 #waybar {
   background: transparent;
-  color: #6c8091;
-  background-color: #f3f5f4;
+  color: @rose;
+  background-color: @base;
   font-family: JetBrainsMono;
   font-size: 14px;
 }
@@ -97,8 +99,8 @@
 }
 
 #workspaces button.urgent {
-  border: 2px dashed #efb8cc;
-  color: #efb8cc;
+  border: 2px dashed @rose;
+  color: @rose;
 }
 
 #workspaces button:hover {
@@ -119,15 +121,15 @@
 }
 
 #network.disconnected {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #cpu.warning {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #cpu.critical {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #memory {
@@ -137,11 +139,11 @@
 }
 
 #memory.warning {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #memory.critical {
-  color: #efb8cc;
+  color: @rose;
   animation-name: blink-critical;
   animation-duration: 2s;
   padding-left: 5px;
@@ -163,11 +165,11 @@
 }
 
 #battery.warning {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #battery.critical {
-  color: #efb8cc;
+  color: @rose;
 }
 
 #battery.warning.discharging {
@@ -187,6 +189,6 @@
 }
 
 #tray {
-  background: #cad4de;
+  background: @overlay;
   border-radius: 1em;
 }

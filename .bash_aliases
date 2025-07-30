@@ -12,7 +12,7 @@ function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
+		builtin cd -- "$cwd" || exit
 	fi
 	rm -f -- "$tmp"
 }
@@ -27,6 +27,9 @@ alias vim='vim --servername VIMSERVER --remote-silent'
 alias vimrc='vim ~/.vim/vimrc'
 alias hx='helix'
 alias e='emacsclient --no-wait --reuse-frame --alternate-editor=vim'
+
+# linter
+alias lnt="golangci-lint run --config=~/.golangci.yaml ./..."
 
 # Sudo stuff
 alias N='sudo -E nnn -dH'
@@ -75,7 +78,7 @@ alias yt720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
 alias yt1080='yt-dlp -f "bv*[height<=1080]+ba/b[height<=1080]"'
 
 alias myip='curl ipinfo.io'
-alias sää="curl wttr.in/$CITY?M"
+alias sää='curl wttr.in/"${CITY}"?M'
 
 # Be verbose
 alias mv='mv -v'
@@ -93,9 +96,9 @@ alias keyb=". ~/.xprofile"
 # Bluetooth
 alias btup='systemctl start bluetooth.service'
 alias btdn='systemctl stop bluetooth.service'
-alias btup_jbl="bluetoothctl connect $MAC_JBL"
-alias btup_btr011="bluetoothctl connect $MAC_BTR011"
-alias btup_nura="bluetoothctl connect $MAC_NURA"
+alias btup_jbl='bluetoothctl connect "${MAC_JBL}"'
+alias btup_btr011='bluetoothctl connect "${MAC_BTR011"}'
+alias btup_nura='bluetoothctl connect "${MAC_NURA}"'
 
 # Make some noise
 alias whitenoise='play -n synth whitenoise'
@@ -110,7 +113,7 @@ alias clock="tty-clock -Ssc"
 # Dictionary
 alias dic='sdcv'
 
-alias ssh-pi="ssh dietpi@$PI_IP"
+alias ssh-pi='ssh dietpi@"${PI_IP}"'
 
 alias rust-repl=evcxr
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

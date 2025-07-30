@@ -3,31 +3,31 @@
 #
 
 # Log entry
-echo "$(date +%T) open  ~/.profile" |> ~/.log/rc.log
+echo "$(date +%T) open  ~/.profile" > ~/.log/rc.log
 
 [ -f ~/.bashrc ] && . ~/.bashrc
 
-#!/bin/sh
 if [ "$TERM" = "linux" ]; then
-	/bin/echo -e "
-	\e]P0000000
-	\e]P1EE0000
-	\e]P200EE00
-	\e]P3EEEE00
-	\e]P40000EE
-	\e]P5EE00EE
-	\e]P600EEEE
-	\e]P7EEEEEE
-	\e]P8222222
-	\e]P9FF0000
-	\e]PA00FF00
-	\e]PBFFFF00
-	\e]PC0000FF
-	\e]PDFF00FF
-	\e]PE00FFFF
-	\e]PFFFFFFF
+	printf "
+	\033]P0191724
+	\033]P1eb6f92
+	\033]P231748f
+	\033]P3f6c177
+	\033]P49ccfd8
+	\033]P5c4a7e7
+	\033]P6ebbcba
+	\033]P7e0def4
+	\033]P86e6a86
+	\033]P9eb6f92
+	\033]PA31748f
+	\033]PBf6c177
+	\033]PC9ccfd8
+	\033]PDc4a7e7
+	\033]PEebbcba
+	\033]PFe0def4
 	"
-  clear
+	# get rid of artifacts
+	clear
 fi
 
 # Log exit

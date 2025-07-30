@@ -8,10 +8,6 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)
 
-(package! tao-theme)
-(package! rainbow-mode)
-(package! gptel :recipe (:nonrecursive t))
-
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/radian-software/straight.el#the-recipe-format
@@ -52,3 +48,20 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
+;; Themes
+(package! tao-theme)
+
+(package! doom-two-tone-themes
+  :recipe (:host github
+           :repo "eliraz-refael/doom-two-tone-themes"
+           :files ("doom-two-tone-themes.el" "themes/*.el")))
+
+(package! autothemer)
+(package! rose-pine-emacs
+  :recipe (:host github
+           :repo "thongpv87/rose-pine-emacs"
+           :branch "master"))
+
+
+(package! rainbow-mode)
+(package! gptel :recipe (:nonrecursive t))

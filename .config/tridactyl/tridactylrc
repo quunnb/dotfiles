@@ -4,7 +4,7 @@
 
 " Make sure that unsetting an option here also resets it in the running session
 sanitise tridactyllocal tridactylsync
-colorscheme red
+colorscheme rose-pine
 set newtab about:blank
 
 " Make t open the selection with tabopen

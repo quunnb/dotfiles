@@ -2,5 +2,5 @@
 # ~/.xprofile
 #
 
-setxkbmap -config $HOME/.config/xkb/keymap.conf
+setxkbmap -config $HOME/.config/xkb/keymap.xkb
 xset r rate 256 32

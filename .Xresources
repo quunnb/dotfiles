@@ -1,40 +1,46 @@
-*background:  #000000
-*foreground:  #EEEEEE
-*b:  #000000
-*f:  #EEEEEE
-! Black + DarkGrey
-*color0:  #000000
-*color8:  #222222
-! DarkRed + Red
-*color1:  #EE0000
-*color9:  #FF0000
-! DarkGreen + Green
-*color2:  #00EE00
-*color10: #00FF00
-! DarkYellow + Yellow
-*color3:  #EEEE00
-*color11: #FFFF00
-! DarkBlue + Blue
-*color4:  #0000EE
-*color12: #0000FF
-! DarkMagenta + Magenta
-*color5:  #EE00EE
-*color13: #FF00FF
-!DarkCyan + Cyan (both not tango)
-*color6:  #00EEEE
-*color14: #00FFFF
-! LightGrey + White
-*color7:  #EEEEEE
-*color15: #FFFFFF
+! special
+*.Text:         #e0def4
+*.foreground:  #e0def4
+*.background:  #191724
+*.Base:         #191724
+*.cursorColor: #e0def4
 
-! emacs
-emacs.font: ShureTechMono Nerd Font-14
+! black
+*.color0:  #1f1d2e
+*.Surface: #1f1d2e
+*.color8:  #26233a
+*.Overlay: #26233a
 
-! dwm & dmwnu
-*normbgcolor: #000000
-*normbordercolor: #000000
-*normfgcolor: #FFFFFF
-*selbgcolor: #000000
-*selbordercolor: #FFFFFF
-*selfgcolor: #FFFFFF
-*dmenuselfgcolor: #FF0000
+! red
+*.color1:  #eb6f92
+*.color9:  #eb6f92
+*.Love:    #eb6f92
+
+! green
+*.color2:  #f6c177
+*.color10: #f6c177
+*.Gold:    #f6c177
+
+! yellow
+*.color3:  #ebbcba
+*.color11: #ebbcba
+*.Rose:    #ebbcba
+
+! blue
+*.color4:  #31748f
+*.color12: #31748f
+*.Pine:    #31748f
+
+! magenta
+*.color5:  #c4a7e7
+*.color13: #c4a7e7
+*.Iris:    #c4a7e7
+
+! cyan
+*.color6:  #9ccfd8
+*.color14: #9ccfd8
+*.Foam:    #9ccfd8
+
+! white
+*.color7:  #6e6a86
+*.color15: #908caa

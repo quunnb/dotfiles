@@ -12,18 +12,19 @@ export HISTFILESIZE=100000
 # Erase duplicate entries and ignore both dublicate entries and entries beginning with space
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTTIMEFORMAT='%F %T - '
-export HISTIGNORE='yt-dlp *:encfs *:ls *'
+export HISTIGNORE='yt-dlp *:encfs *'
 
 # Add things to PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export DOT="$HOME/dotfiles"
 
-export EDITOR='emacsclient -t'
-export VISUAL='emacsclient -a emacs'
+export EDITOR='vim --servername VIMSERVER --remote-silent'
+export VISUAL='emacsclient -r -u -a emacs'
 export SUDO_EDITOR='/usr/bin/vim'
 export BROWSER="$HOME/.local/bin/browser"
 export TERMINAL='/usr/bin/alacritty'
