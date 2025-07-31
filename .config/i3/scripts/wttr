@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+city=$(< ~/.config/secrets/location)
+moon="$(curl -s wttr.in/"$city"?format=%m)"
+weather="$(curl -s wttr.in/"$city"?format=3)"
+echo "$weather" "$moon"

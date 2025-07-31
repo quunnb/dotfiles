@@ -40,25 +40,25 @@
 
 /* ignore mode */
 .TridactylStatusIndicator.TridactylModeignore {
-    background: red !important;
+    background: #eb6f92 !important;
 }
 
 /* visual mode */
 .TridactylStatusIndicator.TridactylModevisual {
-    background: orange !important;
+    background: #ebbcba !important;
 }
 
 /* input mode */
 .TridactylStatusIndicator.TridactylModeinput {
-    background: pink !important;
+    background: #9ccfd8 !important;
 }
 
 /* insert mode */
 .TridactylStatusIndicator.TridactylModeinsert {
-    background: purple !important;
+    background: #c4a7e7 !important;
 }
 
 /* hint mode */
 .TridactylStatusIndicator.TridactylModehint {
-    background: yellow !important;
+    background: #f6c177 !important;
 }

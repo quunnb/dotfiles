@@ -12,7 +12,8 @@
 (setq doom-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
       doom-variable-pitch-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
       ;; doom-theme 'doom-burgundy-rose
-      doom-theme 'rose-pine-color
+      ;; doom-theme 'rose-pine-color
+      doom-theme 'doom-rose-pine
       ;; doom-theme 'tao-yin
       ;; doom-theme '0xF00BAE
       display-line-numbers-type 'relative
@@ -52,3 +53,7 @@
         :key (getenv "MISTRAL_API_KEY")
         :models '("mistral-medium-latest")))
 
+
+;; Indent width for web-modes
+(setq css-indent-offset 2)
+(setq sgml-basic-offset 2)

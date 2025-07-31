@@ -62,7 +62,7 @@
         "format-ethernet": "󰈀 {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-disconnected": " Disconnected",
-        "on-click": "footclient -T waybar_nmtui -e nmtui",
+        "on-click": "alacritty -T waybar_nmtui -e nmtui",
         "interval": 2
     },
 
@@ -108,13 +108,13 @@
             "warning": 70,
             "critical": 90,
         },
-        "on-click": "footclient -T waybar_htop -e htop"
+        "on-click": "alacritty -T waybar_htop -e htop"
     },
     
     "memory": {
         "interval": 5,
         "format": "{:>3}%",
-        "on-click": "footclient -T waybar_htop -e htop", 
+        "on-click": "alacritty -T waybar_htop -e htop", 
         "states": {
             "warning": 70,
             "critical": 90
@@ -161,11 +161,11 @@
         "calendar": {
             "on-scroll": 1,
             "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                "months":     "<span color='#ebbcba'><b>{}</b></span>",
+                "days":       "<span color='#ebbcba'><b>{}</b></span>",
+                "weeks":      "<span color='#ebbcba'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ebbcba'><b>{}</b></span>",
+                "today":      "<span color='#eb6f92'><b><u>{}</u></b></span>"
             },
         },
         "actions": {

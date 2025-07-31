@@ -10,22 +10,23 @@
 /* TODO: night mode: https://docs.ankiweb.net/templates/styling.html#night-mode */
 
 :root {
-  --map-color:    #000000;
+  --map-color:    #26233a;
   --element:      #444444;
   --gray:         #444444;
-  --map-hl-color: #FF0000;
-  --map-borders:  #FF0000;
-  --black:        #000000;
-  --red:          #FF0000;
-  --red-cloze:    #FF0000;
-  --yellow-cloze: #FFFF00;
-  --green-cloze:  #00FF00;
-  --bg:           #111111;
-  --text:         #EEEEEE;
-  --again:        #FF0000;
-  --hard:         #FFFF00;
-  --good:         #00FF00;
-  --easy:         #0000FF;
+  --map-hl-color: #9ccfd8;
+  --map-borders:  #ebbcba;
+  --black:        #111111;
+  --red:          #ebbcba;
+  --red-cloze:    #ebbcba;
+  --yellow-cloze: #f6c177;
+  --green-cloze:  #9ccfd8;
+  --bg:           #191724;
+  /* --bg:           #1f1d2e; */
+  --text:         #e0def4;
+  --again:        #eb6f92;
+  --hard:         #f6c177;
+  --good:         #9ccfd8;
+  --easy:         #31748f;
 }
 
 * {
