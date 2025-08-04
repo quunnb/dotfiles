@@ -1,7 +1,7 @@
 [font]
 size = 16
-normal = { family = "CozetteVector Nerd Font", style = "Regular" }
-# normal = { family = "Inconsolata", style = "Regular" }
+# normal = { family = "CozetteVector Nerd Font", style = "Regular" }
+normal = { family = "InconsolataGo Nerd Font Mono", style = "Regular" }
 # normal = { family = "AdwaitaMono Nerd Font", style = "Regular" }
 
 [window]
