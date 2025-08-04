@@ -191,6 +191,31 @@ function! GetXresColor()
     execute "normal! ciw" . l:hex
 endfunction
 
+function! GetRosePine()
+    let l:colors = {
+    \ 'text':    '#e0def4',
+    \ 'fg':      '#e0def4',
+    \ 'bg':      '#191724',
+    \ 'base':    '#191724',
+    \ 'surface': '#1f1d2e',
+    \ 'overlay': '#26233a',
+    \ 'love':    '#eb6f92',
+    \ 'gold':    '#f6c177',
+    \ 'rose':    '#ebbcba',
+    \ 'pine':    '#31748f',
+    \ 'iris':    '#c4a7e7',
+    \ 'foam':    '#9ccfd8',
+    \ }
+
+    let l:key = tolower(expand('<cword>'))
+
+    if has_key(colors, key)
+        execute "normal! ciw" . colors[key]
+    else
+        execute "normal! ciw" . "not_found"
+    endif
+endfunction
+
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
@@ -275,8 +300,11 @@ nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 
 " Get color hex value from .Xresources and replace color word under cursor
-nnoremap <Leader>x :call GetXresColor()<CR>
-xnoremap <Leader>x :call GetXresColor()<CR>
+" nnoremap <Leader>x :call GetXresColor()<CR>
+" xnoremap <Leader>x :call GetXresColor()<CR>
+
+nnoremap <Leader>x :call GetRosePine()<CR>
+xnoremap <Leader>x :call GetRosePine()<CR>
 
 " Readline mappings
 cnoremap <C-a> <Home>

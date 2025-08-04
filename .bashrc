@@ -59,6 +59,9 @@ fi
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 
+# Set up prompt
+eval "$(starship init bash)"
+
 # Log exit
 echo "$(date +%T) close ~/.bashrc" >> ~/.log/rc.log
 

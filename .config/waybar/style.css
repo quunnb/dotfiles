@@ -52,8 +52,9 @@
   background: transparent;
   color: @rose;
   background-color: @base;
-  font-family: JetBrainsMono;
-  font-size: 14px;
+  /* font-family: "AdwaitaMono Nerd Font"; */
+  font-family: "CozetteVector Nerd Font";
+  font-size: 18px;
 }
 
 /* Every module */

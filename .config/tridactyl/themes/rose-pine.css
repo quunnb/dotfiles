@@ -1,20 +1,33 @@
 :root {
+    --tridactyl-font-family: "CozetteVector Nerd Font";
+    --tridactyl-font-family-sans: "CozetteVector Nerd Font";
+    --tridactyl-status-font-family: "CozetteVector Nerd Font";
+    --tridactyl-cmplt-font-family: "CozetteVector Nerd Font";
+    --tridactyl-font-size: 14pt;
+
     --tridactyl-bg: #191724;
     --tridactyl-fg: #ebbcba;
-    --tridactyl-scrollbar-color: #ebbcba var(--tridactyl-fg);
+    --tridactyl-scrollbar-color: #ebbcba;
 
     --tridactyl-hintspan-fg: #191724;
     --tridactyl-hintspan-bg: #9ccfd8;
+    --tridactyl-hint-bg: none;
+    /* --tridactyl-hint-outline: 2px solid #eb6f92; */
+    --tridactyl-hint-outline: none;
 
     --tridactyl-hint-active-fg: #191724;
     --tridactyl-hint-active-bg: #ebbcba;
-    --tridactyl-hint-active-outline: 1px solid #000;
+    --tridactyl-hint-active-outline: 4px solid #eb6f92;
 
     --tridactyl-status-font-size: 14px;
-    --tridactyl-status-font-family: "ShureTechMono Nerd Font";
     --tridactyl-status-font-bg: var(--tridactyl-cmdl-bg);
+    /* --tridactyl-cmplt-border-top: 2px solid #ebbcba; */
+    --tridactyl-cmplt-outline-top: none;
     --tridactyl-status-border: none;
     --tridactyl-status-border-radius: 0;
+
+    --tridactyl-url-fg: #9ccfd8;
+    --tridactyl-search-highlight-color: #f6c177;
 }
 
 :root.TridactylOwnNamespace {

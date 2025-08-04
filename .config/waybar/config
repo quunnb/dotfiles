@@ -110,7 +110,7 @@
         },
         "on-click": "alacritty -T waybar_htop -e htop"
     },
-    
+
     "memory": {
         "interval": 5,
         "format": "{:>3}%",

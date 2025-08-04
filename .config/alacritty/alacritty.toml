@@ -1,8 +1,8 @@
 [font]
-size = 12
-# normal = { family = "CozetteVector", style = "Regular" }
+size = 16
+normal = { family = "CozetteVector Nerd Font", style = "Regular" }
 # normal = { family = "Inconsolata", style = "Regular" }
-normal = { family = "AdwaitaMono", style = "Regular" }
+# normal = { family = "AdwaitaMono Nerd Font", style = "Regular" }
 
 [window]
 decorations = "None"
@@ -27,20 +27,20 @@ text = "#191724"
 cursor = "#eb6f92"
 
 [colors.search.matches]
-foreground = "#908caa"
-background = "#26233a"
+foreground = "#191724"
+background = "#f6c177"
 
 [colors.search.focused_match]
 foreground = "#191724"
 background = "#ebbcba"
 
 [colors.hints.start]
-foreground = "#908caa"
-background = "#1f1d2e"
+foreground = "#1f1d2e"
+background = "#eb6f92"
 
 [colors.hints.end]
-foreground = "#6e6a86"
-background = "#1f1d2e"
+foreground = "#1f1d2e"
+background = "#eb6f92"
 
 [colors.line_indicator]
 foreground = "None"

@@ -1,18 +1,18 @@
 ignore-empty-password
-font=Adwaita
+font=AdwaitaMono
 
 clock
 timestr=%R
-datestr=%a, %e of %B
+datestr=%a, %d of %B
 
 screenshots
 
-effect-pixelate=4
+effect-pixelate=8
 #effect-greyscale
 #effect-scale=0.3
 
 indicator
-indicator-radius=240
+indicator-radius=340
 indicator-thickness=20
 indicator-caps-lock
 
@@ -20,24 +20,25 @@ key-hl-color=9ccfd8
 
 separator-color=00000000
 
-inside-color=00000099
-inside-clear-color=FFD20400
+inside-color=00000088
+inside-clear-color=00000000
 inside-caps-lock-color=009DDC00
 inside-ver-color=D9D8D800
 inside-wrong-color=EE2E2400
 
-ring-color=231F20D9
-ring-clear-color=231F20D9
-ring-caps-lock-color=231F20D9
-ring-ver-color=231F20D9
+ring-color=EBBCBA00
+ring-clear-color=191724D9
+ring-caps-lock-color=191724D9
+ring-ver-color=191724D9
 ring-wrong-color=EB6F92FF
 
-line-color=00000000
+line-color=19172400
 line-clear-color=EBBCBAFF
 line-caps-lock-color=C4A7E7FF
 line-ver-color=D9D8D8FF
 line-wrong-color=EB6F92FF
 
+text-color=EBBCBAFF
 text-clear-color=FFD20400
 text-ver-color=D9D8D800
 text-wrong-color=EE2E2400

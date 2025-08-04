@@ -62,10 +62,7 @@ export PYTHONSTARTUP=~/.config/python/pythonrc
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
 
-# Dark theme please
-export GTK_THEME=0xF00BAE:dark
-export GTK2_RC_FILES=$HOME/.local/share/themes/0xF00BAE/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="
