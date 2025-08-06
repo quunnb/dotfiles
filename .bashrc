@@ -62,6 +62,9 @@ eval "$(fzf --bash)"
 # Set up prompt
 eval "$(starship init bash)"
 
+# Set up Node Version Manager
+source /usr/share/nvm/init-nvm.sh
+
 # Log exit
 echo "$(date +%T) close ~/.bashrc" >> ~/.log/rc.log
 

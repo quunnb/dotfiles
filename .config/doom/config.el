@@ -9,8 +9,8 @@
 (require 'doom-two-tone-themes)
 
 ;; Visual
-(setq doom-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
-      doom-variable-pitch-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
+(setq doom-font (font-spec :family "InconsolataGo Nerd Font Mono" :size 20)
+      doom-variable-pitch-font (font-spec :family "InconsolataGo Nerd Font Propo" :size 20)
       ;; doom-theme 'doom-burgundy-rose
       ;; doom-theme 'rose-pine-color
       doom-theme 'doom-rose-pine
@@ -21,9 +21,9 @@
 
 ;; Red cursor
 (with-eval-after-load 'evil
-  (setq evil-normal-state-cursor '("#EC8E9E" box)
-        evil-insert-state-cursor '("#EC8E9E" bar)
-        evil-visual-state-cursor '("#EC8E9E" box)))
+  (setq evil-normal-state-cursor '("#eb6f92" box)
+        evil-insert-state-cursor '("#eb6f92" bar)
+        evil-visual-state-cursor '("#eb6f92" box)))
 
 
 ;; Move by visual lines
@@ -57,3 +57,4 @@
 ;; Indent width for web-modes
 (setq css-indent-offset 2)
 (setq sgml-basic-offset 2)
+
