@@ -11,11 +11,7 @@
 ;; Visual
 (setq doom-font (font-spec :family "InconsolataGo Nerd Font Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "InconsolataGo Nerd Font Propo" :size 20)
-      ;; doom-theme 'doom-burgundy-rose
-      ;; doom-theme 'rose-pine-color
       doom-theme 'doom-rose-pine
-      ;; doom-theme 'tao-yin
-      ;; doom-theme '0xF00BAE
       display-line-numbers-type 'relative
       )
 
@@ -43,18 +39,22 @@
 (defun get-env-var (var-name)
   (getenv var-name))
 
-;; Setup AI
-(setq gptel-model   'mistral-medium-latest
+(setq gptel-model   'codestral-latest
       gptel-backend
-      (gptel-make-openai "LeChat"   ;can be any name
-        :host "api.mistral.ai"
+      (gptel-make-openai "LeChat - Codestral"
+        :host "codestral.mistral.ai"
         :endpoint "/v1/chat/completions"
         :protocol "https"
-        :key (getenv "MISTRAL_API_KEY")
-        :models '("mistral-medium-latest")))
-
+        :key (getenv "CODESTRAL_API_KEY")
+        :models '("codestral-latest")))
 
 ;; Indent width for web-modes
-(setq css-indent-offset 2)
+(setq-default css-indent-offset 2)
 (setq sgml-basic-offset 2)
 
+;; Resize windows
+(require 'softresize)
+(global-set-key (kbd "M-K") 'softresize-enlarge-window)
+(global-set-key (kbd "M-J") 'softresize-reduce-window)
+(global-set-key (kbd "M-L") 'softresize-enlarge-window-horizontally)
+(global-set-key (kbd "M-H") 'softresize-reduce-window-horizontally)

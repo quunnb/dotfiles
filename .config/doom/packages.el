@@ -65,3 +65,6 @@
 
 (package! rainbow-mode)
 (package! gptel :recipe (:nonrecursive t))
+
+(package! softresize
+  :recipe (:host github :repo "jdburgosr/softresize"))

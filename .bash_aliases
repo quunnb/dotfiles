@@ -8,6 +8,7 @@ echo "$(date +%T) open  ~/.bash_aliases" >> ~/.log/rc.log
 
 alias o='xdg-open'
 
+# cd on exit with yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -26,13 +27,12 @@ alias v='vim --servername VIMSERVER --remote-silent'
 alias vim='vim --servername VIMSERVER --remote-silent'
 alias vimrc='vim ~/.vim/vimrc'
 alias hx='helix'
-alias e='emacsclient --no-wait --reuse-frame --alternate-editor=vim'
+alias e='emacsclient --no-wait --create-frame --alternate-editor "emacs --daemon"'
 
 # linter
 alias lnt="golangci-lint run --config=~/.golangci.yaml ./..."
 
 # Sudo stuff
-alias N='sudo -E nnn -dH'
 alias se='sudoedit'
 
 # Open Vimwiki index
@@ -64,18 +64,16 @@ alias :wq='exit'
 # Write with zeros and delete
 alias destroy='shred -zu'
 
-# Download best mp4 if available
-alias ytmp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b"'
-
-# Download the best audio
-alias yta='yt-dlp -x'
-# Download best mp3
-alias ytmp3='yt-dlp -x --audio-format mp3'
-
-# Download max size video
-alias yt480='yt-dlp -f "bv*[height<=480]+ba/b[height<=480]"'
-alias yt720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
-alias yt1080='yt-dlp -f "bv*[height<=1080]+ba/b[height<=1080]"'
+# yt-dlp stuff
+alias yt-dlp-mp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b"' # Download best mp4 if available
+alias yt-dlp-audio='yt-dlp -x' # Download the best audio
+alias yt-dlp-mp3='yt-dlp -x --audio-format mp3' # Download best mp3
+alias yt-dlp-playlist='yt-dlp -o "%(playlist_index)s - %(title)s.%(ext)s"'
+alias yt-dlp-480='yt-dlp -f "bv*[height<=480]+ba/b[height<=480]"'
+alias yt-dlp-720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
+alias yt-dlp-1080='yt-dlp -f "bv*[height<=1080]+ba/b[height<=1080]"'
+alias yt-dlp-from-file='yt-dlp -a' # Get urls from a file
+alias yt-dlp-with-subs='yt-dlp --write-subs --sub-lang en --embed-subs'
 
 alias myip='curl ipinfo.io'
 alias sää='curl wttr.in/"${CITY}"?M'
@@ -90,7 +88,7 @@ alias datetime='date +"%d.%m.%Y %H:%M"'
 alias nowtime='date +"%T"' # current time in 24hrs format as HH:MM:SS
 alias nowdate='date +"%d-%m-%Y"' # current date in format dd-MM-YY
 
-# Reload keyboard config
+# Reload keyboard config 
 alias keyb=". ~/.xprofile"
 
 # Bluetooth
@@ -98,7 +96,6 @@ alias btup='systemctl start bluetooth.service'
 alias btdn='systemctl stop bluetooth.service'
 alias btup_jbl='bluetoothctl connect "${MAC_JBL}"'
 alias btup_btr011='bluetoothctl connect "${MAC_BTR011"}'
-alias btup_nura='bluetoothctl connect "${MAC_NURA}"'
 
 # Make some noise
 alias whitenoise='play -n synth whitenoise'
@@ -116,12 +113,9 @@ alias dic='sdcv'
 alias ssh-pi='ssh dietpi@"${PI_IP}"'
 
 alias rust-repl=evcxr
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 [ ! -x /usr/bin/neofetch ] && [ -x /usr/bin/fastfetch ] && alias neofetch='fastfetch'
 alias neofetch='neofetch --source /etc/issue'
-
-alias se='sudoedit'
 
 # Log exit
 echo "$(date +%T) close ~/.bash_aliases" >> ~/.log/rc.log

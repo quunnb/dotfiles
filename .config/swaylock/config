@@ -47,4 +47,5 @@ bs-hl-color=EB6F92FF
 caps-lock-key-hl-color=EBBCBAFF
 caps-lock-bs-hl-color=EB6F92FF
 disable-caps-lock-text
+hide-keyboard-layout
 text-caps-lock-color=C4A7E7FF

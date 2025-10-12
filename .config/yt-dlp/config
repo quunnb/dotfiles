@@ -1,2 +1,7 @@
---trim-filenames 40
+--trim-filenames 60
 --restrict-filenames
+--embed-metadata
+--embed-thumbnail
+--write-subs
+--embed-subs
+--format "bv*[height<=1080]+ba/b[height<=1080]"

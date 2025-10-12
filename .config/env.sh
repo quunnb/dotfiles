@@ -79,6 +79,7 @@ fi
 
 # APIs
 [ -f ~/.config/secrets/mistral_api_key ] && export MISTRAL_API_KEY="$(<~/.config/secrets/mistral_api_key)"
+[ -f ~/.config/secrets/codestral_api_key ] && export CODESTRAL_API_KEY="$(<~/.config/secrets/codestral_api_key)"
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log
