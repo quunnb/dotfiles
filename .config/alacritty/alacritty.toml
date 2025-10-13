@@ -1,8 +1,13 @@
+[general]
+
+import = ["~/.config/alacritty/themes/rose-pine/dist/rose-pine.toml"]
+
 [font]
 size = 16
-# normal = { family = "CozetteVector Nerd Font", style = "Regular" }
-normal = { family = "InconsolataGo Nerd Font Mono", style = "Regular" }
+normal = { family = "CozetteVector Nerd Font", style = "Regular" }
+# normal = { family = "InconsolataGo Nerd Font Mono", style = "Regular" }
 # normal = { family = "AdwaitaMono Nerd Font", style = "Regular" }
+# normal = { family = "ShureTechMono Nerd Font", style = "Regular" }
 
 [window]
 decorations = "None"
@@ -11,12 +16,6 @@ decorations = "None"
 startup_mode = "Windowed"
 blur = true
 padding = { x = 8, y = 8 }
-
-[colors.primary]
-foreground = "#e0def4"
-background = "#191724"
-dim_foreground = "#908caa"
-bright_foreground = "#e0def4"
 
 [colors.cursor]
 text = "#191724"
@@ -30,10 +29,6 @@ cursor = "#eb6f92"
 foreground = "#191724"
 background = "#f6c177"
 
-[colors.search.focused_match]
-foreground = "#191724"
-background = "#ebbcba"
-
 [colors.hints.start]
 foreground = "#1f1d2e"
 background = "#eb6f92"
@@ -41,48 +36,6 @@ background = "#eb6f92"
 [colors.hints.end]
 foreground = "#1f1d2e"
 background = "#eb6f92"
-
-[colors.line_indicator]
-foreground = "None"
-background = "None"
-
-[colors.footer_bar]
-foreground = "#e0def4"
-background = "#1f1d2e"
-
-[colors.selection]
-text       = "#e0def4"
-background = "#403d52"
-
-[colors.normal]
-black   = "#26233a"
-red     = "#eb6f92"
-green   = "#31748f"
-yellow  = "#f6c177"
-blue    = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan    = "#ebbcba"
-white   = "#e0def4"
-
-[colors.bright]
-black   = "#6e6a86"
-red     = "#eb6f92"
-green   = "#31748f"
-yellow  = "#f6c177"
-blue    = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan    = "#ebbcba"
-white   = "#e0def4"
-
-[colors.dim]
-black   = "#6e6a86"
-red     = "#eb6f92"
-green   = "#31748f"
-yellow  = "#f6c177"
-blue    = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan    = "#ebbcba"
-white   = "#e0def4"
 
 [cursor]
 style.blinking = "On"

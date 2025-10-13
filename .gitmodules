@@ -1,3 +1,6 @@
 [submodule ".config/qutebrowser/rosepine"]
 	path = .config/qutebrowser/rosepine
 	url = https://github.com/aalbegr/qutebrowser-rose-pine
+[submodule ".config/alacritty/themes/rose-pine"]
+	path = .config/alacritty/themes/rose-pine
+	url = https://github.com/rose-pine/alacritty
