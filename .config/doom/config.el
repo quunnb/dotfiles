@@ -48,6 +48,12 @@
         :key (getenv "CODESTRAL_API_KEY")
         :models '("codestral-latest")))
 
+(add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+(map! :leader
+      :desc "Rewrite area"
+      "r" #'gptel-rewrite)
+
+
 ;; Indent width for web-modes
 (setq-default css-indent-offset 2)
 (setq sgml-basic-offset 2)
@@ -58,3 +64,16 @@
 (global-set-key (kbd "M-J") 'softresize-reduce-window)
 (global-set-key (kbd "M-L") 'softresize-enlarge-window-horizontally)
 (global-set-key (kbd "M-H") 'softresize-reduce-window-horizontally)
+
+;; Enable rainbox-mode
+(defun my/enable-rainbow-if-colors ()
+  "Enable `rainbow-mode' if buffer contains color literals (#rrggbb, rgb(), etc.)."
+  (when (save-excursion
+          (goto-char (point-min))
+          (re-search-forward
+           "\$#\\(?:[0-9a-fA-F]\\{3\\}\\|[0-9a-fA-F]\\{6\\}\$\\)\\|\\brgba?\\s-*(" nil t))
+    (rainbow-mode 1)))
+
+(add-hook 'prog-mode-hook #'my/enable-rainbow-if-colors)
+(add-hook 'web-mode-hook #'my/enable-rainbow-if-colors)
+(add-hook 'css-mode-hook #'my/enable-rainbow-if-colors)

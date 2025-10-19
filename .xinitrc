@@ -56,6 +56,5 @@ thunar --daemon &
 dwmstatus &
 xss-lock slock &
 unclutter --jitter 10 --timeout 3 --ignore-scrolling &
-systemctl --user start app-protonvpn@autostart.service
 exec dwm
 # exec i3

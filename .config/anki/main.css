@@ -7,8 +7,6 @@
   src: url("_font.ttf");
 }
 
-/* TODO: night mode: https://docs.ankiweb.net/templates/styling.html#night-mode */
-
 :root {
   --map-color: #26233a;
   --element: #444444;
