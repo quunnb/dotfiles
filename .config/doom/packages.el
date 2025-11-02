@@ -49,22 +49,24 @@
 ;; (unpin! t)
 
 ;; Themes
-(package! tao-theme)
+(package! autothemer)
 
+(package! tao-theme)
+(package! doric-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
-
-(package! autothemer)
 (package! rose-pine-emacs
   :recipe (:host github
            :repo "thongpv87/rose-pine-emacs"
            :branch "master"))
 
+(package! colorful-mode)
 
-(package! rainbow-mode)
-(package! gptel :recipe (:nonrecursive t))
-
+;; UI layout
 (package! softresize
   :recipe (:host github :repo "jdburgosr/softresize"))
+
+;; AI
+(package! gptel :recipe (:nonrecursive t))

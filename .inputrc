@@ -1,2 +1,6 @@
 "\C-p": history-search-backward
 "\C-n": history-search-forward
+
+set colored-stats on
+set colored-completion-prefix on
+

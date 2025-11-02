@@ -7,4 +7,3 @@ theme="rose-pine"
 # theme="rose-pine-dawn"
 
 [ -f ~/.config/fzf/themes/$theme.sh ] && . ~/.config/fzf/themes/$theme.sh
-

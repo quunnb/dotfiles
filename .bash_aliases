@@ -18,9 +18,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-alias ....='cd ../../..'
-alias ...='cd ../..'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # Use vim server instance
 alias v='vim --servername VIMSERVER --remote-silent'

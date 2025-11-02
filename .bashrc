@@ -44,12 +44,12 @@ shopt -s dirspell 2> /dev/null
 # Correct spelling errors in cd arguments
 shopt -s cdspell 2> /dev/null
 
-PROMPT_COMMAND='history -a'
-
 # Append to history file rather than overwriting
 shopt -s histappend
 # Attempt to save each line of a multi-line-command in the same history entry separated by semicolons
 shopt -s cmdhist
+
+PROMPT_COMMAND='history -a'
 
 # Disable sending terminal output stop/resume characters with CTRL-S and CTRL-Q
 if [[ -t 0 && $- = *i* ]]; then
@@ -57,7 +57,11 @@ if [[ -t 0 && $- = *i* ]]; then
 fi
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
+FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
+# Go
+bind -m emacs-standard -x '"\e\C-g": fzf-file-widget'
+# Find
+bind -m emacs-standard '"\e\C-f": " \C-b\C-k \C-u`__fzf_cd__`\e\C-e\er\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d"'
 
 # Set up prompt
 eval "$(starship init bash)"

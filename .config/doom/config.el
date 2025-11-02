@@ -3,36 +3,50 @@
 (setq user-full-name "quunnb"
       user-mail-address "quunnb@amideus.fi")
 
-
 (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
-
 (require 'doom-two-tone-themes)
 
-;; Visual
-(setq doom-font (font-spec :family "InconsolataGo Nerd Font Mono" :size 20)
-      doom-variable-pitch-font (font-spec :family "InconsolataGo Nerd Font Propo" :size 20)
+;; Visual stuff
+(setq doom-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
+      doom-variable-pitch-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
       doom-theme 'doom-rose-pine
       display-line-numbers-type 'relative
       )
 
-;; Red cursor
+;; Resize windows with Meta-Shift-direction
+(require 'softresize)
+(global-set-key (kbd "M-K") 'softresize-enlarge-window)
+(global-set-key (kbd "M-J") 'softresize-reduce-window)
+(global-set-key (kbd "M-L") 'softresize-enlarge-window-horizontally)
+(global-set-key (kbd "M-H") 'softresize-reduce-window-horizontally)
+
+;; Evil keybindings
 (with-eval-after-load 'evil
+  ;; Move by visual lines
+  (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+  ;; Swap movement repetition keys (this fucks up using s/S for repeated movements though)
+  (define-key evil-motion-state-map (kbd ",") 'evil-snipe-repeat)
+  (define-key evil-motion-state-map (kbd ";") 'evil-snipe-repeat-reverse)
+
+  ;; Create multiple cursors at the beginning or end of line of visual selection
+  (evil-global-set-key 'visual (kbd "I") 'evil-mc-make-cursor-in-visual-selection-beg)
+  (evil-global-set-key 'visual (kbd "A") 'evil-mc-make-cursor-in-visual-selection-end)
+  ;; Use avy to copy / move regions of text
+  (evil-global-set-key 'normal (kbd "gsm") 'avy-move-region)
+  (evil-global-set-key 'normal (kbd "gsc") 'avy-copy-region )
+
+  ;; Move across lines with f, t, etc.
+  (setq-default evil-cross-lines t)
+
+  ;; Red cursor
   (setq evil-normal-state-cursor '("#eb6f92" box)
         evil-insert-state-cursor '("#eb6f92" bar)
         evil-visual-state-cursor '("#eb6f92" box)))
 
-
-;; Move by visual lines
-(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
-(setq-default evil-cross-lines t)
-
-
 ;; Load some paths
 (setq org-directory "~/org/"
-      projectile-project-search-path '("~/dev/" "~/.config/anki/"))
+      projectile-project-search-path '("~/dev/kood/" "~/.config/anki/"))
 
 
 ;; Get environmental variables for API keys
@@ -58,22 +72,14 @@
 (setq-default css-indent-offset 2)
 (setq sgml-basic-offset 2)
 
-;; Resize windows
-(require 'softresize)
-(global-set-key (kbd "M-K") 'softresize-enlarge-window)
-(global-set-key (kbd "M-J") 'softresize-reduce-window)
-(global-set-key (kbd "M-L") 'softresize-enlarge-window-horizontally)
-(global-set-key (kbd "M-H") 'softresize-reduce-window-horizontally)
 
-;; Enable rainbox-mode
-(defun my/enable-rainbow-if-colors ()
-  "Enable `rainbow-mode' if buffer contains color literals (#rrggbb, rgb(), etc.)."
-  (when (save-excursion
-          (goto-char (point-min))
-          (re-search-forward
-           "\$#\\(?:[0-9a-fA-F]\\{3\\}\\|[0-9a-fA-F]\\{6\\}\$\\)\\|\\brgba?\\s-*(" nil t))
-    (rainbow-mode 1)))
-
-(add-hook 'prog-mode-hook #'my/enable-rainbow-if-colors)
-(add-hook 'web-mode-hook #'my/enable-rainbow-if-colors)
-(add-hook 'css-mode-hook #'my/enable-rainbow-if-colors)
+(use-package colorful-mode
+  ;; :diminish
+  ;; :ensure t ; Optional
+  :custom
+  (colorful-use-prefix t)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))

@@ -45,11 +45,10 @@ export LESSHISTFILE=/dev/null
 # Disable writing python history file
 export PYTHONSTARTUP=~/.config/python/pythonrc
 
-# MAC-addresses of some BT-devices
-[ -f ~/.config/secrets/nura.mac ] && export MAC_NURA="$(<~/.config/secrets/nura.mac)"
-[ -f ~/.config/secrets/cube66.mac ] && export MAC_CUBE66="$(<~/.config/secrets/cube66.mac)"
+# MAC-addresses of some devices
 [ -f ~/.config/secrets/btr011.mac ] && export MAC_BTR011="$(<~/.config/secrets/btr011.mac)"
 [ -f ~/.config/secrets/jbl.mac ] && export MAC_JBL="$(<~/.config/secrets/jbl.mac)"
+[ -f ~/.config/secrets/wlan.mac ] && export WLAN_MAC="$(<~/.config/secrets/wlan.mac)"
 
 # IPs
 [ -f ~/.config/secrets/pi.ip ] && export PI_IP="$(<~/.config/secrets/pi.ip)"
@@ -64,7 +63,6 @@ export SDCV_PAGER='less --quit-if-one-screen -RX'
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="
     --walker-skip .git,node_modules,target,.go,.cache,.steam,Steam,.npm,.yarn
     --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
@@ -78,8 +76,8 @@ if type rg &> /dev/null; then
 fi
 
 # APIs
-[ -f ~/.config/secrets/mistral_api_key ] && export MISTRAL_API_KEY="$(<~/.config/secrets/mistral_api_key)"
-[ -f ~/.config/secrets/codestral_api_key ] && export CODESTRAL_API_KEY="$(<~/.config/secrets/codestral_api_key)"
+[ -f ~/.config/secrets/mistral.api ] && export MISTRAL_API_KEY="$(<~/.config/secrets/mistral.api)"
+[ -f ~/.config/secrets/codestral.api ] && export CODESTRAL_API_KEY="$(<~/.config/secrets/codestral.api)"
 
 # Log exit
 echo "$(date +%T) close ~/.config/env.sh" >> ~/.log/rc.log
