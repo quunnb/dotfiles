@@ -1,8 +1,13 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-;; To install a package with Doom you must declare them here and run 'doom sync'
-;; on the command line, then restart Emacs for the changes to take effect -- or
+;; To install a package:
+;;
+;;   1. Declare them here in a `package!' statement,
+;;   2. Run 'doom sync' in the shell,
+;;   3. Restart Emacs.
+;;
+;; Use 'C-h f package\!' to look up documentation for the `package!' macro.
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
@@ -48,25 +53,38 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;; Themes
+;; DISABLE
+(package! evil-snipe :disable t)
+
+;; UTIL
 (package! autothemer)
 
+;; THEMES & COLORS
 (package! tao-theme)
 (package! doric-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
-(package! rose-pine-emacs
-  :recipe (:host github
-           :repo "thongpv87/rose-pine-emacs"
-           :branch "master"))
 
+;; LAYOUT
+;;
+;; https://github.com/jdburgosr/softresize
+(package! softresize
+  :recipe (:host github
+           :repo "jdburgosr/softresize"))
+
+;; FUNCTIONALITY
+;;
+;; https://github.com/Dewdrops/evil-ReplaceWithRegister
+(package! evil-replace-with-register
+  :recipe (:host github
+           :repo "Dewdrops/evil-ReplaceWithRegister"))
+
+;; Indicate colors of hex values etc.
+;; https://github.com/DevelopmentCool2449/colorful-mode
 (package! colorful-mode)
 
-;; UI layout
-(package! softresize
-  :recipe (:host github :repo "jdburgosr/softresize"))
-
 ;; AI
+;; https://github.com/karthink/gptel
 (package! gptel :recipe (:nonrecursive t))
