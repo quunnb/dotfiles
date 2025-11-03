@@ -4,4 +4,5 @@
 --embed-thumbnail
 --write-subs
 --embed-subs
---format "bv*[height<=1080]+ba/b[height<=1080]"
+# Download best but not bigger than 1080, or the worst
+--format "bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w"
