@@ -62,6 +62,8 @@
 ;; THEMES & COLORS
 (package! tao-theme)
 (package! doric-themes)
+(package! gruber-darker-theme)
+(package! ef-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
@@ -84,6 +86,9 @@
 ;; Indicate colors of hex values etc.
 ;; https://github.com/DevelopmentCool2449/colorful-mode
 (package! colorful-mode)
+
+;; https://github.com/emacsfodder/move-text
+(package! move-text)
 
 ;; AI
 ;; https://github.com/karthink/gptel
