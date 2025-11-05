@@ -11,13 +11,14 @@
 
     --tridactyl-hintspan-fg: #191724;
     --tridactyl-hintspan-bg: #9ccfd8;
-    --tridactyl-hint-bg: #ebbcba;
+    /* --tridactyl-hint-bg: #c4a7e788; */
+    --tridactyl-hint-bg: none;
     /* --tridactyl-hint-outline: 2px solid #eb6f92; */
     --tridactyl-hint-outline: none;
 
-    --tridactyl-hint-active-fg: #191724;
-    --tridactyl-hint-active-bg: #ebbcba;
-    --tridactyl-hint-active-outline: 4px solid #eb6f92;
+    --tridactyl-hint-active-fg: none;
+    --tridactyl-hint-active-bg: none;
+    --tridactyl-hint-active-outline: none;
 
     --tridactyl-status-font-size: 14px;
     --tridactyl-status-font-bg: var(--tridactyl-cmdl-bg);
