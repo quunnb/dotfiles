@@ -11,7 +11,7 @@
 
     --tridactyl-hintspan-fg: #191724;
     --tridactyl-hintspan-bg: #9ccfd8;
-    --tridactyl-hint-bg: none;
+    --tridactyl-hint-bg: #ebbcba;
     /* --tridactyl-hint-outline: 2px solid #eb6f92; */
     --tridactyl-hint-outline: none;
 
@@ -57,4 +57,3 @@
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px !important;
     opacity: 0.9;
 }
-

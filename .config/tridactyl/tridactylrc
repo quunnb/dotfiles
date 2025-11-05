@@ -60,6 +60,10 @@ autocmd DocStart ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ mode ignore
 unbindurl ^http(s)?:\/\/(www\.)?lichess\.org\/.*$ f
 unbindurl ^http(s)?:\/\/(www\.)?chess\.com\/.*$  f
 
+" Reddit links
+bindurl ^http(s)?:\/\/(www\.)?old.reddit.com f hint -Jc a.title,a.comments,div.arrow,span.user>a,ul.tabmenu>li>a
+bindurl ^http(s)?:\/\/(www\.)?old.reddit.com F hint -Jbc a.title,a.comments,div.arrow,span.user>a,ul.tabmenu>li>a
+
 set hintdelay 100
 set smoothscroll true
 
