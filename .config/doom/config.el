@@ -19,7 +19,7 @@
 ;; Transparency
 (defvar bg-transparency 70)
 (set-frame-parameter nil 'alpha-background bg-transparency)
-(add-to-list 'default-frame-alist '(alpha-background . bg-transparency))
+(add-to-list 'default-frame-alist `(alpha-background . ,bg-transparency))
 
 (defun toggle-transparency ()
   (interactive)
@@ -48,6 +48,7 @@
   :doc "Custom keymaps"
   "a" gptel-prefix-map ; AI
   "s" #'avy-goto-char-2 ; search
+  "t" #'toggle-transparency
   )
 
 (define-key custom-map "a" gptel-prefix-map)

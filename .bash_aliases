@@ -28,7 +28,7 @@ alias vim='vim --servername VIMSERVER --remote-silent'
 alias vimrc='vim ~/.vim/vimrc'
 alias hx='helix'
 alias e='emacsclient --no-wait --create-frame --alternate-editor "systemctl --user start emacs.service"'
-alias er='systemctl --user restart emacs'
+alias er='systemctl --user reload-or-restart emacs'
 
 # linter
 alias lnt="golangci-lint run --config=~/.golangci.yaml ./..."
