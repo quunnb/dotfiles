@@ -8,10 +8,10 @@ size = 16
 # normal = { family = "InconsolataGo Nerd Font Mono", style = "Regular" }
 # normal = { family = "AdwaitaMono Nerd Font", style = "Regular" }
 normal = { family = "ShureTechMono Nerd Font", style = "Regular" }
+# normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
 
 [window]
-decorations = "None"
-# opacity = 0.95
+opacity = 0.70
 # startup_mode = "Maximized"
 startup_mode = "Windowed"
 blur = true

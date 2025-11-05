@@ -84,7 +84,7 @@ set nospell
 set tws=100x50
 set noshowmode
 set nostartofline
-set scrolloff=100
+" set scrolloff=100
 
 " "CMDLINE"
 set showcmd
