@@ -1,4 +1,4 @@
-"
+" -*- vimrc-mode -*-
 " ~/.config/tridactyl/tridactylrc
 "
 
@@ -10,7 +10,7 @@ set newtab about:blank
 " Make t open the selection with tabopen
 bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
 
-set hintchars fdsarewvcxzq
+set hintchars fdsjklaöeiwomnvcurghxzyt
 set incsearch true
 
 " Make search great again
@@ -22,6 +22,10 @@ bind <Space><Space> nohlsearch
 
 bind   --mode=ex <C-a> text.beginning_of_line
 unbind --mode=ex <C-c>
+
+" No need to stretch for tab
+bind --mode=ex <C-j> ex.next_completion
+bind --mode=ex <C-k> ex.prev_completion
 
 " Don't need no new windows (Detach one if you must)
 unbind w
@@ -48,10 +52,6 @@ bind K tabprev
 bind o fillcmdline open
 bind O fillcmdline tabopen
 
-" No need to stretch for tab
-bind --mode=ex <C-j> ex.next_completion
-bind --mode=ex <C-k> ex.prev_completion
-
 " Youtube's a bitch, but these seem to work
 bindurl ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ --mode=normal w !s xdotool key Left
 bindurl ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ --mode=normal b !s xdotool key Right
@@ -65,9 +65,14 @@ autocmd DocStart ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ mode ignore
 unbindurl ^http(s)?:\/\/(www\.)?lichess\.org\/.*$ f
 unbindurl ^http(s)?:\/\/(www\.)?chess\.com\/.*$  f
 
+"
+" HINTING "
+"
+
 " Reddit links
-bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com f hint -Jc a.title,a.comments,div.arrow,span.user>a,ul.tabmenu>li>a
-bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com F hint -Jbc a.title,a.comments,div.arrow,span.user>a,ul.tabmenu>li>a
+bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com f hint -Jc a.title,a.comments,span.user>a,ul.tabmenu>li>a,div.md>p>a
+bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com ,f hint -Jc div.arrow
+bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com F hint -Jbc a.title,a.comments,span.user>a,ul.tabmenu>li>a,div.md>p>a
 
 " Google
 bindurl ^http(s)?:\/\/(www\.)?google\.com f hint -Jc a:has(h3),a[href^="/search"]
@@ -76,6 +81,11 @@ bindurl ^http(s)?:\/\/(www\.)?google\.com F hint -Jbc a:has(h3),a[href^="/search
 " Ecosia
 bindurl ^http(s)?:\/\/(www\.)?ecosia\.org f hint -Jc div.result__title>a,li.search-navigation__item>a
 bindurl ^http(s)?:\/\/(www\.)?ecosia\.org F hint -Jbc div.result__title>a,li.search-navigation__item>a
+
+" Duckduck.go
+bindurl ^http(s)?:\/\/(www\.)?duckduckgo\.com gi focusinput
+bindurl ^http(s)?:\/\/(www\.)?duckduckgo\.com f hint -Jc h2 > a, nav > ul > li > a
+bindurl ^http(s)?:\/\/(www\.)?duckduckgo\.com f hint -Jbc h2 > a, nav > ul > li > a
 
 set hintdelay 100
 set smoothscroll true
