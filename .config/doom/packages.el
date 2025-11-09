@@ -53,13 +53,23 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;; DISABLE
-(package! evil-snipe :disable t)
+;;
+;; DISABLE DOOM PACKAGES
+;;
 
+(package! evil-snipe :disable t)
+(package! autoparens :disable t)
+
+;;
 ;; UTIL
+;;
+
 (package! autothemer)
 
+;;
 ;; THEMES & COLORS
+;;
+
 (package! tao-theme)
 (package! doric-themes)
 (package! gruber-darker-theme)
@@ -69,15 +79,19 @@
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
 
+;;
 ;; LAYOUT
 ;;
+
 ;; https://github.com/jdburgosr/softresize
 (package! softresize
   :recipe (:host github
            :repo "jdburgosr/softresize"))
 
+;;
 ;; FUNCTIONALITY
 ;;
+
 ;; https://github.com/Dewdrops/evil-ReplaceWithRegister
 (package! evil-replace-with-register
   :recipe (:host github
@@ -90,6 +104,22 @@
 ;; https://github.com/emacsfodder/move-text
 (package! move-text)
 
+;;
 ;; AI
+;;
+
 ;; https://github.com/karthink/gptel
 (package! gptel :recipe (:nonrecursive t))
+
+;; Integrate local password store (WIP)
+(package! password-store)
+
+
+;;
+;; LANGUAGES MODES ETC.
+;;
+
+;; https://github.com/mcandre/vimrc-mode
+(package! vimrc-mode)
+;; https://github.com/holomorph/systemd-mode
+(package! systemd)

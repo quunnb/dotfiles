@@ -4,6 +4,7 @@
       user-mail-address "quunnb@amideus.fi")
 
 (add-to-list 'custom-theme-load-path "~/.config/doom/themes/")
+(add-to-list 'auto-mode-alist '("\\tridactylrc\\'" . vimrc-mode))
 
 ;; Visual stuff
 (setq
@@ -21,6 +22,7 @@
 (set-frame-parameter nil 'alpha-background bg-transparency)
 (add-to-list 'default-frame-alist `(alpha-background . ,bg-transparency))
 
+;; Toggle global background transparency
 (defun toggle-transparency ()
   (interactive)
   (let ((current-alpha (frame-parameter nil 'alpha-background)))
@@ -65,7 +67,7 @@
   (evil-global-set-key 'normal (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
   (evil-global-set-key 'normal (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
 
-  ;; Swap movement repetition keys
+  ;; Swap movement repetition keys for Finnish keyboard layout
   (evil-global-set-key 'normal (kbd ",") 'evil-repeat-find-char)
   (evil-global-set-key 'normal (kbd ";") 'evil-repeat-find-char-reverse)
 
@@ -76,7 +78,7 @@
   (evil-global-set-key 'normal (kbd "gsm") 'avy-move-region)
   (evil-global-set-key 'normal (kbd "gsc") 'avy-copy-region )
 
-  ;; Move across lines with f, t, etc.
+  ;; Move across lines with f, t, et.al
   (setq-default evil-cross-lines t)
 
   ;; Red cursor
@@ -123,6 +125,9 @@
               evil-shift-width 4
               sgml-basic-offset 2) ;; Markup
 
+(setq css-indent-offset 2)
+(setq css-indent-level 2)
+
 (use-package colorful-mode
   :custom
   (colorful-use-prefix t)
@@ -144,6 +149,17 @@
   :config
   (global-evil-surround-mode 1))
 
+;; Move (mostly lines of) text easily
 (use-package move-text
   :bind (("M-j" . move-text-down)
          ("M-k" . move-text-up)))
+
+;; Etc.
+(after! circe
+  (set-irc-server! "irc.libera.chat"
+    `(:tls t
+      :port 6697
+      :nick "quunnb"
+      :sasl-username "quunnb"
+      :sasl-password ""
+      :channels ("#emacs" "tridactyl"))))
