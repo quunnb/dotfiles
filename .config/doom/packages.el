@@ -123,3 +123,4 @@
 (package! vimrc-mode)
 ;; https://github.com/holomorph/systemd-mode
 (package! systemd)
+(package! impatient-showdown)

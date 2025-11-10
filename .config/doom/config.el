@@ -10,8 +10,9 @@
 (setq
  ;; doom-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
  ;; doom-variable-pitch-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
- doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 20)
- doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 20)
+ ;; doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 20)
+ doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
+ doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20)
  doom-theme 'doom-rose-pine
  display-line-numbers-type 'relative
  initial-scratch-message nil
@@ -53,12 +54,32 @@
   "t" #'toggle-transparency
   )
 
-(define-key custom-map "a" gptel-prefix-map)
+(defvar-keymap mc-skip-map
+  "n" #'evil-mc-skip-and-goto-next-match
+  "p" #'evil-mc-skip-and-goto-prev-match
+  )
+
+(defvar-keymap mc-map
+  :doc "Multi-cursor keymaps"
+  "n" #'evil-mc-make-and-goto-next-match
+  "N" #'evil-mc-make-and-goto-last-cursor
+  "p" #'evil-mc-make-and-goto-prev-match
+  "P" #'evil-mc-make-and-goto-first-cursor
+  "s" mc-skip-map
+  "m" #'evil-mc-make-all-cursors
+  "u" #'evil-mc-undo-cursor
+  "h" #'+multiple-cursors/evil-mc-toggle-cursor-here
+  "t" #'+multiple-cursors/evil-mc-toggle-cursors
+  )
+
 (define-key doom-leader-map "j" custom-map)
+(define-key doom-leader-map "k" mc-map)
 
 (with-eval-after-load 'which-key
   (which-key-add-keymap-based-replacements doom-leader-map
     "j" `("custom" . ,custom-map))
+  (which-key-add-keymap-based-replacements doom-leader-map
+    "k" `("mc" . ,mc-map))
   )
 
 ;; Evil keybindings
@@ -74,9 +95,10 @@
   ;; Create multiple cursors at the beginning or end of line of visual selection
   (evil-global-set-key 'visual (kbd "I") 'evil-mc-make-cursor-in-visual-selection-beg)
   (evil-global-set-key 'visual (kbd "A") 'evil-mc-make-cursor-in-visual-selection-end)
+
   ;; Use avy to copy / move regions of text
   (evil-global-set-key 'normal (kbd "gsm") 'avy-move-region)
-  (evil-global-set-key 'normal (kbd "gsc") 'avy-copy-region )
+  (evil-global-set-key 'normal (kbd "gsc") 'avy-copy-region)
 
   ;; Move across lines with f, t, et.al
   (setq-default evil-cross-lines t)
@@ -117,16 +139,14 @@
         :key (getenv "CODESTRAL_API_KEY")
         :models '("codestral-latest")))
 
-;; TODO this doesn't seem to work?
-(add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
-
-;; Indent width
-(setq-default tab-width 4
-              evil-shift-width 4
-              sgml-basic-offset 2) ;; Markup
-
-(setq css-indent-offset 2)
-(setq css-indent-level 2)
+(setq
+  ;; css-indent-offset 2
+  ;; css-indent-level 2
+  ;; web-mode-css-indent-offset 2
+  ;; js-indent-level 2
+  ;; sgml-basic-offset 2
+  +default-want-RET-continue-comments nil
+  +evil-want-o/O-to-continue-comments nil)
 
 (use-package colorful-mode
   :custom
@@ -153,6 +173,9 @@
 (use-package move-text
   :bind (("M-j" . move-text-down)
          ("M-k" . move-text-up)))
+
+;; Default browser
+(setq browse-url-browser-function 'browse-url-firefox)
 
 ;; Etc.
 (after! circe
