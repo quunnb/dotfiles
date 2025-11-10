@@ -53,7 +53,8 @@
   color: @rose;
   background-color: @base;
   /* font-family: "AdwaitaMono Nerd Font"; */
-  font-family: "InconsolataGo Nerd Font Propo";
+  /* font-family: "InconsolataGo Nerd Font Propo"; */
+  font-family: "DepartureMono Nerd Font";
   font-size: 18px;
 }
 
