@@ -3,24 +3,25 @@
 #
 
 # Log entry
-echo "$(date +%T) open  ~/.bashrc" >> ~/.log/rc.log
+echo "$(date +%T) open  ~/.bashrc" >>~/.log/rc.log
 
-[[ $- != *i*            ]] && return
+[[ $- != *i* ]] && return
 [[ "$(whoami)" = "root" ]] && return
-[[ -z "$FUNCNEST"       ]] && export FUNCNEST=100
+[[ -z "$FUNCNEST" ]] && export FUNCNEST=100
 
 [ -f ~/.config/env.sh ] && source ~/.config/env.sh
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f /usr/share/doc/pkgfile/command-not-found.bash ] && source /usr/share/doc/pkgfile/command-not-found.bash
 
-PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\n[ \u@\h ]${PS1_CMD1} \w \$ '
+PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'
+PS1='\n[ \u@\h ]${PS1_CMD1} \w \$ '
 
 # Prevent overwriting existing files with the > operator. Use >| instead to overwrite
 set -o noclobber
 # Ignore EOF: CTRL-D doesn't log out of shells
 set -o ignoreeof
 # Turn on recursive globbing (enables ** to recurse all directories)
-shopt -s globstar 2> /dev/null
+shopt -s globstar 2>/dev/null
 
 if [[ $- = *i* ]]; then
     # !!<space> expands to the last run command
@@ -40,9 +41,9 @@ if [[ $- = *i* ]]; then
 fi
 
 # Correct spelling errors in tab completion
-shopt -s dirspell 2> /dev/null
+shopt -s dirspell 2>/dev/null
 # Correct spelling errors in cd arguments
-shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2>/dev/null
 
 # Append to history file rather than overwriting
 shopt -s histappend
@@ -70,6 +71,4 @@ eval "$(starship init bash)"
 source /usr/share/nvm/init-nvm.sh
 
 # Log exit
-echo "$(date +%T) close ~/.bashrc" >> ~/.log/rc.log
-
-
+echo "$(date +%T) close ~/.bashrc" >>~/.log/rc.log
