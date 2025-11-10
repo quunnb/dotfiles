@@ -51,7 +51,7 @@ pre {
   font-family: default_font;
 }
 
-p {
+p, ul {
   margin: 0;
 }
 
