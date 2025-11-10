@@ -1,6 +1,8 @@
 "\C-p": history-search-backward
 "\C-n": history-search-forward
+"\C-w": backward-kill-word
 
 set colored-stats on
 set colored-completion-prefix on
+set bind-tty-special-chars off
 
