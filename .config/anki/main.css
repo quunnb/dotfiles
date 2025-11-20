@@ -8,9 +8,10 @@
 }
 
 :root {
-  --map-color: #26233a;
   --element: #444444;
   --gray: #444444;
+  --map-color: #26233a;
+  --map-fill: #26233a;
   --map-hl-fill: #9ccfd8;
   --map-border: #ebbcba;
   --map-hl-border: #eb6f92;
@@ -60,7 +61,7 @@ img {
   float: center;
   padding: 4px;
   text-align: center;
-  max-height: 35vh;
+  max-height: 40vh;
   max-width: 100%;
 }
 
@@ -112,6 +113,9 @@ code {
   justify-items: center;
   background-color: var(--bg);
   aspect-ratio: 16/9;
+  & img {
+    width: 70vw;
+  }
 }
 
 .footer {
@@ -136,10 +140,10 @@ code {
 }
 
 .header {
-  align-content: center;
-  padding: 16px;
-  margin: 16px;
-  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 120%;
 }
 
@@ -166,7 +170,7 @@ code {
     text-align: center;
   }
   & img {
-    height: 200px;
+    height: 240px;
   }
 }
 
@@ -185,6 +189,9 @@ code {
 
 .question {
   display: grid;
+  > p {
+    text-align: left
+  }
 }
 
 .left-align {
@@ -407,3 +414,4 @@ hr {
   text-align: center;
   margin: 32px;
 }
+
