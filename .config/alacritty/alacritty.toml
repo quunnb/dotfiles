@@ -12,31 +12,32 @@ normal = { family = "DepartureMono Nerd Font", style = "Regular" }
 # normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
 
 [window]
-opacity = 0.70
+# opacity = 0.70
+opacity = 1.0
 # startup_mode = "Maximized"
 startup_mode = "Windowed"
 blur = true
 padding = { x = 8, y = 8 }
 
 [colors.cursor]
-text = "#191724"
-cursor = "#eb6f92"
+text = "#000000"
+cursor = "#ff0000"
 
 [colors.vi_mode_cursor]
-text = "#191724"
-cursor = "#eb6f92"
+text = "#000000"
+cursor = "#ff0000"
 
 [colors.search.matches]
-foreground = "#191724"
-background = "#f6c177"
+foreground = "#000000"
+background = "#ffff00"
 
 [colors.hints.start]
-foreground = "#1f1d2e"
-background = "#eb6f92"
+foreground = "#000000"
+background = "#ff0000"
 
 [colors.hints.end]
-foreground = "#1f1d2e"
-background = "#eb6f92"
+foreground = "#000000"
+background = "#ff0000"
 
 [cursor]
 style.blinking = "On"

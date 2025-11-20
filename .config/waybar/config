@@ -161,11 +161,16 @@
         "calendar": {
             "on-scroll": 1,
             "format": {
-                "months":     "<span color='#ebbcba'><b>{}</b></span>",
-                "days":       "<span color='#ebbcba'><b>{}</b></span>",
-                "weeks":      "<span color='#ebbcba'><b>W{}</b></span>",
-                "weekdays":   "<span color='#ebbcba'><b>{}</b></span>",
-                "today":      "<span color='#eb6f92'><b><u>{}</u></b></span>"
+                // "months":     "<span color='#ebbcba'><b>{}</b></span>",
+                // "days":       "<span color='#ebbcba'><b>{}</b></span>",
+                // "weeks":      "<span color='#ebbcba'><b>W{}</b></span>",
+                // "weekdays":   "<span color='#ebbcba'><b>{}</b></span>",
+                // "today":      "<span color='#eb6f92'><b><u>{}</u></b></span>"
+                "months":     "<span color='#000000'><b>{}</b></span>",
+                "days":       "<span color='#000000'><b>{}</b></span>",
+                "weeks":      "<span color='#000000'><b>W{}</b></span>",
+                "weekdays":   "<span color='#000000'><b>{}</b></span>",
+                "today":      "<span color='#ff0000'><b><u>{}</u></b></span>"
             },
         },
         "actions": {

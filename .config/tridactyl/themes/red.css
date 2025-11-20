@@ -1,35 +1,34 @@
 :root {
-    --tridactyl-font-family: "ShureTechMono Nerd Font";
-    --tridactyl-bg: #000000;
-    --red: #FF0000;
-    --tridactyl-fg: var(--red);
-
+    --tridactyl-font-family: "DepartureMono Nerd Font";
+    --tridactyl-font-family-sans: "DepartureMono Nerd Font";
+    --tridactyl-status-font-family: "DepartureMono Nerd Font";
+    --tridactyl-cmplt-font-family: "DepartureMono Nerd Font";
     --tridactyl-font-size: 14pt;
+
+    --tridactyl-bg: #000000;
+    --tridactyl-fg: #ffffff;
+    --tridactyl-scrollbar-color: #ffffff;
+
+    --tridactyl-hintspan-fg: #000000;
+    --tridactyl-hintspan-bg: #ff0000;
+    --tridactyl-hint-bg: #c4a7e788;
+    --tridactyl-hint-bg: none;
+    /* --tridactyl-hint-outline: 2px solid #ff0000; */
+    --tridactyl-hint-outline: none;
+    --tridactyl-bg: black;
+    --tridactyl-hint-active-fg: #ffffff;
+    --tridactyl-hint-active-bg: #000000;
+    --tridactyl-hint-active-outline: black;
+
     --tridactyl-status-font-size: 14px;
-    --tridactyl-status-font-family: "ShureTechMono Nerd Font";
     --tridactyl-status-font-bg: var(--tridactyl-cmdl-bg);
-    --tridactyl-status-border: 2px solid black;
+    /* --tridactyl-cmplt-border-top: 2px solid #ff0000; */
+    --tridactyl-cmplt-outline-top: none;
+    --tridactyl-status-border: none;
     --tridactyl-status-border-radius: 0;
 
-    --tridactyl-header-font-size: 16px;
-
-    --tridactyl-of-fg: #000000;
-    --tridactyl-of-bg: var(--red);
-
-    --tridactyl-hintspan-fg: var(--red);
-    --tridactyl-hintspan-bg: #000000;
-
-    --tridactyl-hint-active-fg: #000000;
-    --tridactyl-hint-active-bg: var(--red);
-    --tridactyl-hint-active-outline: 1px solid #000;
-
-    --tridactyl-hint-bg: rgba(13, 31, 54, 0.25);
-    --tridactyl-hint-outline: 2px solid var(--tridactyl-hintspan-bg);
-
-    /* --tridactyl-cmdl-font-size: 1.5rem; */
-    /* --tridactyl-cmplt-option-height: 1.9em; */
-
-    --tridactyl-border-radius: 0;
+    --tridactyl-url-fg: #ff0000;
+    --tridactyl-search-highlight-color: #ff00ff;
 }
 
 :root.TridactylOwnNamespace {
