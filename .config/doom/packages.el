@@ -104,6 +104,16 @@
 ;; https://github.com/emacsfodder/move-text
 (package! move-text)
 
+;; https://github.com/soerlemans/eglot-header-line
+(package! eglot-header-line
+  :recipe (:host github
+           :repo "soerlemans/eglot-header-line"))
+
+;; https://github.com/edkolev/evil-lion
+(package! evil-lion
+  :recipe (:host github
+           :repo "edkolev/evil-lion"))
+
 ;;
 ;; AI
 ;;
@@ -111,12 +121,8 @@
 ;; https://github.com/karthink/gptel
 (package! gptel :recipe (:nonrecursive t))
 
-;; Integrate local password store (WIP)
-(package! password-store)
-
-
 ;;
-;; LANGUAGES MODES ETC.
+;; LANGUAGE MODES ETC.
 ;;
 
 ;; https://github.com/mcandre/vimrc-mode
@@ -124,3 +130,10 @@
 ;; https://github.com/holomorph/systemd-mode
 (package! systemd)
 (package! impatient-showdown)
+
+;;
+;; EXTRA
+;;
+
+;; Integrate local password store (WIP)
+(package! password-store)
