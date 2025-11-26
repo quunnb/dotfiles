@@ -70,14 +70,19 @@
 ;; THEMES & COLORS
 ;;
 
-(package! tao-theme)
-(package! doric-themes)
+(package! almost-mono-themes)
 (package! gruber-darker-theme)
 (package! ef-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
+(package! less-theme
+  :recipe (:host github
+           :repo "nobiot/less-theme"))
+(package! colorless-themes
+  :recipe (:host github
+           :repo "lthms/colorless-themes.el"))
 
 ;;
 ;; LAYOUT

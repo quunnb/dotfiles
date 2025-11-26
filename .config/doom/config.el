@@ -3,21 +3,22 @@
 (setq user-full-name "quunnb"
       user-mail-address "quunnb@amideus.fi")
 
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/")
+;; (add-to-list 'custom-theme-load-path "~/.config/doom/themes/")
 (add-to-list 'auto-mode-alist '("\\tridactylrc\\'" . vimrc-mode))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+
 ;; Visual stuff
 (setq
- ;; doom-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
- ;; doom-variable-pitch-font (font-spec :family "ShureTechMono Nerd Font" :size 20)
- ;; doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 20)
  doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
- doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20)
- doom-theme 'less
+ doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
+ ;; doom-theme 'doom-orange-grey
+ doom-theme 'doric-fire
  display-line-numbers-type 'relative
  initial-scratch-message nil
  )
+
+(global-hl-line-mode 0)
 
 ;; Transparency
 ;; (defvar bg-transparency 70)
@@ -32,11 +33,6 @@
     (if (= current-alpha 100)
         (set-frame-parameter nil 'alpha-background bg-transparency)
       (set-frame-parameter nil 'alpha-background 100))))
-
-;; Gots to see the prompt
-(custom-set-faces
- '(minibuffer-prompt ((t (:foreground "#ff0000" )))))
- ;; '(minibuffer-prompt ((t (:foreground "#ebbcba" )))))
 
 ;; General remaps
 (global-set-key (kbd "M-o") 'other-window)
@@ -110,12 +106,9 @@
 
   ;; Red cursor
   (setq
-   ;; evil-normal-state-cursor '("#eb6f92" box)
-   ;; evil-insert-state-cursor '("#eb6f92" bar)
-   ;; evil-visual-state-cursor '("#eb6f92" box)
-   evil-normal-state-cursor '("#ff0000" box)
-   evil-insert-state-cursor '("#ff0000" bar)
-   evil-visual-state-cursor '("#ff0000" box)
+   evil-normal-state-cursor '("#ff7700" box)
+   evil-insert-state-cursor '("#ff7700" bar)
+   evil-visual-state-cursor '("#ff7700" box)
    ))
 
 ;; Resize windows with Meta-Shift-direction
@@ -127,8 +120,7 @@
   (global-set-key (kbd "M-H") 'softresize-reduce-window-horizontally))
 
 ;; Load some project etc. paths
-(setq org-directory "~/org/"
-      projectile-project-search-path '("~/dev/kood/" "~/.config/anki/" "~/dotfiles/"))
+(setq org-directory "~/org/")
 
 ;; Get environmental variables for API keys
 (defun get-env-var (var-name)
@@ -153,13 +145,13 @@
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 (setq
-  css-indent-offset 2
-  css-indent-level 2
-  web-mode-css-indent-offset 2
-  js-indent-level 2
-  sgml-basic-offset 2
-  +default-want-RET-continue-comments nil
-  +evil-want-o/O-to-continue-comments nil)
+ css-indent-offset 2
+ css-indent-level 2
+ web-mode-css-indent-offset 2
+ js-indent-level 2
+ sgml-basic-offset 2
+ +default-want-RET-continue-comments nil
+ +evil-want-o/O-to-continue-comments nil)
 
 (use-package colorful-mode
   :custom
