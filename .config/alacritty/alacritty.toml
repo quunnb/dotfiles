@@ -14,26 +14,6 @@ startup_mode = "Windowed"
 blur = true
 padding = { x = 8, y = 8 }
 
-[colors.cursor]
-text = "#000000"
-cursor = "#ff0000"
-
-[colors.vi_mode_cursor]
-text = "#000000"
-cursor = "#ff0000"
-
-[colors.search.matches]
-foreground = "#000000"
-background = "#ffff00"
-
-[colors.hints.start]
-foreground = "#000000"
-background = "#ff0000"
-
-[colors.hints.end]
-foreground = "#000000"
-background = "#ff0000"
-
 [cursor]
 style.blinking = "On"
 
