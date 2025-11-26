@@ -49,8 +49,8 @@
 /* The whole bar */
 #waybar {
   background: transparent;
-  color: #ffffff;
-  background-color: #000000;
+  color: #f3ac6f;
+  background-color: #282420;
   font-family: "DepartureMono Nerd Font";
   font-size: 18px;
 }

@@ -170,7 +170,7 @@ layout {
         width 1
 
         // Color of the ring on the active monitor.
-        active-color "#ffffff"
+        active-color "#f3ac6f"
 
         // Color of the ring on inactive monitors.
         //

@@ -29,13 +29,13 @@ $time\n  \
 palette = "0x000000"
 
 [palettes.0x000000]
-black   = '#000000'
-red     = '#ffffff'
-yellow  = '#ffffff'
-green   = '#ffffff'
-blue    = '#ffffff'
-cyan    = '#ffffff'
-magenta = '#ffffff'
+black   = '#282420'
+red     = '#f3ac6f'
+yellow  = '#f3ac6f'
+green   = '#f3ac6f'
+blue    = '#f3ac6f'
+cyan    = '#f3ac6f'
+magenta = '#f3ac6f'
 
 [directory]
 format = "(fg:black)[ $path ]($style)(fg:black) "

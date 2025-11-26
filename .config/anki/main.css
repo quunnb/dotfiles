@@ -10,33 +10,24 @@
 :root {
   --element: #444444;
   --gray: #444444;
-  --map-color: #26233a;
-  --map-fill: #26233a;
-  --map-hl-fill: #9ccfd8;
-  --map-border: #ebbcba;
-  --map-hl-border: #eb6f92;
-  --black: #111111;
-  --red: #ebbcba;
-  --green: #9ccfd8;
-  --red-cloze: #ebbcba;
-  --yellow-cloze: #f6c177;
-  --green-cloze: #9ccfd8;
-  --bg: #191724;
-  /* --bg:           #1f1d2e; */
-  --text: #e0def4;
-  --again: #eb6f92;
-  --hard: #f6c177;
-  --good: #9ccfd8;
-  --easy: #31748f;
-
-  --overlay: #26233a;
-  --love: #eb6f92;
-  --pine: #31748f;
-  --gold: #f6c177;
-  --foam: #9ccfd8;
-  --iris: #c4a7e7;
-  --rose: #ebbcba;
-  --text: #e0def4;
+  --map-color: #222222;
+  --map-fill: #222222;
+  --map-hl-fill: #88bb44;
+  --map-border: #ffaa00;
+  --map-hl-border: #ffaa00;
+  --black: #000000;
+  --red: #dd4400;
+  --orange: orange;
+  --green: #88bb44;
+  --red-cloze: #dd4400;
+  --yellow-cloze: #ffcc00;
+  --green-cloze: #88bb44;
+  --bg: #111111;
+  --text: #ffffff;
+  --again: #dd4400;
+  --hard: #ffcc00;
+  --good: #88bb44;
+  --easy: #4444bb;
 }
 
 * {
@@ -52,7 +43,8 @@ pre {
   font-family: default_font;
 }
 
-p, ul {
+p,
+ul {
   margin: 0;
 }
 
@@ -72,7 +64,7 @@ input[type="text"] {
   border: solid 2px none;
   background: var(--black);
   &:focus {
-    border: 2px solid var(--red);
+    border: 2px solid orange;
   }
 }
 
@@ -82,8 +74,11 @@ code {
 }
 
 .hl {
-  color: var(--red);
   font-weight: bold;
+}
+
+.red {
+  color: var(--red);
 }
 
 .green {
@@ -92,30 +87,70 @@ code {
 
 .container {
   height: 100vh;
-  position: relative;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
 }
 
 .center {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
   max-width: 70vw;
   min-width: 50vw;
   text-align: center;
+  align-self: center;
   align-items: center;
   align-content: center;
   justify-content: center;
   justify-items: center;
-  background-color: var(--bg);
+  justify-self: center;
   aspect-ratio: 16/9;
   & img {
     width: 70vw;
   }
+}
+
+.top {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  align-self: end;
+  width: 100%;
+  > p {
+    text-align: center;
+  }
+  & img {
+    height: 240px;
+  }
+}
+
+.bottom {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 8px;
+  align-items: start;
+  align-self: start;
+  justify-items: center;
+  width: 100%;
+  & img {
+    height: 100%;
+  }
+}
+
+hr {
+  display: grid;
+  border: none;
+  height: 4px;
+  background-color: #ffaa00;
+  color: #ffaa00;
+  width: 100%;
 }
 
 .footer {
@@ -127,23 +162,9 @@ code {
   width: max-width;
 }
 
-.normal {
-  padding: 32px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-
-.card {
-  font-family: default_font !important;
-  font-size: 22px;
-}
-
 .header {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: grid;
+  text-align: center;
   font-size: 120%;
 }
 
@@ -156,27 +177,6 @@ code {
   padding: 8px;
 }
 
-.top {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  align-items: end;
-  justify-content: space-between;
-  justify-items: center;
-  width: 100%;
-  height: 30vh;
-  /* background-color: red; */
-  & p {
-    text-align: center;
-  }
-  & img {
-    height: 240px;
-  }
-}
-
-.question img {
-}
-
 .map {
   text-align: center;
 }
@@ -184,13 +184,14 @@ code {
 .answer,
 .question,
 .extra {
-  text-align: left;
+  display: grid;
+  text-align: center;
 }
 
 .question {
   display: grid;
   > p {
-    text-align: left
+    text-align: left;
   }
 }
 
@@ -231,27 +232,6 @@ code {
 
 .top_answer img {
   max-height: 240px;
-}
-
-.bottom {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  justify-content: space-evenly;
-  justify-items: space-evenly;
-  padding: 8px;
-  align-items: top;
-  width: 100%;
-  height: 30vh;
-  & img {
-    height: 100%;
-  }
-  & > div {
-    display: grid;
-    justify-content: space-evenly;
-    justify-items: space-evenly;
-    object-position: center;
-  }
 }
 
 .code {
@@ -314,18 +294,8 @@ img.invert {
   filter: invert();
 }
 
-hr {
-  display: block;
-  border: none;
-  height: 4px;
-  background-color: var(--red);
-  color: var(--red);
-  align-self: center;
-  width: 100%;
-}
-
 .comment {
-  color: var(--iris);
+  color: #888888;
   font-style: italic;
 }
 
@@ -379,18 +349,22 @@ hr {
 }
 
 .chess-move {
-  color: var(--foam);
+  color: var(--orange);
   font-weight: bold;
 }
 
-.chess-black {
-  color: var(--iris);
+.chess-Black {
+  color: #ffffff;
+  background-color: #000000;
   font-weight: bold;
+  border: 2px solid white;
 }
 
-.chess-white {
-  color: var(--rose);
+.chess-White {
+  color: #000000;
+  background-color: #ffffff;
   font-weight: bold;
+  border: 2px solid white;
 }
 
 .chess-container {
@@ -415,3 +389,12 @@ hr {
   margin: 32px;
 }
 
+.fin {
+  background-color: #ffffff;
+  color: #0000ff;
+}
+
+.card {
+  font-size: 22px;
+  font-family: default_font;
+}

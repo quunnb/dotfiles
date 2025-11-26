@@ -1,15 +1,10 @@
 [general]
 
-import = ["~/.config/alacritty/themes/rose-pine/dist/rose-pine.toml"]
+import = ["~/.config/alacritty/themes/doric-fire.toml"]
 
 [font]
 size = 14
-# normal = { family = "CozetteVector Nerd Font", style = "Regular" }
-# normal = { family = "InconsolataGo Nerd Font Mono", style = "Regular" }
-# normal = { family = "AdwaitaMono Nerd Font", style = "Regular" }
-# normal = { family = "ShureTechMono Nerd Font", style = "Regular" }
 normal = { family = "DepartureMono Nerd Font", style = "Regular" }
-# normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
 
 [window]
 # opacity = 0.70

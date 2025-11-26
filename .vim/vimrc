@@ -27,11 +27,11 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-    Plug 'AlessandroYorba/Sierra'
     Plug 'SirVer/ultisnips'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'bling/vim-bufferline'
     Plug 'chrisbra/colorizer'
+    Plug 'danilo-augusto/vim-afterglow'
     Plug 'dense-analysis/ale'
     Plug 'fatih/vim-go'
     Plug 'glts/vim-magnum'

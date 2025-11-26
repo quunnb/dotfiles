@@ -16,36 +16,36 @@ indicator-radius=340
 indicator-thickness=20
 indicator-caps-lock
 
-key-hl-color=FFFFFFFF
+key-hl-color=F3AC6FFF
 
 separator-color=00000000
 
-inside-color=000000FF
+inside-color=282420FF
 inside-clear-color=00000000
 inside-caps-lock-color=009DDC00
 inside-ver-color=00FF0000
 inside-wrong-color=FF000000
 
-ring-color=000000FF
-ring-clear-color=000000D9
-ring-caps-lock-color=000000D9
-ring-ver-color=000000D9
-ring-wrong-color=FF0000FF
+ring-color=282420FF
+ring-clear-color=282420D9
+ring-caps-lock-color=282420D9
+ring-ver-color=282420D9
+ring-wrong-color=F3AC6FFF
 
 line-color=FFFFFF00
-line-clear-color=FFFFFFFF
-line-caps-lock-color=FF0000FF
+line-clear-color=F3AC6FFF
+line-caps-lock-color=F3AC6FFF
 line-ver-color=FFFFFFFF
-line-wrong-color=FF0000FF
+line-wrong-color=F3AC6FFF
 
-text-color=FFFFFFFF
+text-color=F3AC6FFF
 text-clear-color=FFD20400
 text-ver-color=D9D8D800
 text-wrong-color=EE2E2400
 
-bs-hl-color=FF0000FF
-caps-lock-key-hl-color=FF0000FF
-caps-lock-bs-hl-color=FF0000FF
+bs-hl-color=F3AC6FFF
+caps-lock-key-hl-color=F3AC6FFF
+caps-lock-bs-hl-color=F3AC6FFF
 disable-caps-lock-text
 hide-keyboard-layout
-text-caps-lock-color=FF0000FF
+text-caps-lock-color=F3AC6FFF

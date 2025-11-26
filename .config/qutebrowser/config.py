@@ -2,10 +2,10 @@
 # ~/.config/qutebrowser/config.py
 #
 
-import rosepine
+# import rosepine
 
 config.load_autoconfig(True)
-rosepine.setup(c, 'rose-pine', True)
+# rosepine.setup(c, 'rose-pine', True)
 
 c.confirm_quit = ["downloads"]
 c.downloads.open_dispatcher = 'xdg-open'
