@@ -11,7 +11,7 @@
 ;; Visual stuff
 (setq
  doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
- doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
+ ;; doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
  ;; doom-theme 'doom-orange-grey
  doom-theme 'doric-fire
  display-line-numbers-type 'relative
@@ -73,6 +73,18 @@
 (define-key doom-leader-map "k" mc-map)
 (define-key doom-leader-map "l" #'avy-goto-char-2)
 
+(with-eval-after-load 'substitute
+    (define-key global-map (kbd "C-c s") #'substitute-prefix-map)
+    (define-key substitute-prefix-map (kbd "b") #'substitute-target-in-buffer)
+    (define-key substitute-prefix-map (kbd "d") #'substitute-target-in-defun)
+    (define-key substitute-prefix-map (kbd "r") #'substitute-target-above-point)
+    (define-key substitute-prefix-map (kbd "s") #'substitute-target-below-point)
+    ;; Always case-sensitive
+    (setq substitute-fixed-letter-case t)
+    ;; Report changes
+    (add-hook 'substitute-post-replace-functions #'substitute-report-operation))
+
+
 (with-eval-after-load 'which-key
   (which-key-add-keymap-based-replacements doom-leader-map
     "j" `("custom" . ,custom-map))
@@ -104,7 +116,6 @@
   ;; Move across lines with f, t, et.al
   (setq-default evil-cross-lines t)
 
-  ;; Red cursor
   (setq
    evil-normal-state-cursor '("#ff7700" box)
    evil-insert-state-cursor '("#ff7700" bar)
@@ -149,6 +160,7 @@
  css-indent-level 2
  web-mode-css-indent-offset 2
  js-indent-level 2
+ typescript-indent-level 2
  sgml-basic-offset 2
  +default-want-RET-continue-comments nil
  +evil-want-o/O-to-continue-comments nil)
@@ -199,3 +211,4 @@
       :sasl-username "quunnb"
       :sasl-password ""
       :channels ("#emacs" "tridactyl"))))
+

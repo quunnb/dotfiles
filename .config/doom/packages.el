@@ -70,9 +70,9 @@
 ;; THEMES & COLORS
 ;;
 
-(package! almost-mono-themes)
 (package! gruber-darker-theme)
 (package! ef-themes)
+(package! doric-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
@@ -80,9 +80,6 @@
 (package! less-theme
   :recipe (:host github
            :repo "nobiot/less-theme"))
-(package! colorless-themes
-  :recipe (:host github
-           :repo "lthms/colorless-themes.el"))
 
 ;;
 ;; LAYOUT
@@ -118,6 +115,9 @@
 (package! evil-lion
   :recipe (:host github
            :repo "edkolev/evil-lion"))
+
+;; https://github.com/protesilaos/substitute
+(package! substitute)
 
 ;;
 ;; AI
