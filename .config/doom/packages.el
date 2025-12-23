@@ -86,9 +86,15 @@
 ;;
 
 ;; https://github.com/jdburgosr/softresize
+;; TODO: bigger steps
 (package! softresize
   :recipe (:host github
            :repo "jdburgosr/softresize"))
+
+;; https://github.com/roman/golden-ratio.el
+(package! golden-ratio.el
+  :recipe (:host github
+           :repo "roman/golden-ratio.el"))
 
 ;;
 ;; FUNCTIONALITY
@@ -106,11 +112,6 @@
 ;; https://github.com/emacsfodder/move-text
 (package! move-text)
 
-;; https://github.com/soerlemans/eglot-header-line
-(package! eglot-header-line
-  :recipe (:host github
-           :repo "soerlemans/eglot-header-line"))
-
 ;; https://github.com/edkolev/evil-lion
 (package! evil-lion
   :recipe (:host github
@@ -118,6 +119,14 @@
 
 ;; https://github.com/protesilaos/substitute
 (package! substitute)
+
+;; https://github.com/nex3/perspective-el
+;; (package! perspective)
+
+;; https://github.com/mwac-dev/grease.el
+(package! grease
+  :recipe (:host github
+           :repo "mwac-dev/grease.el"))
 
 ;;
 ;; AI
@@ -134,7 +143,12 @@
 (package! vimrc-mode)
 ;; https://github.com/holomorph/systemd-mode
 (package! systemd)
+;; https://github.com/jcs-elpa/impatient-showdown
 (package! impatient-showdown)
+;; https://github.com/cxa/lsp-biome
+(package! lsp-biome
+    :recipe (:host github
+             :repo "cxa/lsp-biome"))
 
 ;;
 ;; EXTRA
