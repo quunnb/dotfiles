@@ -4,7 +4,7 @@
 
 " Make sure that unsetting an option here also resets it in the running session
 sanitise tridactyllocal tridactylsync
-colorscheme red
+colorscheme orange
 set newtab about:blank
 
 " Make t open the selection with tabopen
@@ -62,6 +62,7 @@ bindurl ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ <Space> !s xdotool key 
 autocmd DocStart ^http(s)?:\/\/(www\.)?10fastfingers\.com/.*$ mode ignore
 autocmd DocStart ^http(s)?:\/\/(www\.)?monkeytype\.com/.*$ mode ignore
 autocmd DocStart ^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=.*$ mode ignore
+autocmd DocStart ^http(s)?:\/\/(www\.)?chess\.com.*$ mode ignore
 unbindurl ^http(s)?:\/\/(www\.)?lichess\.org\/.*$ f
 unbindurl ^http(s)?:\/\/(www\.)?chess\.com\/.*$  f
 
@@ -71,7 +72,7 @@ unbindurl ^http(s)?:\/\/(www\.)?chess\.com\/.*$  f
 
 " Reddit links
 bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com f hint -Jc a.title,a.comments,span.user>a,ul.tabmenu>li>a,div.md>p>a
-bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com ,f hint -Jc div.arrow
+bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com ,f hint -Jc div.arrow,a.subreddit
 bindurl ^http(s)?:\/\/(www\.)?old\.reddit\.com F hint -Jbc a.title,a.comments,span.user>a,ul.tabmenu>li>a,div.md>p>a
 
 " Google
@@ -80,7 +81,9 @@ bindurl ^http(s)?:\/\/(www\.)?google\.com F hint -Jbc a:has(h3),a[href^="/search
 
 " Ecosia
 bindurl ^http(s)?:\/\/(www\.)?ecosia\.org f hint -Jc div.result__title>a,li.search-navigation__item>a
+bindurl ^http(s)?:\/\/(www\.)?ecosia\.org ,f hint -Jc a
 bindurl ^http(s)?:\/\/(www\.)?ecosia\.org F hint -Jbc div.result__title>a,li.search-navigation__item>a
+bindurl ^http(s)?:\/\/(www\.)?ecosia\.org ,F hint -Jbc a
 
 " Duckduck.go
 bindurl ^http(s)?:\/\/(www\.)?duckduckgo\.com gi focusinput

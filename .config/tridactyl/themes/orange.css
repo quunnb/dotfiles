@@ -1,0 +1,56 @@
+:root {
+  --tridactyl-font-family: "ShureTechMono Nerd Font";
+  --tridactyl-font-family-sans: "ShureTechMono Nerd Font";
+  --tridactyl-status-font-family: "DepartureMono Nerd Font";
+  --tridactyl-cmplt-font-family: "DepartureMono Nerd Font";
+  --tridactyl-font-size: 14pt;
+
+  --tridactyl-bg: #282420;
+  --tridactyl-fg: #eeeeee;
+  --tridactyl-scrollbar-color: #eeeeee;
+
+  --tridactyl-hintspan-fg: #282420;
+  --tridactyl-hintspan-bg: #ff8000;
+  --tridactyl-hint-bg: #c4a7e788;
+  --tridactyl-hint-bg: none;
+  /* --tridactyl-hint-outline: 2px solid #ff8000; */
+  --tridactyl-hint-outline: none;
+  --tridactyl-bg: #282420;
+  --tridactyl-hint-active-fg: #ff8000;
+  --tridactyl-hint-active-bg: #282420;
+  --tridactyl-hint-active-outline: #282420;
+
+  --tridactyl-status-font-size: 14px;
+  --tridactyl-status-font-bg: var(--tridactyl-cmdl-bg);
+  /* --tridactyl-cmplt-border-top: 2px solid #ff8000; */
+  --tridactyl-cmplt-outline-top: none;
+  --tridactyl-status-border: none;
+  --tridactyl-status-border-radius: 0;
+
+  --tridactyl-url-fg: #ff8000;
+  --tridactyl-search-highlight-color: #ff8000;
+}
+
+:root.TridactylOwnNamespace {
+  scrollbar-color: var(--tridactyl-scrollbar-color);
+  scrollbar-width: thin;
+}
+
+:root #completions .sectionHeader {
+  display: none;
+}
+
+:root #completions .focused,
+:root #completions .focused .url {
+  background: var(--tridactyl-bg);
+  text-decoration: underline;
+}
+
+:root #cmdline_iframe {
+  position: fixed !important;
+  bottom: unset;
+  top: 0% !important;
+  left: 0% !important;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px !important;
+  opacity: 0.9;
+}

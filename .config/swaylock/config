@@ -3,7 +3,7 @@ font=DepartureMono Nerd Font
 
 clock
 timestr=%R
-datestr=%a, %d of %B
+datestr=%a, %d/%m/%y
 
 screenshots
 

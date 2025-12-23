@@ -1,47 +1,37 @@
 ! special
-*.Text:         #e0def4
-*.foreground:  #e0def4
-*.background:  #191724
-*.Base:         #191724
-*.cursorColor: #e0def4
+*.foreground:  #FFFFFF
+*.background:  #000000
+*.cursorColor: #FF0000
 
 ! black
-*.color0:  #1f1d2e
-*.Surface: #1f1d2e
-*.color8:  #26233a
-*.Overlay: #26233a
+*.color0:  #000000
+*.color8:  #000000
 
 ! red
-*.color1:  #eb6f92
-*.color9:  #eb6f92
-*.Love:    #eb6f92
+*.color1:  #FF0000
+*.color9:  #FF0000
 
 ! green
-*.color2:  #f6c177
-*.color10: #f6c177
-*.Gold:    #f6c177
+*.color2:  #00FF00
+*.color10: #00FF00
 
 ! yellow
-*.color3:  #ebbcba
-*.color11: #ebbcba
-*.Rose:    #ebbcba
+*.color3:  #DDDDDD
+*.color11: #DDDDDD
 
 ! blue
-*.color4:  #31748f
-*.color12: #31748f
-*.Pine:    #31748f
+*.color4:  #CCCCCC
+*.color12: #CCCCCC
 
 ! magenta
-*.color5:  #c4a7e7
-*.color13: #c4a7e7
-*.Iris:    #c4a7e7
+*.color5:  #BBBBBB
+*.color13: #BBBBBB
 
 ! cyan
-*.color6:  #9ccfd8
-*.color14: #9ccfd8
-*.Foam:    #9ccfd8
+*.color6:  #00FFFF
+*.color14: #00FFFF
 
 ! white
-*.color7:  #6e6a86
-*.color15: #908caa
+*.color7:  #FFFFFF
+*.color15: #FFFFFF
 

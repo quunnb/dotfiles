@@ -50,7 +50,7 @@
 #waybar {
   background: transparent;
   color: #f3ac6f;
-  background-color: #282420;
+  /* background-color: #19121c; */
   font-family: "DepartureMono Nerd Font";
   font-size: 18px;
 }
@@ -188,6 +188,6 @@
 }
 
 #tray {
-  background: #000000;
+  background: #282420;
   border-radius: 1em;
 }
