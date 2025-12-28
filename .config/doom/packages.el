@@ -85,16 +85,13 @@
 ;; LAYOUT
 ;;
 
-;; https://github.com/jdburgosr/softresize
-;; TODO: bigger steps
+;; https://github.com/quunnb/softresize
 (package! softresize
   :recipe (:host github
-           :repo "jdburgosr/softresize"))
+           :repo "quunnb/softresize"))
 
-;; https://github.com/roman/golden-ratio.el
-(package! golden-ratio.el
-  :recipe (:host github
-           :repo "roman/golden-ratio.el"))
+;; https://github.com/TeMPOraL/nyan-mode
+(package! nyan-mode)
 
 ;;
 ;; FUNCTIONALITY
@@ -109,24 +106,32 @@
 ;; https://github.com/DevelopmentCool2449/colorful-mode
 (package! colorful-mode)
 
+;; Move lines / selections up and down
 ;; https://github.com/emacsfodder/move-text
 (package! move-text)
 
+;; Align stuff
 ;; https://github.com/edkolev/evil-lion
 (package! evil-lion
   :recipe (:host github
            :repo "edkolev/evil-lion"))
 
+;; Substitute selection or movement with register/clipboard
 ;; https://github.com/protesilaos/substitute
 (package! substitute)
 
 ;; https://github.com/nex3/perspective-el
 ;; (package! perspective)
 
+;; Editable file browser view
 ;; https://github.com/mwac-dev/grease.el
 (package! grease
   :recipe (:host github
            :repo "mwac-dev/grease.el"))
+
+;; Quickly switch between frequent buffers
+;; https://github.com/otavioschwanck/harpoon.el
+(package! harpoon)
 
 ;;
 ;; AI
@@ -139,20 +144,31 @@
 ;; LANGUAGE MODES ETC.
 ;;
 
+;; https://github.com/dominikh/go-errcheck.el
+(package! go-errcheck
+  :recipe (:host github
+           :repo "dominikh/go-errcheck.el"))
+
 ;; https://github.com/mcandre/vimrc-mode
 (package! vimrc-mode)
+
 ;; https://github.com/holomorph/systemd-mode
 (package! systemd)
+
 ;; https://github.com/jcs-elpa/impatient-showdown
 (package! impatient-showdown)
+
 ;; https://github.com/cxa/lsp-biome
 (package! lsp-biome
-    :recipe (:host github
-             :repo "cxa/lsp-biome"))
+  :recipe (:host github
+           :repo "cxa/lsp-biome"))
+
+;; https://github.com/taquangtrung/emacs-kdl-mode
+(package! kdl-mode)
 
 ;;
 ;; EXTRA
 ;;
 
 ;; Integrate local password store (WIP)
-(package! password-store)
+;; (package! password-store)
