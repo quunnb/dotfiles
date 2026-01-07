@@ -48,6 +48,7 @@ call plug#begin()
     Plug 'psliwka/vim-smoothie'
     Plug 'romainl/vim-cool'
     Plug 'rose-pine/vim'
+    Plug 'sainnhe/everforest'
     Plug 'sebdah/vim-delve'
     Plug 'svermeulen/vim-subversive'
     Plug 'svermeulen/vim-yoink'
@@ -133,7 +134,10 @@ set clipboard=unnamedplus
 
 " set background=light
 set termguicolors
-colorscheme afterglow
+" colorscheme afterglow
+set background=dark
+let g:everforest_background = 'soft'
+colorscheme everforest
 highlight SpecialKey guifg=#333333
 
 let g:loaded_matchparen=1

@@ -14,7 +14,10 @@
 (setq doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
       ;; doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
       ;; doom-theme 'doric-fire
-      doom-theme 'doric-valley
+      ;; doom-theme 'doric-valley
+      ;; doom-theme 'doric-water
+      ;; doom-theme 'doric-wind
+      doom-theme 'doric-oak
       display-line-numbers-type 'relative
       display-line-numbers t
       initial-scratch-message nil)
@@ -35,6 +38,14 @@
 ;; General remaps
 (global-set-key (kbd "M-o") 'other-window)
 
+(with-eval-after-load 'consult
+  (global-set-key (kbd "M-s r") 'consult-ripgrep))
+
+;; Need a binding for "non-normal" modes
+(with-eval-after-load 'embark
+  (global-set-key (kbd "C-,") 'embark-act))
+
+
 ;; GPTEL map
 (defvar-keymap gptel-prefix-map
   :doc "gptel LLM bindings"
@@ -47,9 +58,6 @@
 (defvar-keymap custom-map
   :doc "Custom keymaps"
   "a" gptel-prefix-map
-  "c" #'harpoon-clear
-  "f a" #'harpoon-add-file
-  "f f" #'harpoon-toggle-file
   )
 
 (defvar-keymap mc-skip-map
@@ -82,34 +90,24 @@
   (define-key doom-leader-project-map "d" #'project-forget-project)
   (define-key doom-leader-project-map "f" #'project-find-file))
 
-;; Transparency
-(define-key doom-leader-toggle-map "t" #'toggle-transparency)
+(with-eval-after-load 'evil-bindings
+  (define-key doom-leader-toggle-map "t" #'toggle-transparency))
 
 (with-eval-after-load 'evil
+  ;; Transparency
+
   ;; Custom doom-leader maps
   (define-key doom-leader-map "j" custom-map)
   (define-key doom-leader-map "k" mc-map)
   (define-key doom-leader-map "l" #'avy-goto-char-2)
-
-  ;; Harpoon
-  (define-key doom-leader-map "1" #'harpoon-go-to-1)
-  (define-key doom-leader-map "2" #'harpoon-go-to-2)
-  (define-key doom-leader-map "3" #'harpoon-go-to-3)
-  (define-key doom-leader-map "4" #'harpoon-go-to-4)
-  (define-key doom-leader-map "5" #'harpoon-go-to-5)
-  (define-key doom-leader-map "6" #'harpoon-go-to-6)
-  (define-key doom-leader-map "7" #'harpoon-go-to-7)
-  (define-key doom-leader-map "8" #'harpoon-go-to-8)
-  (define-key doom-leader-map "9" #'harpoon-go-to-9)
 
   ;; Don't reformat by default
   (define-key doom-leader-map "fs" #'+format/save-buffer-no-reformat)
   (define-key doom-leader-map "fo" #'+format/save-buffer)
 
   ;; Move by visual lines
-  ;; NOTE: multiple cursors might trip on this
-  ;; (evil-global-set-key 'normal (kbd "<remap> <evil-next-line>") #'evil-next-visual-line)
-  ;; (evil-global-set-key 'normal (kbd "<remap> <evil-previous-line>") #'evil-previous-visual-line)
+  (evil-global-set-key 'normal (kbd "<remap> <evil-next-line>") #'evil-next-visual-line)
+  (evil-global-set-key 'normal (kbd "<remap> <evil-previous-line>") #'evil-previous-visual-line)
 
   ;; Swap movement repetition keys for Finnish keyboard layout
   (evil-global-set-key 'normal (kbd ",") #'evil-repeat-find-char)
@@ -134,9 +132,9 @@
   (setq global-hl-line-modes nil)
 
   ;; Highlight and shape the cursor
-  (setq evil-normal-state-cursor '("#ff8844" box)
-        evil-insert-state-cursor '("#ff8844" bar)
-        evil-visual-state-cursor '("#ff8844" box)))
+  (setq evil-normal-state-cursor '("#dd4444" box)
+        evil-insert-state-cursor '("#dd4444" bar)
+        evil-visual-state-cursor '("#dd4444" box)))
 
 
 ;; Add custom keymaps to which-key buffer
@@ -151,7 +149,6 @@
 ;; Substitute
 ;;
 (use-package substitute
-  :ensure t
   :config
 
   ;; Always treat the letter casing literally.
@@ -172,14 +169,14 @@
   (getenv var-name))
 
 ;; All "web" indents and "tabs" to 2
-;; (setq css-indent-offset 2
-;;       css-indent-level 2
-;;       web-mode-css-indent-offset 2
-;;       js-indent-level 2
-;;       typescript-indent-level 2
-;;       sgml-basic-offset 2
-;;       +default-want-RET-continue-comments nil
-;;       +evil-want-o/O-to-continue-comments nil)
+(setq css-indent-offset 2
+      css-indent-level 2
+      web-mode-css-indent-offset 2
+      js-indent-level 2
+      typescript-indent-level 2
+      sgml-basic-offset 2
+      +default-want-RET-continue-comments nil
+      +evil-want-o/O-to-continue-comments nil)
 
 (use-package emacs
   :custom
@@ -219,7 +216,6 @@
 
 ;; Resize windows with Meta-Shift-(hjkl)
 (use-package softresize
-  :ensure t
   :bind (("M-H" . (lambda () (interactive) (softresize-reduce-window-horizontally 8)))
          ("M-J" . (lambda () (interactive) (softresize-reduce-window 8)))
          ("M-K" . (lambda () (interactive) (softresize-enlarge-window 8)))
@@ -239,6 +235,10 @@
          :desc "Open Grease (current)"   "o" #'grease-open
          :desc "Open at project root"    "h" #'grease-here)))
 
+(use-package! javelin
+  :config
+  (global-javelin-minor-mode 1))
+
 ;;
 ;; GPTEL
 ;;
@@ -251,8 +251,7 @@
 ;; (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
 
 (setq gptel-use-tools nil
-      gptel-highlight-methods "fringe"
-      )
+      gptel-highlight-methods "fringe")
 
 ;; GPT models
 

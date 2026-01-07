@@ -1,4 +1,4 @@
-font pango: Inconsolata 12
+font pango: DepartureMono Nerd Font 12
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -15,20 +15,20 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 3
+new_window pixel 0
 
 # thin borders
-# hide_edge_borders both
+hide_edge_borders both
 
 # Set inner/outer gaps
 gaps inner 6
 gaps outer 3
 
 # show window title bars (not officially supported with i3gaps)
-#default_border normal
+# default_border normal
 
 # window title alignment
-#title_align center
+title_align center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -50,16 +50,16 @@ bindcode $mod+18 workspace $ws9
 bindcode $mod+19 workspace $ws10
 
 # move focused container to workspace
-bindcode $mod+Shift+10    move container to workspace  $ws1
-bindcode $mod+Shift+11    move container to workspace  $ws2
-bindcode $mod+Shift+12    move container to workspace  $ws3
-bindcode $mod+Shift+13    move container to workspace  $ws4
-bindcode $mod+Shift+14    move container to workspace  $ws5
-bindcode $mod+Shift+15    move container to workspace  $ws6
-bindcode $mod+Shift+16    move container to workspace  $ws7
-bindcode $mod+Shift+17    move container to workspace  $ws8
-bindcode $mod+Shift+18    move container to workspace  $ws9
-bindcode $mod+Shift+19    move container to workspace  $ws10
+bindcode $mod+Shift+10 move container to workspace $ws1
+bindcode $mod+Shift+11 move container to workspace $ws2
+bindcode $mod+Shift+12 move container to workspace $ws3
+bindcode $mod+Shift+13 move container to workspace $ws4
+bindcode $mod+Shift+14 move container to workspace $ws5
+bindcode $mod+Shift+15 move container to workspace $ws6
+bindcode $mod+Shift+16 move container to workspace $ws7
+bindcode $mod+Shift+17 move container to workspace $ws8
+bindcode $mod+Shift+18 move container to workspace $ws9
+bindcode $mod+Shift+19 move container to workspace $ws10
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -164,24 +164,31 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/vol.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/vol.sh down
 bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/vol.sh mute
 
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/brightness.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/brightness.sh down
+
 ## App shortcuts
 bindsym $mod+Shift+e exec ~/.local/bin/dmenu-emoji.sh
 
 # Zoom
 bindsym $mod+z exec --no-startup-id /usr/bin/slop -r crosshair
 bindsym $mod+Shift+z exec --no-startup-id /usr/bin/slop -r boxzoom
+
 # Screenshot
 bindsym $mod+Print exec --no-startup-id ~/.local/bin/screenshot.sh clip
 bindsym $mod+Shift+Print exec --no-startup-id ~/.local/bin/screenshot.sh save
 bindsym $mod+Shift+Ctrl+Print exec --no-startup-id ~/.local/bin/screenshot.sh edit
+
 # Chess
 bindsym $mod+Shift+c exec --no-startup-id ~/.local/bin/pretty_fen.sh
 bindsym $mod+Shift+a exec --no-startup-id ~/.local/bin/analyze_fen.sh
 
+# Test
 bindsym $mod+Shift+Ctrl+t exec --no-startup-id ~/.local/bin/testing.sh
 
 ##########################################
-# configuration for workspace behaviour: #
+# Configuration for workspace behaviour: #
 ##########################################
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -198,23 +205,25 @@ set $ws9 "9"
 set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
-# assign [class="(?i)alacritty"] $ws1
-# assign [class="(?i)thunar"] $ws1
+assign [class="(?i)alacritty"] $ws1
 
-# assign [class="(?i)firefox"] $ws2
+assign [class="(?i)firefox"] $ws2
 
-# assign [class="(?i)anki"] $ws3
+assign [class="(?i)anki"] $ws3
 
-# assign [class="(?i)free(?i)tube"] $ws4
+assign [class="(?i)free(?i)tube"] $ws4
 
-# assign [class="(?i)telegram(?i)desktop"] $ws5
-# assign [class="(?i)kotatogram-(?i)desktop"] $ws5
-# assign [class="(?i)zap(?i)zap"] $ws5
+assign [class="(?i)telegram(?i)desktop"] $ws5
+assign [class="(?i)kotatogram-(?i)desktop"] $ws5
 
-# assign [class="(?i)signal"] $ws7
-# assign [class="(?i)signal(?)(?i)beta"] $ws7
+assign [class="(?i)signal"] $ws7
+assign [class="(?i)signal(?)(?i)beta"] $ws7
 
-# assign [class="(?i)vesktop"] $ws8
+assign [class="(?i)vesktop"] $ws8
+assign [class="(?i)vencord"] $ws8
+assign [class="(?i)discord"] $ws8
+
+assign [class="(?i)thunar"] $ws9
 
 
 # automatic set focus new window if it opens on another workspace than the current:
@@ -229,7 +238,6 @@ for_window [class="(?i)free(?i)tube"] focus
 
 for_window [class="(?i)telegram(?i)desktop"] focus
 for_window [class="(?i)kotatogram-(?i)desktop"] focus
-for_window [class="(?i)zap(?i)zap"] focus
 
 for_window [class="(?i)signal"] focus
 for_window [class="(?i)signal(?)(?i)beta"] focus
@@ -241,9 +249,6 @@ for_window [class="(?i)vesktop"] focus
 #get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
-
-# num lock activated
-#exec --no-startup-id numlockx on
 
 # configure keyboard
 exec --no-startup-id setxkbmap -config ~/ficode/ficode.conf
@@ -266,10 +271,9 @@ exec --no-startup-id /usr/bin/dunst
 exec_always --no-startup-id autotiling
 
 # Autostart apps
-exec --no-startup-id sleep 1 && ~/scripts/is_up.sh &
 exec --no-startup-id sleep 1 && unclutter --jitter 5 --timeout 2 --start-hidden --ignore-scrolling
 exec --no-startup-id sleep 1 && brightnessctl --restore
-exec --no-startup-id sleep 3 && redshift
+# exec --no-startup-id sleep 3 && redshift
 
 ###############
 # system tray #
@@ -325,47 +329,21 @@ floating_maximum_size 1900 x 1000
 # color settings for bar and windows #
 ######################################
 
-set_from_resource $black   i3wm.color0  #191724
-set_from_resource $red     i3wm.color1  #eb6f92
-set_from_resource $green   i3wm.color2  #c4a7e7
-set_from_resource $magenta i3wm.color5  #ebbcba
-set_from_resource $cyan    i3wm.color6  #9ccfd8
-set_from_resource $white   i3wm.color7  #e0def4
-set_from_resource $green2  i3wm.color10 #907aa9
-set_from_resource $white2  i3wm.color15 #c5c3ce
+set_from_resource $black   i3wm.color0  #222222
+set_from_resource $red     i3wm.color1  #BB888C
+set_from_resource $green   i3wm.color2  #74888C
+set_from_resource $magenta i3wm.color5  #45575B
+set_from_resource $cyan    i3wm.color6  #74888C
+set_from_resource $white   i3wm.color7  #45575B
+set_from_resource $green2  i3wm.color10 #D5D4C0
+set_from_resource $white2  i3wm.color15 #D5D4C0
 
 # define colors for windows:
-# class                 border   bg     text    indicator child_border
-client.focused          $cyan    $black $white  $cyan     $cyan
-client.unfocused        $magenta $black $white  $magenta  $magenta
-client.focused_inactive $green2  $black $white2 $green    $green
-client.urgent           $red     $black $black  $red      $red
-
-# # Rosé Pine Dawn colorscheme colors
-# set $base           #faf4ed
-# set $surface        #fffaf3
-# set $overlay        #f2e9e1
-# set $muted          #9893a5
-# set $subtle         #797593
-# set $text           #575279
-# set $love           #b4637a
-# set $gold           #ea9d34
-# set $rose           #d7827e
-# set $pine           #286983
-# set $foam           #56949f
-# set $iris           #907aa9
-# set $highlightlow   #f4ede8
-# set $highlightmed   #dfdad9
-# set $highlighthigh  #cecacd
-
-# # Border and Windows --------------
-# # target                 title     bg    text   indicator  border
-# client.focused           $rose     $base $text  $rose      $rose
-# client.focused_inactive  $text     $base $text  $subtle    $surface
-# client.unfocused         $text     $base $text  $overlay   $overlay
-# client.urgent            $text     $base $text  $love      $love
-# client.placeholder       $base     $base $text  $overlay   $overlay
-# client.background        $base
+# class                 border     bg     text    indicator child_border
+client.focused          #00000000  $black $white  $green    $green
+client.unfocused        #00000000  $black $white  $white2   $white2
+client.focused_inactive #00000000  $black $white2 $white2   $white2
+client.urgent           #00000000  $black $black  $red      $red
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -374,16 +352,11 @@ client.urgent           $red     $black $black  $red      $red
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
 bar {
-    # font pango: ShureTechMono Nerd Font 14
-    # font pango: CozetteVector 16
-    # font pango: Monaspace Krypton 16
-    # font pango: Monaspace Krypton ExtraLight 16
-    # font pango: Monaspace Neon Light 16
-    font pango: InconsolataGo Nerd Font Mono 16
+    font pango: DepartureMono Nerd Font 14
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position top
     #tray_output primary
-    tray_padding 0
+    tray_padding 4
 
     # When strip_workspace_numbers is set to yes,
     # any workspace that has a name of the form
@@ -392,15 +365,15 @@ bar {
     # strip_workspace_name no
 
     colors {
-        separator          #c4a7e7
-        background         #191724
-        statusline         #e0def4
+        separator          #D5D4C0
+        background         #45575B
+        statusline         #D5D4C0
 
 #                           border  bg      txt     indicator
-        focused_workspace   #191724 #191724 #9ccfd8 #c4a7e7
-        active_workspace    #191724 #191724 #ebbcba #c4a7e7
-        inactive_workspace  #191724 #191724 #908caa #c4a7e7
-        urgent_workspace    #191724 #191724 #eb6f92 #c4a7e7
+        focused_workspace   #45575B #45575B #D5D4C0 #BB888C
+        active_workspace    #45575B #45575B #dddddd #BB888C
+        inactive_workspace  #45575B #45575B #aaaaaa #BB888C
+        urgent_workspace    #45575B #45575B #BB888C #BB888C
     }
 }
 
@@ -409,5 +382,6 @@ bar {
 # Application menu handled by dmenu #
 #####################################
 
-bindsym $mod+d exec --no-startup-id dmenu_run_history -l 3
+# 3 lines, 720 width, 4 x-offset
+bindsym $mod+d exec --no-startup-id dmenu_run_history -l 1 -z 720
 
