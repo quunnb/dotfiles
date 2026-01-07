@@ -2,7 +2,7 @@
 --restrict-filenames
 --embed-metadata
 --embed-thumbnail
---write-subs
---embed-subs
+# --write-subs
+# --embed-subs
 # Download best but not bigger than 1080, or the worst
 --format "bv*[height<=1080]+ba/b[height<=1080] / wv*+ba/w"

@@ -42,7 +42,7 @@ set searchurls.enit https://redfoxsanakirja.fi/sanakirja/-/s/eng/ita/%s
 set searchurls.fisv https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
 set searchurls.fisw https://redfoxsanakirja.fi/sanakirja/-/s/fin/swe/%s
 set searchurls.svfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
-set searchurls.swfi https://redfoxsanakirja.fi/sanakirja/-/s/swe/fin/%s
+set searchurls.swen https://context.reverso.net/translation/swedish-english/%s
 # set searchurls.svfi https://en.bab.la/dictionary/swedish-english/%s
 
 # japan

@@ -2,14 +2,14 @@
 # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
 
 [colors.primary]
-foreground        = "#ffffff"
+foreground        = "#eeeeee"
 background        = "#000000"
 dim_foreground    = "#888888"
 bright_foreground = "#ffffff"
 
 [colors.cursor]
-text   = "#ffffff"
-cursor = "#888888"
+text   = "#eeeeee"
+cursor = "#ff0000"
 
 [colors.vi_mode_cursor]
 text =   "#000000"
@@ -36,39 +36,39 @@ foreground = "None"
 background = "None"
 
 [colors.footer_bar]
-foreground = "#ffffff"
+foreground = "#eeeeee"
 background = "#000000"
 
 [colors.selection]
-text = "#ffffff"
+text = "#eeeeee"
 background = "#888888"
 
 [colors.normal]
-black   = "#000000"
-red     = "#ff0000"
-green   = "#ffffff"
-yellow  = "#ffffff"
-blue    = "#ffffff"
-magenta = "#ffffff"
-cyan    = "#ffffff"
-white   = "#ffffff"
+black   = "#222222"
+red     = "#ee0000"
+green   = "#00ee00"
+yellow  = "#dddddd"
+blue    = "#cccccc"
+magenta = "#ee00ee"
+cyan    = "#00eeee"
+white   = "#eeeeee"
 
 [colors.bright]
-black   = "#000000"
+black   = "#333333"
 red     = "#ff0000"
-green   = "#ffffff"
-yellow  = "#ffffff"
-blue    = "#ffffff"
-magenta = "#ffffff"
-cyan    = "#ffffff"
+green   = "#00ff00"
+yellow  = "#eeeeee"
+blue    = "#dddddd"
+magenta = "#ff00ff"
+cyan    = "#00ffff"
 white   = "#ffffff"
 
 [colors.dim]
 black   = "#000000"
-red     = "#ff0000"
-green   = "#ffffff"
-yellow  = "#ffffff"
-blue    = "#ffffff"
-magenta = "#ffffff"
-cyan    = "#ffffff"
-white   = "#ffffff"
+red     = "#dd0000"
+green   = "#00dd00"
+yellow  = "#cccccc"
+blue    = "#bbbbbb"
+magenta = "#dd00dd"
+cyan    = "#00dddd"
+white   = "#dddddd"

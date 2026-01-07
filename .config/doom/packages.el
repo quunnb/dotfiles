@@ -71,16 +71,11 @@
 ;;
 
 (package! gruber-darker-theme)
-(package! ef-themes)
 (package! doric-themes)
 (package! doom-two-tone-themes
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
-(package! less-theme
-  :recipe (:host github
-           :repo "nobiot/less-theme"))
-
 ;;
 ;; LAYOUT
 ;;
@@ -106,10 +101,6 @@
 ;; https://github.com/DevelopmentCool2449/colorful-mode
 (package! colorful-mode)
 
-;; Move lines / selections up and down
-;; https://github.com/emacsfodder/move-text
-(package! move-text)
-
 ;; Align stuff
 ;; https://github.com/edkolev/evil-lion
 (package! evil-lion
@@ -129,9 +120,9 @@
   :recipe (:host github
            :repo "mwac-dev/grease.el"))
 
-;; Quickly switch between frequent buffers
-;; https://github.com/otavioschwanck/harpoon.el
-(package! harpoon)
+;; Quick file bookmarks for Emacs, inspired by ThePrimeagen's Harpoon.
+;; https://github.com/DamianB-BitFlipper/javelin.el
+(package! javelin)
 
 ;;
 ;; AI

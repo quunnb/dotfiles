@@ -32,5 +32,8 @@
 	default = simple
 	autoSetupRemote = true
 	followTags = true
+	recurseSubmodules = on-demand
 [merge]
 	conflictstyle = zdiff3 
+[submodule]
+	recurse = true
