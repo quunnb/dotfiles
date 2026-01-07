@@ -4,27 +4,28 @@
 
 @font-face {
   font-family: default_font;
+  font-weight: bold;
   src: url("_font.ttf");
 }
 
 :root {
-  --element: #444444;
-  --gray: #444444;
-  --map-color: #222222;
-  --map-fill: #222222;
+  --element: #d5d4c0;
+  --gray: #d5d4c0;
+  --map-color: #d5d4c0;
+  --map-fill: #d5d4c0;
   --map-hl-fill: #88bb44;
-  --map-border: #ffaa00;
-  --map-hl-border: #ffaa00;
+  --map-border: #45575b;
+  --map-hl-border: #45575b;
   --black: #282420;
   --red: #dd4400;
-  --orange: orange;
+  --hilight: #45575b;
   --yellow: #ffcc00;
   --green: #88bb44;
   --red-cloze: #dd4400;
   --yellow-cloze: #ffcc00;
   --green-cloze: #88bb44;
   --bg: #111111;
-  --text: #ffffff;
+  --text: #45575b;
   --again: #dd4400;
   --hard: #ffcc00;
   --good: #88bb44;
@@ -33,9 +34,13 @@
 
 * {
   border-radius: 0 !important;
+  background-color: #d5d4c0;
+  color: #45575b;
 }
 
 body {
+  background-color: #d5d4c0;
+  color: #45575b;
   height: 100vh;
   margin: 0;
 }
@@ -66,11 +71,11 @@ p {
 
 .hl {
   font-weight: bold;
-  color: var(--orange);
+  color: var(--hilight);
 }
 
 hr {
-  background-color: var(--orange);
+  background-color: var(--hilight);
   height: 2px;
   min-width: 320px;
 }
@@ -106,7 +111,7 @@ input {
 }
 
 input:focus {
-  border: 2px solid var(--orange) !important;
+  border: 2px solid var(--hilight) !important;
   outline: none;
 }
 
@@ -121,7 +126,7 @@ h2 {
 
 span {
   & .cloze {
-    color: var(--orange);
+    color: var(--hilight);
     font-weight: bold;
   }
 }
@@ -188,7 +193,8 @@ span {
 }
 
 .typeMissed {
-  background-color: var(--orange);
+  color: var(--text);
+  background-color: var(--hilight);
 }
 
 .typeBad {
@@ -200,7 +206,7 @@ span {
 }
 
 .st-expected {
-  color: var(--orange) !important;
+  color: var(--hilight) !important;
 }
 .st-error {
   color: var(--red) !important;
@@ -235,7 +241,8 @@ span {
   text-align: center;
 }
 
-.element p, span {
+.element p,
+span {
   display: inline-block;
   text-align: left;
   /* margin: none; */

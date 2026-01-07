@@ -1,13 +1,13 @@
 [general]
 
-import = ["~/.config/alacritty/themes/lechat.toml"]
+import = ["~/.config/alacritty/themes/nostalgia.toml"]
 
 [font]
 size = 8
 normal = { family = "DepartureMono Nerd Font", style = "Regular" }
 
 [window]
-opacity = 0.80
+opacity = 0.92
 # opacity = 1.0
 # startup_mode = "Maximized"
 startup_mode = "Windowed"

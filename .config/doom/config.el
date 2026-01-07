@@ -132,9 +132,9 @@
   (setq global-hl-line-modes nil)
 
   ;; Highlight and shape the cursor
-  (setq evil-normal-state-cursor '("#dd4444" box)
-        evil-insert-state-cursor '("#dd4444" bar)
-        evil-visual-state-cursor '("#dd4444" box)))
+  (setq evil-normal-state-cursor '("#DD888C" box)
+        evil-insert-state-cursor '("#DD888C" bar)
+        evil-visual-state-cursor '("#DD888C" box)))
 
 
 ;; Add custom keymaps to which-key buffer
@@ -302,7 +302,7 @@
 ;;
 (use-package colorful-mode
   :custom
-  (colorful-use-prefix t)
+  (colorful-use-prefix nil)
   (colorful-only-strings 'only-prog)
   (css-fontify-colors nil)
   :config

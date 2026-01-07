@@ -2,10 +2,8 @@
 # ~/.config/qutebrowser/config.py
 #
 
-# import rosepine
 
 config.load_autoconfig(True)
-# rosepine.setup(c, 'rose-pine', True)
 
 c.confirm_quit = ["downloads"]
 c.downloads.open_dispatcher = 'xdg-open'
@@ -53,7 +51,6 @@ c.content.prefers_reduced_motion = True
 c.content.notifications.enabled = False
 c.content.cookies.accept = "no-3rdparty"
 
-# config.source('rose-pine.py') # ~/.config/qutebrowser/rose-pine.py
 config.source('bindings.py')  # ~/.config/qutebrowser/bindings.py
 # config.source('search.py')    # ~/.config/qutebrowser/search.py
 

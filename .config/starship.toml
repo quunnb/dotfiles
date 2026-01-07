@@ -26,25 +26,16 @@ $time\n  \
 
 # format = '$all'
 
-palette = "lechat"
+palette = "nostalgia"
 
-[palettes.lechat]
-black   = '#28242000'
-red     = '#D5D4C0'
-yellow  = '#D5D4C0'
-green   = '#D5D4C0'
-blue    = '#D5D4C0'
-cyan    = '#D5D4C0'
-magenta = '#D5D4C0'
-
-[palettes.0x000000]
-black   = '#000000'
-red     = '#ffffff'
-yellow  = '#ffffff'
-green   = '#ffffff'
-blue    = '#ffffff'
-cyan    = '#ffffff'
-magenta = '#ffffff'
+[palettes.nostalgia]
+black   = '#45575B00'
+red     = '#55686E'
+yellow  = '#74888C'
+green   = '#97A7A5'
+blue    = '#AAB8B4'
+cyan    = '#BDC9C0'
+magenta = '#CFD4C6'
 
 [directory]
 format = "(fg:black)[ $path ]($style)(fg:black) "

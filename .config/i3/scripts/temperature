@@ -58,17 +58,19 @@ close(SENSORS);
 
 $temperature eq -9999 and die 'Cannot find temperature';
 
-if ($temperature < 45) {
-  $label = '';
-} elsif ($temperature < 55) {
-  $label = '';
-} elsif ($temperature < 65) {
-  $label = '';
-} elsif ($temperature < 75) {
-  $label = '';
-} else {
-  $label = '';
-}
+# if ($temperature < 45) {
+#   $label = '';
+# } elsif ($temperature < 55) {
+#   $label = '';
+# } elsif ($temperature < 65) {
+#   $label = '';
+# } elsif ($temperature < 75) {
+#   $label = '';
+# } else {
+#   $label = '';
+# }
+
+$label = "";
 # Print short_text, full_text
 print "${label}";
 print " $temperature°C\n";
@@ -77,7 +79,7 @@ print " $temperature°C\n";
 
 # Print color, if needed
 if ($temperature >= $t_crit) {
-    print "#eb6f92\n";
+    print "#dd4400\n";
     exit 33;
 } elsif ($temperature >= $t_warn) {
     print "#f6c177\n";

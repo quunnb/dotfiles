@@ -10,12 +10,16 @@ import os
 import re
 
 config = dict(os.environ)
-status = check_output(['acpi'], universal_newlines=True)
+status = check_output(["acpi"], universal_newlines=True)
 
 if not status:
     # stands for no battery found
     color = config.get("color_10", "#FF0000")
-    fulltext = "<span color='{}'><span font='FontAwesome'>\uf00d \uf240</span></span>".format(color)
+    fulltext = (
+        "<span color='{}'><span font='FontAwesome'>\uf00d \uf240</span></span>".format(
+            color
+        )
+    )
     percentleft = 100
 else:
     # if there is more than one battery in one laptop, the percentage left is
@@ -27,7 +31,7 @@ else:
     percentleft_batteries = []
     time = ""
     for battery in batteries:
-        if battery != '':
+        if battery != "":
             state_batteries.append(battery.split(": ")[1].split(", ")[0])
             commasplitstatus = battery.split(", ")
             if not time:
@@ -47,33 +51,35 @@ else:
     state = state_batteries[0]
     commasplitstatus = commasplitstatus_batteries[0]
     if percentleft_batteries:
-        percentleft = int(sum(percentleft_batteries)/len(percentleft_batteries))
+        percentleft = int(sum(percentleft_batteries) / len(percentleft_batteries))
     else:
         percentleft = 0
 
     # stands for charging
-    color = config.get("color_charging", "#FFFF00")
-    FA_LIGHTNING = "<span color='{}'><span font='FontAwesome'>\uf0e7</span></span>".format(color)
+    # color = config.get("color_charging", "#FFFF00")
+    # FA_LIGHTNING = "<span color='{}'><span font='FontAwesome'>\uf0e7</span></span>".format(color)
 
     # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
+    # FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
 
     # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
+    # FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
 
     # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    # FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
 
-    if state == "Discharging":
-        fulltext = FA_BATTERY + " "
-    elif state == "Full":
-        fulltext = FA_PLUG + " "
-        timeleft = ""
-    elif state == "Unknown":
-        fulltext = FA_QUESTION + " " + FA_BATTERY + " "
-        timeleft = ""
-    else:
-        fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
+    # if state == "Discharging":
+    #     fulltext = FA_BATTERY + " "
+    # elif state == "Full":
+    #     fulltext = FA_PLUG + " "
+    #     timeleft = ""
+    # elif state == "Unknown":
+    #     fulltext = FA_QUESTION + " " + FA_BATTERY + " "
+    #     timeleft = ""
+    # else:
+    #     fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
+
+    fulltext = " "
 
     def color(percent):
         if percent < 10:

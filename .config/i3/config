@@ -15,7 +15,8 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 0
+# new_window pixel
+default_border pixel 0
 
 # thin borders
 hide_edge_borders both
@@ -32,6 +33,9 @@ title_align center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Bar toggle, hide or show
+bindsym $mod+b bar mode toggle
 
 # switch/iterate between workspaces
 bindsym $mod+Tab workspace next
@@ -60,6 +64,11 @@ bindcode $mod+Shift+16 move container to workspace $ws7
 bindcode $mod+Shift+17 move container to workspace $ws8
 bindcode $mod+Shift+18 move container to workspace $ws9
 bindcode $mod+Shift+19 move container to workspace $ws10
+
+bindsym $mod+Ctrl+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+j resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+k resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+l resize grow width 10 px or 10 ppt
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -318,7 +327,7 @@ for_window [class="(?i)anki" title="Edit Current"] resize set 1600 800
 
 # set position of floating window
 for_window [class=".*"] move position center
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 0
 
 # floating window size
 floating_minimum_size 800 x 600
@@ -340,9 +349,9 @@ set_from_resource $white2  i3wm.color15 #D5D4C0
 
 # define colors for windows:
 # class                 border     bg     text    indicator child_border
-client.focused          #00000000  $black $white  $green    $green
-client.unfocused        #00000000  $black $white  $white2   $white2
-client.focused_inactive #00000000  $black $white2 $white2   $white2
+client.focused          #00000000  $black $white  #CC888C   #CC888C
+client.unfocused        #00000000  $black $white  #D5D4C000 #D5D4C000
+client.focused_inactive #00000000  $black $white2 #D5D4C000 #D5D4C000
 client.urgent           #00000000  $black $black  $red      $red
 
 ############################################
