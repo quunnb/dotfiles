@@ -25,7 +25,7 @@
   --yellow-cloze: #ffcc00;
   --green-cloze: #88bb44;
   --bg: #111111;
-  --text: #45575b;
+  --text: #35474b;
   --again: #dd4400;
   --hard: #ffcc00;
   --good: #88bb44;
@@ -35,12 +35,12 @@
 * {
   border-radius: 0 !important;
   background-color: #d5d4c0;
-  color: #45575b;
+  color: var(--text);
 }
 
 body {
   background-color: #d5d4c0;
-  color: #45575b;
+  color: var(--text);
   height: 100vh;
   margin: 0;
 }
@@ -193,7 +193,7 @@ span {
 }
 
 .typeMissed {
-  color: var(--text);
+  color: var(--gray);
   background-color: var(--hilight);
 }
 

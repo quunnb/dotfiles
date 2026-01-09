@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=GTK Theme
+Name=nostalgia
+Comment=nostalgia duochrome theme.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+Name=nostalgia
+GtkTheme=nostalgia
+
