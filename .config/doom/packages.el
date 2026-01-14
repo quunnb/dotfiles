@@ -59,6 +59,7 @@
 
 (package! evil-snipe :disable t)
 (package! autoparens :disable t)
+(package! rainbow-mode :disable t)
 
 ;;
 ;; UTIL
@@ -111,9 +112,6 @@
 ;; https://github.com/protesilaos/substitute
 (package! substitute)
 
-;; https://github.com/nex3/perspective-el
-;; (package! perspective)
-
 ;; Editable file browser view
 ;; https://github.com/mwac-dev/grease.el
 (package! grease
@@ -123,6 +121,13 @@
 ;; Quick file bookmarks for Emacs, inspired by ThePrimeagen's Harpoon.
 ;; https://github.com/DamianB-BitFlipper/javelin.el
 (package! javelin)
+
+;; Move line or region forwards and backwards
+;; https://github.com/alienbogart/cool-moves
+(package! cool-moves
+  :recipe (:host github
+           :repo "alienbogart/cool-moves"))
+
 
 ;;
 ;; AI
@@ -162,4 +167,4 @@
 ;;
 
 ;; Integrate local password store (WIP)
-;; (package! password-store)
+; (package! password-store)

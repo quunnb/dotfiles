@@ -7,9 +7,13 @@
 (add-to-list 'auto-mode-alist '("\\tridactylrc\\'" . vimrc-mode)) ;; Use vimrc mode with tridactylrc
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))      ;; Maximize by default
 
-;;
-;; Visual stuff
-;;
+;; Remove hooks
+(remove-hook 'after-change-major-mode-hook 'smartparens-global-mode-enable-in-buffer)
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+
+;;;;;;;;;;;;;
+;; VISUALS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;
 
 (setq doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
       ;; doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
@@ -35,16 +39,32 @@
         (set-frame-parameter nil 'alpha-background bg-transparency)
       (set-frame-parameter nil 'alpha-background 100))))
 
-;; General remaps
+(with-eval-after-load 'evil
+  ;; Highlight and shape the cursor
+  (setq evil-normal-state-cursor '("#35474B" box)
+        evil-insert-state-cursor '("#35474B" bar)
+        evil-visual-state-cursor '("#35474B" box))
+
+  ;; Remove hl-line-mode once and for all
+  (setq global-hl-line-modes nil))
+
+(with-eval-after-load 'evil-bindings
+  ;; Transparency
+  (define-key doom-leader-toggle-map "t" #'toggle-transparency))
+
+;;;;;;;;;;;;;;;;;
+;; KEYBINDINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;
+
+;; General
 (global-set-key (kbd "M-o") 'other-window)
 
 (with-eval-after-load 'consult
   (global-set-key (kbd "M-s r") 'consult-ripgrep))
 
-;; Need a binding for "non-normal" modes
+;; Need a binding for input modes in menus
 (with-eval-after-load 'embark
   (global-set-key (kbd "C-,") 'embark-act))
-
 
 ;; GPTEL map
 (defvar-keymap gptel-prefix-map
@@ -60,48 +80,12 @@
   "a" gptel-prefix-map
   )
 
-(defvar-keymap mc-skip-map
-  "n" #'evil-mc-skip-and-goto-next-match
-  "p" #'evil-mc-skip-and-goto-prev-match)
-
-;; Multiple cursor map
-(defvar-keymap mc-map
-  :doc "Multi-cursor keymaps"
-  "n" #'evil-mc-make-and-goto-next-match
-  "N" #'evil-mc-make-and-goto-last-cursor
-  "p" #'evil-mc-make-and-goto-prev-match
-  "P" #'evil-mc-make-and-goto-first-cursor
-  "s" mc-skip-map
-  "m" #'evil-mc-make-all-cursors
-  "u" #'evil-mc-undo-cursor
-  "t" #'+multiple-cursors/evil-mc-toggle-cursors
-  "j" #'evil-mc-make-cursor-move-next-line
-  "k" #'evil-mc-make-cursor-move-prev-line)
-
-;;Project mappings
-(with-eval-after-load 'project
-  (define-key doom-leader-project-map "k" #'project-kill-buffers)
-  (define-key doom-leader-project-map "s" #'+vertico/project-search)
-  (define-key doom-leader-project-map "S" #'+vertico/project-search-from-cwd)
-  (define-key doom-leader-project-map "p" #'project-switch-project)
-  (define-key doom-leader-project-map "r" #'project-query-replace-regexp)
-  (define-key doom-leader-project-map "c" #'project-compile)
-  (define-key doom-leader-project-map "a" #'project-remember-project)
-  (define-key doom-leader-project-map "d" #'project-forget-project)
-  (define-key doom-leader-project-map "f" #'project-find-file))
-
-(with-eval-after-load 'evil-bindings
-  (define-key doom-leader-toggle-map "t" #'toggle-transparency))
-
 (with-eval-after-load 'evil
-  ;; Transparency
-
   ;; Custom doom-leader maps
   (define-key doom-leader-map "j" custom-map)
-  (define-key doom-leader-map "k" mc-map)
   (define-key doom-leader-map "l" #'avy-goto-char-2)
 
-  ;; Don't reformat by default
+  ;; Don't reformat accidentally
   (define-key doom-leader-map "fs" #'+format/save-buffer-no-reformat)
   (define-key doom-leader-map "fo" #'+format/save-buffer)
 
@@ -109,13 +93,20 @@
   (evil-global-set-key 'normal (kbd "<remap> <evil-next-line>") #'evil-next-visual-line)
   (evil-global-set-key 'normal (kbd "<remap> <evil-previous-line>") #'evil-previous-visual-line)
 
-  ;; Swap movement repetition keys for Finnish keyboard layout
+  ;; Swap movement repetition keys; more natural in Finnish keyboard layout
   (evil-global-set-key 'normal (kbd ",") #'evil-repeat-find-char)
   (evil-global-set-key 'normal (kbd ";") #'evil-repeat-find-char-reverse)
 
   ;; Create multiple cursors at the beginning or end of line of visual selection with `I` and `A`
   (evil-global-set-key 'visual (kbd "I") #'evil-mc-make-cursor-in-visual-selection-beg)
   (evil-global-set-key 'visual (kbd "A") #'evil-mc-make-cursor-in-visual-selection-end)
+
+  ;; Exchange selections
+  (evil-global-set-key 'visual (kbd "x") #'evil-exchange)
+
+  ;; Tabs (switch context)
+  (evil-global-set-key 'normal (kbd "M-n") #'tab-previous)
+  (evil-global-set-key 'normal (kbd "M-p") #'tab-next)
 
   ;; Avy: move or copy visible region to point
   (evil-global-set-key 'normal (kbd "gsm") 'avy-move-region)
@@ -124,42 +115,50 @@
   ;; Surround selected region using `S`
   (evil-global-set-key 'normal (kbd "S") 'evil-embrace-evil-surround-region)
 
-  ;; Other evil things
+  ;; Other evil movements
   ;; `f`, `t`, `F`, and `T` movements move across newlines
-  (setq-default evil-cross-lines t)
-
-  ;; Remove hl-line-mode once and for all
-  (setq global-hl-line-modes nil)
-
-  ;; Highlight and shape the cursor
-  (setq evil-normal-state-cursor '("#DD888C" box)
-        evil-insert-state-cursor '("#DD888C" bar)
-        evil-visual-state-cursor '("#DD888C" box)))
-
+  (setq-default evil-cross-lines t))
 
 ;; Add custom keymaps to which-key buffer
 (with-eval-after-load 'which-key
   (which-key-add-keymap-based-replacements doom-leader-map
-    "j" `("custom" . ,custom-map))
-  (which-key-add-keymap-based-replacements doom-leader-map
-    "k" `("mc" . ,mc-map))
-  )
+    "j" `("custom" . ,custom-map)))
 
-;;
-;; Substitute
-;;
-(use-package substitute
+;; TAB-only configuration
+(use-package emacs
+  :custom
+  ;; Disable indentation+completion using the TAB key.
+  (tab-always-indent t)
+
+  ;; Hide commands in M-x which do not apply to the current mode.
+  (read-extended-command-predicate #'command-completion-default-include-p))
+
+(use-package corfu
   :config
+  ;; Free the RET key for less intrusive behavior.
+  (keymap-unset corfu-map "RET"))
 
-  ;; Always treat the letter casing literally.
-  (setq substitute-fixed-letter-case t)
 
-  ;; Report the matches that changed in the given context.
-  (add-hook 'substitute-post-replace-functions #'substitute-report-operation)
+;;;;;;;;;;;;;;;;;;;
+;; LANG SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
 
-  ;; Use C-c s as a prefix for all Substitute commands.
-  (define-key global-map (kbd "C-c s") #'substitute-prefix-map))
+;; Go
+(set-formatter! 'gofumpt '("gofumpt") :modes '(go-mode))
 
+;; TS, JS, HTML, CSS et. al.
+(use-package lsp-biome
+  :preface
+  (defun my/lsp-biome-active-hook ()
+    (setq-local apheleia-formatter '(biome)))
+
+  :config
+  (add-hook 'lsp-biome-active-hook #'my/lsp-biome-active-hook))
+
+
+;;;;;;;;;;
+;; MISC ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;
 
 ;; Define org directory
 (setq org-directory "~/org/")
@@ -178,50 +177,41 @@
       +default-want-RET-continue-comments nil
       +evil-want-o/O-to-continue-comments nil)
 
-(use-package emacs
-  :custom
-  ;; Disable indentation+completion using the TAB key.
-  (tab-always-indent t)
-
-  ;; Hide commands in M-x which do not apply to the current mode.
-  (read-extended-command-predicate #'command-completion-default-include-p))
-
-;; TAB-only configuration
-(use-package corfu
-  :config
-  ;; Free the RET key for less intrusive behavior.
-  (keymap-unset corfu-map "RET"))
-
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-firefox)
 
-;; Disable auto parens
-(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
-;;
-;; Language specific formatting and linting
-;;
+;;;;;;;;;;;;;;;;
+;; SUBSTITUTE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
 
-;; Go
-(set-formatter! 'gofumpt '("gofumpt") :modes '(go-mode))
-
-;; TS, JS, HTML, CSS et. al.
-(use-package lsp-biome
-  :preface
-  (defun my/lsp-biome-active-hook ()
-    (setq-local apheleia-formatter '(biome)))
-
+(use-package substitute
   :config
-  (add-hook 'lsp-biome-active-hook #'my/lsp-biome-active-hook))
 
-;; Resize windows with Meta-Shift-(hjkl)
+  ;; Always treat the letter casing literally.
+  (setq substitute-fixed-letter-case t)
+
+  ;; Report the matches that changed in the given context.
+  (add-hook 'substitute-post-replace-functions #'substitute-report-operation)
+
+  ;; Use C-c s as a prefix for all Substitute commands.
+  (define-key global-map (kbd "C-c s") #'substitute-prefix-map))
+
+
+;;;;;;;;;;;;;;;;;
+;; SOFT-RESIZE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;
+
 (use-package softresize
   :bind (("M-H" . (lambda () (interactive) (softresize-reduce-window-horizontally 8)))
          ("M-J" . (lambda () (interactive) (softresize-reduce-window 8)))
          ("M-K" . (lambda () (interactive) (softresize-enlarge-window 8)))
          ("M-L" . (lambda () (interactive) (softresize-enlarge-window-horizontally 8)))))
 
-;; Editable file manager buffer
+;;;;;;;;;;;;
+;; GREASE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;
+
 (use-package! grease
   :commands (grease-open grease-toggle grease-here)
   :init
@@ -235,13 +225,126 @@
          :desc "Open Grease (current)"   "o" #'grease-open
          :desc "Open at project root"    "h" #'grease-here)))
 
+;;;;;;;;;;;;;
+;; JAVELIN ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+
 (use-package! javelin
   :config
   (global-javelin-minor-mode 1))
 
-;;
-;; GPTEL
-;;
+
+;;;;;;;;;;;;;;;;;;;
+;; COLORFUL-MODE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+
+(use-package colorful-mode
+  :custom
+  (colorful-use-prefix nil)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))
+
+;; Disable Colorful in active region
+(add-hook 'post-command-hook
+          (lambda ()
+            "delete colorful overlay on active mark"
+            (when-let* (colorful-mode
+                        (beg (use-region-beginning))
+                        (end (use-region-end)))
+              ;; Remove full colorful overlay instead only the part where
+              ;; the region is.
+              (dolist (ov (overlays-in beg end))
+                (when (overlay-get ov 'colorful--overlay)
+                  (delete-overlay ov))))))
+
+(add-hook 'deactivate-mark-hook
+          (lambda ()
+            "refontify deleted mark"
+            (when-let* (colorful-mode
+                        (beg (region-beginning))
+                        (end (region-end)))
+              (font-lock-flush beg end))))
+
+;; Disable rainbow-mode
+(remove-hook 'css-mode-hook 'rainbow-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; EVIL-REPLACE-WITH-REGISTER ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package evil-replace-with-register
+  :config
+  (setq evil-replace-with-register-key (kbd "s")) ; "substitute"
+  (evil-replace-with-register-install))
+
+;;;;;;;;;;;;;;;;;;;
+;; EVIL-SURROUND ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;
+
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+
+;;;;;;;;;;;;;;;;
+;; COOL-MOVES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+
+(use-package cool-moves
+  :load-path "~/.emacs.d/lisp/cool-moves"
+  :config
+  (general-define-key
+   :keymaps 'override
+   "<C-down>" 'cool-moves/paragraph-forward
+   "<C-up>" 'cool-moves/paragraph-backward
+   "C-S-j" 'cool-moves/line-forward
+   "C-S-k" 'cool-moves/line-backward
+   "C-M-n" 'cool-moves/word-forward
+   "C-M-p" 'cool-moves/word-backwards))
+
+;;;;;;;;;;;;;;;
+;; EVIL-LION ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+
+(use-package evil-lion
+  :config
+  (evil-lion-mode))
+
+;; Always do find-file when switching project
+(setq project-switch-commands 'project-find-file)
+
+
+;;;;;;;;;;;
+;; CIRCE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;
+
+(after! circe
+  (set-irc-server! "irc.libera.chat"
+    `(:tls t
+      :port 6697
+      :nick "quunnb"
+      :sasl-username "quunnb"
+      :sasl-password ""
+      :channels ("#emacs" "tridactyl"))))
+
+
+;;;;;;;;;;;;;;;
+;; NYAN-MODE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+
+(use-package nyan-mode
+  :hook (after-init . nyan-mode)
+  :custom
+  (nyan-animate-nyancat t)
+  (nyan-wavy-trail t))
+
+
+;;;;;;;;;;;
+;; GPTEL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;
 
 ;; Disable flycheck on gptel buffers.
 (add-hook 'gptel-mode-hook (lambda () (flycheck-mode -1)))
@@ -253,7 +356,8 @@
 (setq gptel-use-tools nil
       gptel-highlight-methods "fringe")
 
-;; GPT models
+;;
+;; Models
 
 ;; Codestral
 (setq gptel-model 'codestral-latest
@@ -288,8 +392,10 @@
   :stream t
   :key (getenv "PERPLEXITY_API_KEY"))
 
-;; Presets
+;;
+;; LLM presets
 
+;; Coding
 (gptel-make-preset 'coding
   :description "Coding preset"
   :backend "Codestral"
@@ -297,59 +403,4 @@
   :system "You are an expert coding assistant. Your role is to provide high-quality code solutions, refactorings, and explanations."
   :tools '("read_buffer" "modify_buffer")) ;gptel tools or tool names
 
-;;
-;; Colorize color codes in text
-;;
-(use-package colorful-mode
-  :custom
-  (colorful-use-prefix nil)
-  (colorful-only-strings 'only-prog)
-  (css-fontify-colors nil)
-  :config
-  (global-colorful-mode t)
-  (add-to-list 'global-colorful-modes 'helpful-mode))
-
-;;
-;; Imitate vim-substitute
-;;
-(use-package evil-replace-with-register
-  :config
-  (setq evil-replace-with-register-key (kbd "s")) ; "substitute"
-  (evil-replace-with-register-install))
-
-;;
-;; Surround things
-;;
-(use-package evil-surround
-  :config
-  (global-evil-surround-mode 1))
-
-;;
-;; Move lines or selections of text easily up and down
-;;
-(use-package move-text
-  :bind (("M-j" . move-text-down)
-         ("M-k" . move-text-up)))
-
-;;
-;; Align selection
-;;
-(use-package evil-lion
-  :config
-  (evil-lion-mode))
-
-;; Always do find-file when switching project
-(setq project-switch-commands 'project-find-file)
-
-;;
-;; IRC
-;;
-(after! circe
-  (set-irc-server! "irc.libera.chat"
-    `(:tls t
-      :port 6697
-      :nick "quunnb"
-      :sasl-username "quunnb"
-      :sasl-password ""
-      :channels ("#emacs" "tridactyl"))))
-
+;; TODO: more presets
