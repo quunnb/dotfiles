@@ -1,0 +1,27 @@
+{
+  "showInterval": true,
+  "time": 1600,
+  "x_mode": "left",
+  "x_pos": 150,
+  "y_mode": "bottom",
+  "y_pos": -100,
+  "width": 0,
+  "height": 0,
+  "outline_width": 2,
+  "colors": {
+    "light": {
+      "text": "#282420",
+      "again": "#cc4400",
+      "hard": "#bb8800",
+      "good": "#88aa44",
+      "easy": "#7675ba"
+    },
+    "dark": {
+      "text": "#000000",
+      "again": "#cc4400",
+      "hard": "#bb8800",
+      "good": "#88aa44",
+      "easy": "#7675ba"
+    }
+  }
+}

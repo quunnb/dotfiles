@@ -4,7 +4,6 @@
 
 @font-face {
   font-family: default_font;
-  font-weight: bold;
   src: url("_font.ttf");
 }
 
@@ -13,36 +12,38 @@
   --gray: #d5d4c0;
   --map-color: #d5d4c0;
   --map-fill: #d5d4c0;
-  --map-hl-fill: #88bb44;
+  --map-hl-fill: #45575b;
   --map-border: #45575b;
   --map-hl-border: #45575b;
-  --black: #282420;
-  --red: #dd4400;
+  --black: #35474b;
+  --red: #bb4400;
+  --white: #f5f4e0;
   --hilight: #45575b;
-  --yellow: #ffcc00;
-  --green: #88bb44;
-  --red-cloze: #dd4400;
-  --yellow-cloze: #ffcc00;
-  --green-cloze: #88bb44;
+  --yellow: #bb8800;
+  --green: #88aa44;
+  --red-cloze: #bb4400;
+  --yellow-cloze: #bb8800;
+  --green-cloze: #88aa44;
   --bg: #111111;
   --text: #35474b;
-  --again: #dd4400;
-  --hard: #ffcc00;
-  --good: #88bb44;
-  --easy: #4444bb;
+  --again: #bb4400;
+  --hard: #bb8800;
+  --good: #88aa44;
+  --easy: #7675ba;
 }
 
 * {
   border-radius: 0 !important;
-  background-color: #d5d4c0;
+  background-color: #d5d4c0 !important;
   color: var(--text);
 }
 
 body {
-  background-color: #d5d4c0;
+  background-color: #d5d4c0 !important;
   color: var(--text);
   height: 100vh;
   margin: 0;
+  font-weight: bold;
 }
 
 p {
@@ -67,11 +68,6 @@ p {
   width: 100%;
   justify-content: center;
   align-items: center;
-}
-
-.hl {
-  font-weight: bold;
-  color: var(--hilight);
 }
 
 hr {
@@ -126,7 +122,8 @@ h2 {
 
 span {
   & .cloze {
-    color: var(--hilight);
+    color: var(--gray);
+    background-color: var(--hilight);
     font-weight: bold;
   }
 }
@@ -134,7 +131,6 @@ span {
 .left {
   display: grid;
   place-items: center;
-
   place-content: center;
 }
 
@@ -147,18 +143,23 @@ span {
 .extra {
   font-size: 80%;
   font-style: italic;
+  font-weight: normal;
 }
 
 .chess-White {
   font-weight: bold;
-  background-color: var(--white);
+  color: var(--black);
+  background-color: var(--gray);
   border: 1px solid var(--black);
+  padding: 1px;
 }
 
 .chess-Black {
   font-weight: bold;
+  color: var(--gray);
   background-color: var(--black);
-  border: 1px solid var(--white);
+  border: 1px solid var(--gray);
+  padding: 1px;
 }
 
 .container {
@@ -185,16 +186,18 @@ span {
 }
 
 .comment {
-  color: var(--red);
+  color: var(--gray);
+  background-color: var(--hilight);
 }
 
 .typeGood {
+  color: var(--text);
   background-color: var(--green);
 }
 
 .typeMissed {
-  color: var(--gray);
-  background-color: var(--hilight);
+  color: var(--text);
+  background-color: var(--red);
 }
 
 .typeBad {
@@ -202,14 +205,17 @@ span {
 }
 
 .st-ok {
-  color: var(--green) !important;
+  color: var(--text) !important;
+  background-color: var(--green) !important;
 }
 
 .st-expected {
-  color: var(--hilight) !important;
+  color: var(--white) !important;
+  background-color: var(--hilight) !important;
 }
 .st-error {
-  color: var(--red) !important;
+  color: var(--white) !important;
+  background-color: var(--red) !important;
 }
 
 .footer {
@@ -221,20 +227,6 @@ span {
   align-content: start;
   justify-items: center;
   justify-content: center;
-}
-
-.chess-White {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-  padding: 1px;
-}
-
-.chess-Black {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 1px;
 }
 
 .element {
@@ -262,4 +254,9 @@ img {
 
 .invert {
   filter: invert();
+}
+
+.hl {
+  color: var(--gray);
+  background-color: var(--hilight);
 }

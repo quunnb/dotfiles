@@ -1,4 +1,3 @@
-/* This file should be linked to ~/.config/anki/addons21/1959668791/user_files/themes/Nostalgia.json */
 {
   "colors": {
     "ACCENT_CARD": [
@@ -207,7 +206,7 @@
     "FG_LINK": [
       "Foreground Link",
       "Hyperlink foreground color",
-      "#cfa49f",
+      "#bb4400",
       "#bfdbfe",
       "--fg-link"
     ],
