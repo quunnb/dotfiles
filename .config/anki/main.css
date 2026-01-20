@@ -9,6 +9,7 @@
 
 :root {
   --element: #d5d4c0;
+  --light-bg: #d5d4c0;
   --gray: #d5d4c0;
   --map-color: #d5d4c0;
   --map-fill: #d5d4c0;
@@ -16,38 +17,44 @@
   --map-border: #45575b;
   --map-hl-border: #45575b;
   --black: #35474b;
-  --red: #bb4400;
+  --dark: #45575b;
+  --darker: #35474b;
+  --red: #bb888c;
   --white: #f5f4e0;
   --hilight: #45575b;
-  --yellow: #bb8800;
-  --green: #88aa44;
-  --red-cloze: #bb4400;
-  --yellow-cloze: #bb8800;
-  --green-cloze: #88aa44;
-  --bg: #111111;
+  --yellow: #ddaa77;
+  --green: #aab8b4;
+  --red-cloze: #bb888c;
+  --yellow-cloze: #ddaa77;
+  --green-cloze: #aab8b4;
   --text: #35474b;
-  --again: #bb4400;
-  --hard: #bb8800;
-  --good: #88aa44;
-  --easy: #7675ba;
+  --again: #bb888c;
+  --hard: #ddaa77;
+  --good: #aab8b4;
+  --easy: #74888c;
+
+  --color0: #d5d4c0;
+  --color1: #45575b;
+  --color2: #bb888c;
+  --color3: #74888c;
+  --color4: #97a7a5;
+  --color5: #aab8b4;
+  --color6: #bdc9c0;
+  --color7: #cfd4c6;
 }
 
 * {
-  border-radius: 0 !important;
-  background-color: #d5d4c0 !important;
+  border-radius: 0;
+  background-color: var(--light-bg);
   color: var(--text);
 }
 
 body {
-  background-color: #d5d4c0 !important;
+  background-color: var(--light-bg);
   color: var(--text);
   height: 100vh;
   margin: 0;
   font-weight: bold;
-}
-
-p {
-  /* margin: 0; */
 }
 
 .center {
@@ -64,7 +71,6 @@ p {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  /* background-color: green; */
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -102,13 +108,15 @@ li {
 input {
   text-align: center;
   font-size: 22px;
-  border: 2px solid var(--gray);
+  border: 2px solid var(--hilight) !important;
+  background-color: var(--color7);
   outline: none;
 }
 
 input:focus {
   border: 2px solid var(--hilight) !important;
   outline: none;
+  background-color: var(--color6);
 }
 
 sub,
@@ -122,7 +130,7 @@ h2 {
 
 span {
   & .cloze {
-    color: var(--gray);
+    color: var(--light-bg);
     background-color: var(--hilight);
     font-weight: bold;
   }
@@ -188,6 +196,8 @@ span {
 .comment {
   color: var(--gray);
   background-color: var(--hilight);
+  text-wrap: nowrap;
+  font-style: italic;
 }
 
 .typeGood {
@@ -237,7 +247,6 @@ span {
 span {
   display: inline-block;
   text-align: left;
-  /* margin: none; */
 }
 
 img {
@@ -257,6 +266,6 @@ img {
 }
 
 .hl {
-  color: var(--gray);
-  background-color: var(--hilight);
+  color: var(--light-bg) !important;
+  background-color: var(--hilight) !important;
 }
