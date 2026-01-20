@@ -120,10 +120,13 @@ bindsym $mod+q kill
 bindsym $mod+Shift+Ctrl+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
-bindsym $mod+Ctrl+Shift+r reload
+bindsym $mod+Shift+r reload
 
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Ctrl+Shift+r restart
+
+# exit
+bindsym Ctrl+Shift+Escape exit
 
 # backlight control
 # fn+space does this on thinkpad x395
@@ -185,9 +188,9 @@ bindsym $mod+z exec --no-startup-id /usr/bin/slop -r crosshair
 bindsym $mod+Shift+z exec --no-startup-id /usr/bin/slop -r boxzoom
 
 # Screenshot
-bindsym $mod+Print exec --no-startup-id ~/.local/bin/screenshot.sh clip
-bindsym $mod+Shift+Print exec --no-startup-id ~/.local/bin/screenshot.sh save
-bindsym $mod+Shift+Ctrl+Print exec --no-startup-id ~/.local/bin/screenshot.sh edit
+bindsym $mod+Print exec --no-startup-id ~/.local/bin/scrnsht.sh clip
+bindsym $mod+Shift+Print exec --no-startup-id ~/.local/bin/scrnsht.sh save
+bindsym $mod+Shift+Ctrl+Print exec --no-startup-id ~/.local/bin/scrnsht.sh edit
 
 # Chess
 bindsym $mod+Shift+c exec --no-startup-id ~/.local/bin/pretty_fen.sh
@@ -217,8 +220,12 @@ set $ws10 "10"
 assign [class="(?i)alacritty"] $ws1
 
 assign [class="(?i)firefox"] $ws2
+assign [class="(?i)waterfox"] $ws2
+assign [class="(?i)librewolf"] $ws2
 
-assign [class="(?i)anki"] $ws3
+assign [class="(?i)emacs"] $ws3
+
+assign [class="(?i)anki"] $ws4
 
 assign [class="(?i)free(?i)tube"] $ws4
 

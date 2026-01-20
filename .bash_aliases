@@ -122,6 +122,8 @@ alias rust-repl=evcxr
 [ ! -x /usr/bin/neofetch ] && [ -x /usr/bin/fastfetch ] && alias neofetch='fastfetch'
 alias neofetch='neofetch --source /etc/issue'
 
+alias scrkey='screenkey -p fixed -g 94%x6%+3%+5% --font "DepartureMono Nerd Font" --font-color "#D5D4C0" --bg-color "#74888C" --opacity 0.6 --font-size small'
+
 # Log exit
 echo "$(date +%T) close ~/.bash_aliases" >> ~/.log/rc.log
 
