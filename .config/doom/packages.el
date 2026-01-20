@@ -128,6 +128,15 @@
   :recipe (:host github
            :repo "alienbogart/cool-moves"))
 
+;; {In/de}crement numbers at point
+;; https://github.com/cofi/evil-numbers
+(package! evil-numbers
+  :recipe (:host github
+           :repo "cofi/evil-numbers"))
+
+
+;; https://github.com/abo-abo/hydra
+(package! hydra)
 
 ;;
 ;; AI

@@ -18,10 +18,10 @@
 (setq doom-font (font-spec :family "DepartureMono Nerd Font" :size 20)
       ;; doom-variable-pitch-font (font-spec :family "DepartureMono Nerd Font Propo" :size 20)
       ;; doom-theme 'doric-fire
-      ;; doom-theme 'doric-valley
+      doom-theme 'doric-valley
       ;; doom-theme 'doric-water
       ;; doom-theme 'doric-wind
-      doom-theme 'doric-oak
+      ;; doom-theme 'doric-oak
       display-line-numbers-type 'relative
       display-line-numbers t
       initial-scratch-message nil)
@@ -41,9 +41,12 @@
 
 (with-eval-after-load 'evil
   ;; Highlight and shape the cursor
-  (setq evil-normal-state-cursor '("#35474B" box)
-        evil-insert-state-cursor '("#35474B" bar)
-        evil-visual-state-cursor '("#35474B" box))
+  ;; (setq evil-normal-state-cursor '("#35474B" box)
+  ;;       evil-insert-state-cursor '("#35474B" bar)
+  ;;       evil-visual-state-cursor '("#35474B" box))
+  (setq evil-normal-state-cursor '("#FF8800" box)
+        evil-insert-state-cursor '("#FF8800" bar)
+        evil-visual-state-cursor '("#FF8800" box))
 
   ;; Remove hl-line-mode once and for all
   (setq global-hl-line-modes nil))
@@ -58,6 +61,10 @@
 
 ;; General
 (global-set-key (kbd "M-o") 'other-window)
+
+(with-eval-after-load 'vertico
+  (global-set-key (kbd "M-s p") '+vertico/project-search)
+  (global-set-key (kbd "M-s c") '+vertico/project-search-from-cwd))
 
 (with-eval-after-load 'consult
   (global-set-key (kbd "M-s r") 'consult-ripgrep))
@@ -113,7 +120,7 @@
   (evil-global-set-key 'normal (kbd "gsc") 'avy-copy-region)
 
   ;; Surround selected region using `S`
-  (evil-global-set-key 'normal (kbd "S") 'evil-embrace-evil-surround-region)
+  (evil-global-set-key 'visual (kbd "S") 'evil-embrace-evil-surround-region)
 
   ;; Other evil movements
   ;; `f`, `t`, `F`, and `T` movements move across newlines
@@ -316,6 +323,28 @@
 ;; Always do find-file when switching project
 (setq project-switch-commands 'project-find-file)
 
+
+;;;;;;;;;;;;;;;;;;
+;; EVIL-NUMBERS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;
+;; HYDRA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;
+
+;; Increment and decrement numbers at point with = and -
+(defun hydra-num/body-and (fn)
+  (interactive)
+  (call-interactively fn)
+  (hydra-num/body))
+
+(defun hydra-num/body-and-inc ()
+  (interactive) (call-interactively #'evil-numbers/inc-at-pt) (hydra-num/body))
+(defun hydra-num/body-and-dec ()
+  (interactive) (call-interactively #'evil-numbers/dec-at-pt) (hydra-num/body))
+
+(define-key evil-normal-state-map (kbd "g =") #'hydra-num/body-and-inc)
+(define-key evil-normal-state-map (kbd "g -") #'hydra-num/body-and-dec)
 
 ;;;;;;;;;;;
 ;; CIRCE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
