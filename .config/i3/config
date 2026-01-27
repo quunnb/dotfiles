@@ -16,7 +16,7 @@ workspace_layout default
 
 #border indicator on windows:
 # new_window pixel
-default_border pixel 0
+default_border pixel 3
 
 # thin borders
 hide_edge_borders both
@@ -73,10 +73,6 @@ bindsym $mod+Ctrl+l resize grow width 10 px or 10 ppt
 # resize window (you can also use the mouse for that):
 mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
-# Pressing left will shrink the window's width.
-# Pressing right will grow the window's width.
-# Pressing up will shrink the window's height.
-# Pressing down will grow the window's height.
        bindsym h resize shrink width 10 px or 10 ppt
        bindsym j resize grow height 10 px or 10 ppt
        bindsym k resize shrink height 10 px or 10 ppt
@@ -143,22 +139,14 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
 # split in horizontal/vertical orientation
 bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
-bindsym $mod+e layout toggle split
+# Toggle between splitv/tabbed
+bindsym $mod+Shift+t layout toggle tabbed split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -229,8 +217,8 @@ assign [class="(?i)anki"] $ws4
 
 assign [class="(?i)free(?i)tube"] $ws4
 
-assign [class="(?i)telegram(?i)desktop"] $ws5
-assign [class="(?i)kotatogram-(?i)desktop"] $ws5
+assign [class="(?i)telegram(?i)desktop"] $ws6
+assign [class="(?i)kotatogram-(?i)desktop"] $ws6
 
 assign [class="(?i)signal"] $ws7
 assign [class="(?i)signal(?)(?i)beta"] $ws7
@@ -247,6 +235,8 @@ for_window [class="(?i)alacritty"] focus
 for_window [class="(?i)thunar"] focus
 
 for_window [class="(?i)firefox"] focus
+for_window [class="(?i)waterfox"] focus
+for_window [class="(?i)librewolf"] focus
 
 for_window [class="(?i)anki"] focus
 
@@ -262,7 +252,7 @@ for_window [class="(?i)imv"] focus
 for_window [class="(?i)vesktop"] focus
 
 
-#get auth work with polkit-gnome
+# get auth work with polkit-gnome
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 
@@ -290,21 +280,6 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id sleep 1 && unclutter --jitter 5 --timeout 2 --start-hidden --ignore-scrolling
 exec --no-startup-id sleep 1 && brightnessctl --restore
 # exec --no-startup-id sleep 3 && redshift
-
-###############
-# system tray #
-###############
-# if you do not use dex: exec --no-startup-id dex --autostart --environment i3
-# you need to have tray apps started manually one by one:
-
-# start blueberry app for managing bluetooth devices from tray:
-#exec --no-startup-id blueberry-tray
-
-# networkmanager-applet
-#exec --no-startup-id nm-applet
-
-# clipman-applet
-#exec --no-startup-id xfce4-clipman
 
 ##################
 # floating rules #
@@ -334,7 +309,7 @@ for_window [class="(?i)anki" title="Edit Current"] resize set 1600 800
 
 # set position of floating window
 for_window [class=".*"] move position center
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 2
 
 # floating window size
 floating_minimum_size 800 x 600
@@ -355,11 +330,11 @@ set_from_resource $green2  i3wm.color10 #D5D4C0
 set_from_resource $white2  i3wm.color15 #D5D4C0
 
 # define colors for windows:
-# class                 border     bg     text    indicator child_border
-client.focused          #00000000  $black $white  #CC888C   #CC888C
-client.unfocused        #00000000  $black $white  #D5D4C000 #D5D4C000
-client.focused_inactive #00000000  $black $white2 #D5D4C000 #D5D4C000
-client.urgent           #00000000  $black $black  $red      $red
+# class                 border bg     text    indicator child_border
+client.focused          $red   $black $white  $red      $red
+client.unfocused        $black $black $white  #D5D4C000 #D5D4C000
+client.focused_inactive $black $black $white2 #D5D4C000 #D5D4C000
+client.urgent           $red   $black $black  $red      $red
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -398,6 +373,7 @@ bar {
 # Application menu handled by dmenu #
 #####################################
 
-# 3 lines, 720 width, 4 x-offset
-bindsym $mod+d exec --no-startup-id dmenu_run_history -l 1 -z 720
-
+# bindsym $mod+d exec --no-startup-id dmenu_run_history -l 1 -z 720
+# bindsym $mod+d exec --no-startup-id dmenu_run_history -x 600 -y 500 -z 720
+bindsym $mod+d exec --no-startup-id dmenu_run_history -x 704 -y 480 -z 512
+bindsym $mod+s exec --no-startup-id dmenu_websearch
