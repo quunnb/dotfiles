@@ -20,14 +20,14 @@
       ;; doom-theme 'doric-fire
       doom-theme 'doric-valley
       ;; doom-theme 'doric-water
-      ;; doom-theme 'doric-wind
-      ;; doom-theme 'doric-oak
+      doom-theme 'doric-wind
+      doom-theme 'doric-oak
       display-line-numbers-type 'relative
       display-line-numbers t
       initial-scratch-message nil)
 
 ;; Add frame transparency
-(defvar bg-transparency 70)
+(defvar bg-transparency 100)
 (set-frame-parameter nil 'alpha-background bg-transparency)
 (add-to-list 'default-frame-alist `(alpha-background . ,bg-transparency))
 

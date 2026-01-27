@@ -9,8 +9,9 @@
   --tridactyl-fg: #d5d4c0;
   --tridactyl-scrollbar-color: #d5d4c0;
 
-  --tridactyl-hintspan-fg: #45575b;
-  --tridactyl-hintspan-bg: #cc888c;
+  --tridactyl-hintspan-fg: black;
+  --tridactyl-hintspan-bg: #bdc9c0;
+  --tridactyl-hintspan-outline: black;
   --tridactyl-hint-bg: #c4a7e788;
   --tridactyl-hint-bg: none;
   /* --tridactyl-hint-outline: 2px solid #CC888C; */

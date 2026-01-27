@@ -109,14 +109,14 @@ input {
   text-align: center;
   font-size: 22px;
   border: 2px solid var(--hilight) !important;
-  background-color: var(--color7);
   outline: none;
 }
 
 input:focus {
+  color: var(--color1) !important;
   border: 2px solid var(--hilight) !important;
   outline: none;
-  background-color: var(--color6);
+  background-color: var(--color0) !important;
 }
 
 sub,
@@ -134,6 +134,11 @@ span {
     background-color: var(--hilight);
     font-weight: bold;
   }
+}
+
+.cloze {
+  color: var(--light-bg);
+  background-color: var(--hilight);
 }
 
 .left {
@@ -198,6 +203,10 @@ span {
   background-color: var(--hilight);
   text-wrap: nowrap;
   font-style: italic;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .typeGood {
@@ -268,4 +277,39 @@ img {
 .hl {
   color: var(--light-bg) !important;
   background-color: var(--hilight) !important;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.tooltip-trigger {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.tooltip-content {
+  list-style-type: none;
+  margin: 8px;
+  visibility: hidden;
+  width: 320px;
+  background-color: var(--color1);
+  color: var(--color0);
+  align-items: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 25%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-trigger:hover + .tooltip-content {
+  visibility: visible;
+  opacity: 1;
 }
