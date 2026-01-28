@@ -26,39 +26,39 @@ set scroll-step 100
 set zoom-min 10
 set guioptions ""
 
-set font "Inconsolata 14"
+set font "DepartureMono Nerd Font 14"
 
-# https://github.com/edunfelt/zathura
+set default-bg                  "#35474b"
+set default-fg                  "#d5d4c0"
 
-set default-bg                  "#191724"
-set default-fg                  "#e0def4"
+set statusbar-fg                "#d5d4c0"
+set statusbar-bg                "#45575b"
 
-set statusbar-fg                "#e0def4"
-set statusbar-bg                "#555169"
+set inputbar-bg                 "#45575b"
+set inputbar-fg                 "#d5d4c0"
 
-set inputbar-bg                 "#6e6a86"
-set inputbar-fg                 "#ebbcba"
+set notification-bg             "#d5d4c0"
+set notification-fg             "#45575b"
 
-set notification-bg             "#e0def4"
-set notification-fg             "#555169"
+set notification-error-bg       "#bb888c"
+set notification-error-fg       "#45575b"
 
-set notification-error-bg       "#f6c177"
-set notification-error-fg       "#555169"
+set notification-warning-bg     "#d5d4c0"
+set notification-warning-fg     "#45575b"
 
-set notification-warning-bg     "#ebbcba"
-set notification-warning-fg     "#555169"
-
-set highlight-color             "#ebbcba"
-set highlight-active-color      "#eb6f92"
+set highlight-color             "#74888c"
+set highlight-fg                "#d5d4c0"
+set highlight-active-color      "#aab8b4"
 
 set completion-bg               "#6e6a86"
-set completion-fg               "#ebbcba"
+set completion-fg               "#bb888c"
 
-set completion-highlight-fg     "#26233a"
-set completion-highlight-bg     "#ebbcba"
+set completion-highlight-fg     "#74888c"
+set completion-highlight-bg     "#bb888c"
 
-set recolor-lightcolor          "#191724"
-set recolor-darkcolor           "#e0def4"
+set recolor-lightcolor          "#35474b"
+set recolor-darkcolor           "#d5d4c0"
 
 set recolor                     "true"
-set recolor-keephue             "true"
+# set recolor-keephue             "true"
+set recolor-reverse-video       "true"

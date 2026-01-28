@@ -215,7 +215,7 @@ assign [class="(?i)emacs"] $ws3
 
 assign [class="(?i)anki"] $ws4
 
-assign [class="(?i)free(?i)tube"] $ws4
+assign [class="(?i)free(?i)tube"] $ws5
 
 assign [class="(?i)telegram(?i)desktop"] $ws6
 assign [class="(?i)kotatogram-(?i)desktop"] $ws6
