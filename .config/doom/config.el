@@ -335,15 +335,20 @@
 ;;;;;;;;;;;
 
 ;; Increment and decrement numbers at point with = and -
-(defun hydra-num/body-and (fn)
-  (interactive)
-  (call-interactively fn)
-  (hydra-num/body))
+(defhydra hydra-num ()
+  "Num Hydra"
+  ("=" evil-numbers/inc-at-pt nil)
+  ("-" evil-numbers/dec-at-pt nil))
 
 (defun hydra-num/body-and-inc ()
-  (interactive) (call-interactively #'evil-numbers/inc-at-pt) (hydra-num/body))
+  (interactive)
+  (call-interactively #'evil-numbers/inc-at-pt)
+  (hydra-num/body))
+
 (defun hydra-num/body-and-dec ()
-  (interactive) (call-interactively #'evil-numbers/dec-at-pt) (hydra-num/body))
+  (interactive)
+  (call-interactively #'evil-numbers/dec-at-pt)
+  (hydra-num/body))
 
 (define-key evil-normal-state-map (kbd "g =") #'hydra-num/body-and-inc)
 (define-key evil-normal-state-map (kbd "g -") #'hydra-num/body-and-dec)
