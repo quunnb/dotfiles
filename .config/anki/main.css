@@ -9,7 +9,7 @@
 
 :root {
   --element: #d5d4c0;
-  --light-bg: #d5d4c0;
+  --bg: #d5d4c0;
   --gray: #d5d4c0;
   --map-color: #d5d4c0;
   --map-fill: #d5d4c0;
@@ -43,14 +43,52 @@
   --color7: #cfd4c6;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --element: #35474b;
+    --bg: #35474b;
+    --gray: #35474b;
+    --map-color: #35474b;
+    --map-fill: #35474b;
+    --map-hl-fill: #cfd4c6;
+    --map-border: #cfd4c6;
+    --map-hl-border: #cfd4c6;
+    --black: #d5d4c0;
+    --dark: #cfd4c6;
+    --darker: #d5d4c0;
+    --red: #bb888c;
+    --white: #f5f4e0;
+    --hilight: #cfd4c6;
+    --yellow: #ddaa77;
+    --green: #aab8b4;
+    --red-cloze: #bb888c;
+    --yellow-cloze: #ddaa77;
+    --green-cloze: #aab8b4;
+    --text: #d5d4c0;
+    --again: #bb888c;
+    --hard: #ddaa77;
+    --good: #aab8b4;
+    --easy: #74888c;
+
+    --color0: #d5d4c0;
+    --color1: #45575b;
+    --color2: #bb888c;
+    --color3: #74888c;
+    --color4: #97a7a5;
+    --color5: #aab8b4;
+    --color6: #bdc9c0;
+    --color7: #cfd4c6;
+  }
+}
+
 * {
   border-radius: 0;
-  background-color: var(--light-bg);
+  background-color: var(--bg);
   color: var(--text);
 }
 
 body {
-  background-color: var(--light-bg);
+  background-color: var(--bg);
   color: var(--text);
   height: 100vh;
   margin: 0;
@@ -130,14 +168,14 @@ h2 {
 
 span {
   & .cloze {
-    color: var(--light-bg);
+    color: var(--bg);
     background-color: var(--hilight);
     font-weight: bold;
   }
 }
 
 .cloze {
-  color: var(--light-bg);
+  color: var(--bg);
   background-color: var(--hilight);
 }
 
@@ -179,6 +217,7 @@ span {
   display: grid;
   height: 92vh;
   place-items: center;
+  background-color: var(--bg);
 }
 
 .top {
@@ -275,7 +314,7 @@ img {
 }
 
 .hl {
-  color: var(--light-bg) !important;
+  color: var(--bg) !important;
   background-color: var(--hilight) !important;
 }
 
