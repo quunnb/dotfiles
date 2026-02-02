@@ -210,10 +210,12 @@
 ;;;;;;;;;;;;;;;;;
 
 (use-package softresize
-  :bind (("M-H" . (lambda () (interactive) (softresize-reduce-window-horizontally 8)))
-         ("M-J" . (lambda () (interactive) (softresize-reduce-window 8)))
-         ("M-K" . (lambda () (interactive) (softresize-enlarge-window 8)))
-         ("M-L" . (lambda () (interactive) (softresize-enlarge-window-horizontally 8)))))
+  :bind (("M-H" . softresize-reduce-window-horizontally)
+         ("M-J" . softresize-reduce-window)
+         ("M-K" . softresize-enlarge-window)
+         ("M-L" . softresize-enlarge-window-horizontally))
+  :config
+  (setq softresize-delta 8))
 
 ;;;;;;;;;;;;
 ;; GREASE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
