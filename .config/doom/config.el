@@ -20,8 +20,8 @@
       ;; doom-theme 'doric-fire
       doom-theme 'doric-valley
       ;; doom-theme 'doric-water
-      doom-theme 'doric-wind
-      doom-theme 'doric-oak
+      ;; doom-theme 'doric-wind
+      ;; doom-theme 'doric-oak
       display-line-numbers-type 'relative
       display-line-numbers t
       initial-scratch-message nil)
@@ -167,6 +167,10 @@
 ;; MISC ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;
 
+;; Case-sensitive search
+(setq case-fold-search nil
+      evil-ex-search-case nil)
+
 ;; Define org directory
 (setq org-directory "~/org/")
 
@@ -181,12 +185,17 @@
       js-indent-level 2
       typescript-indent-level 2
       sgml-basic-offset 2
+      ;; Don't add comment prefixes on new lines
       +default-want-RET-continue-comments nil
       +evil-want-o/O-to-continue-comments nil)
 
 ;; Set default browser
 (setq browse-url-browser-function 'browse-url-firefox)
 
+;; Always do find-file when switching project
+(setq project-switch-commands 'project-find-file)
+;; Disable projectile cache
+(setq projectile-enable-caching nil)
 
 ;;;;;;;;;;;;;;;;
 ;; SUBSTITUTE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -321,10 +330,6 @@
 (use-package evil-lion
   :config
   (evil-lion-mode))
-
-;; Always do find-file when switching project
-(setq project-switch-commands 'project-find-file)
-
 
 ;;;;;;;;;;;;;;;;;;
 ;; EVIL-NUMBERS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
