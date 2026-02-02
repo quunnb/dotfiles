@@ -26,7 +26,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export DOT="$HOME/dotfiles"
 export VIBE_HOME="$HOME/.config/vibe"
 
-export EDITOR='vim --servername VIMSERVER --remote-silent'
+# export EDITOR='vim --servername VIMSERVER --remote-silent'
+export EDITOR='emacsclient -r -u -a emacs'
 export VISUAL='emacsclient -r -u -a emacs'
 export SUDO_EDITOR='/usr/bin/vim'
 export BROWSER="$HOME/.local/bin/browser"
@@ -50,16 +51,16 @@ export PYTHONSTARTUP=~/.config/python/pythonrc
 
 # MAC-addresses of some devices
 [ -f ~/.config/secrets/btr011.mac ] && MAC_BTR011="$(<~/.config/secrets/btr011.mac)" && export MAC_BTR011
-[ -f ~/.config/secrets/jbl.mac ] && MAC_JBL="$(<~/.config/secrets/jbl.mac)" && export MAC_JBL
-[ -f ~/.config/secrets/wlan.mac ] && WLAN_MAC="$(<~/.config/secrets/wlan.mac)" && export WLAN_MAC
+[ -f ~/.config/secrets/jbl.mac ]    && MAC_JBL="$(<~/.config/secrets/jbl.mac)"       && export MAC_JBL
+[ -f ~/.config/secrets/wlan.mac ]   && WLAN_MAC="$(<~/.config/secrets/wlan.mac)"     && export WLAN_MAC
 
 # IPs
 [ -f ~/.config/secrets/pi.ip ] && PI_IP="$(<~/.config/secrets/pi.ip)" && export PI_IP
 
 # location
-[ -f ~/.config/secrets/location ] && CITY="$(<~/.config/secrets/location)" && export CITY
+[ -f ~/.config/secrets/location ]  && CITY="$(<~/.config/secrets/location)" && export CITY
 [ -f ~/.config/secrets/longitude ] && LON="$(<~/.config/secrets/longitude)" && export LON
-[ -f ~/.config/secrets/latitude ] && LAT="$(<~/.config/secrets/latitude)" && export LAT
+[ -f ~/.config/secrets/latitude ]  && LAT="$(<~/.config/secrets/latitude)"  && export LAT
 
 # Format sdcv dictionary output https://wiki.archlinux.org/title/Sdcv#Output_Formatting
 export SDCV_PAGER='less --quit-if-one-screen -RX'
@@ -79,13 +80,13 @@ if type rg &> /dev/null; then
 fi
 
 # LLM APIs
-[ -f ~/.config/secrets/codestral.api ] && CODESTRAL_API_KEY="$(<~/.config/secrets/codestral.api)" && export CODESTRAL_API_KEY
-[ -f ~/.config/secrets/mistral.api ] && MISTRAL_API_KEY="$(<~/.config/secrets/mistral.api)" && export MISTRAL_API_KEY
-[ -f ~/.config/secrets/deepseek.api ] && DEEPSEEK_API_KEY="$(<~/.config/secrets/deepseek.api)" && export DEEPSEEK_API_KEY
+[ -f ~/.config/secrets/codestral.api ]  && CODESTRAL_API_KEY="$(<~/.config/secrets/codestral.api)"   && export CODESTRAL_API_KEY
+[ -f ~/.config/secrets/mistral.api ]    && MISTRAL_API_KEY="$(<~/.config/secrets/mistral.api)"       && export MISTRAL_API_KEY
+[ -f ~/.config/secrets/deepseek.api ]   && DEEPSEEK_API_KEY="$(<~/.config/secrets/deepseek.api)"     && export DEEPSEEK_API_KEY
 [ -f ~/.config/secrets/perplexity.api ] && PERPLEXITY_API_KEY="$(<~/.config/secrets/perplexity.api)" && export PERPLEXITY_API_KEY
 
 # Other APIs
-[ -f ~/.config/secrets/tvdb.api ] && SUBLIMINAL_REFINER_TVDB_APIKEY="$(<~/.config/secrets/tvdb.api)" && export SUBLIMINAL_REFINER_TVDB_APIKEY
+[ -f ~/.config/secrets/tvdb.api ]  && SUBLIMINAL_REFINER_TVDB_APIKEY="$(<~/.config/secrets/tvdb.api)"               && export SUBLIMINAL_REFINER_TVDB_APIKEY
 [ -f ~/.config/secrets/oscom.api ] && SUBLIMINAL_PROVIDER_OPENSUBTITLESCOM_APIKEY="$(<~/.config/secrets/oscom.api)" && export SUBLIMINAL_PROVIDER_OPENSUBTITLESCOM_APIKEY
 
 
