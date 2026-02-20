@@ -58,7 +58,7 @@
 ;;
 
 (package! evil-snipe :disable t)
-(package! autoparens :disable t)
+;; (package! autoparens :disable t)
 (package! rainbow-mode :disable t)
 
 ;;
@@ -77,9 +77,18 @@
   :recipe (:host github
            :repo "eliraz-refael/doom-two-tone-themes"
            :files ("doom-two-tone-themes.el" "themes/*.el")))
+(package! nibelung-theme
+  :recipe (:host github
+           :repo "veschin/nibelung-theme"))
+
 ;;
 ;; LAYOUT
 ;;
+
+;; https://github.com/mclear-tools/tabspaces
+(package! tabspaces
+  :recipe (:host github
+           :repo "mclear-tools/tabspaces"))
 
 ;; https://github.com/quunnb/softresize
 (package! softresize
@@ -142,9 +151,6 @@
 ;; AI
 ;;
 
-;; https://github.com/karthink/gptel
-(package! gptel :recipe (:nonrecursive t))
-
 ;;
 ;; LANGUAGE MODES ETC.
 ;;
@@ -163,17 +169,6 @@
 ;; https://github.com/jcs-elpa/impatient-showdown
 (package! impatient-showdown)
 
-;; https://github.com/cxa/lsp-biome
-(package! lsp-biome
-  :recipe (:host github
-           :repo "cxa/lsp-biome"))
-
 ;; https://github.com/taquangtrung/emacs-kdl-mode
 (package! kdl-mode)
 
-;;
-;; EXTRA
-;;
-
-;; Integrate local password store (WIP)
-; (package! password-store)
