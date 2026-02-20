@@ -27,19 +27,23 @@ unbind --mode=ex <C-c>
 bind --mode=ex <C-j> ex.next_completion
 bind --mode=ex <C-k> ex.prev_completion
 
-" Don't need no new windows (Detach one if you must)
-unbind w
-unbind W
-bind gd tabdetach
-bind gD composite tabduplicate; tabdetach
+bind w composite tabduplicate; tabdetach
+bind W tabdetach
+bind gd composite tabduplicate; tabdetach
+bind gD tabdetach
 
-" I'm bookmarking way too many pages by accident
+" Tab deletion for vertical tabs
+bind gxk taballclosetoleft
+bind gxj taballclosetoright
+
+" I'm bookmarking way too many pages by accident...
 unbind a
 unbind A
-
-" And b makes more sense anyway
+" ...and b makes more sense anyway
 bind b current_url bmark
 bind B bmark
+
+
 bind t fillcmdline tab
 
 " Left hand scrolling
@@ -49,6 +53,7 @@ bind e scrollline -10
 " Reverse tabmove to make sense with vertical tabs and qutebrowser
 bind J tabnext
 bind K tabprev
+
 bind o fillcmdline open
 bind O fillcmdline tabopen
 
