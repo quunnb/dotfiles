@@ -145,23 +145,23 @@ these are pretty self explicative */
 *
 */
 @define-color theme_titlebar_background          #45575B;
-@define-color theme_titlebar_foreground          ;
-@define-color theme_titlebar_background_light    ;
+@define-color theme_titlebar_foreground          #D5D4C0;
+@define-color theme_titlebar_background_light    #74888C;
 @define-color theme_titlebar_foreground_backdrop #45575B;
-@define-color theme_titlebar_background_backdrop ;
+@define-color theme_titlebar_background_backdrop #45575B;
 @define-color theme_titlebar_foreground_insensitive rgba(248, 248, 242, 0.5);
 @define-color theme_titlebar_foreground_insensitive_backdrop #D5D4C0;
 /*
 * Tooltips
 */
-@define-color tooltip_text ;
+@define-color tooltip_text #D5D4C0;
 @define-color tooltip_background #45575B;
 @define-color tooltip_border #717380;
 /*
 * Misc
 */
-@define-color print_paper_backdrop  white;
-@define-color content_view_bg ;
+@define-color print_paper_backdrop #D5D4C0;
+@define-color content_view_bg #45575B;
 * {
   padding: 0;
   -GtkToolButton-icon-spacing: 4;
