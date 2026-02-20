@@ -30,10 +30,6 @@ alias hx='helix'
 alias e='emacsclient --no-wait --create-frame --alternate-editor "systemctl --user start emacs.service"'
 alias er='systemctl --user reload-or-restart emacs'
 
-#
-alias yay-install="yay -Slq | fzf --multi --style=full --preview 'yay -Si {1}' | xargs -ro dcli install"
-alias paru-install="paru -Slq | fzf --multi --style=full --preview 'paru -Si {1}' | xargs -ro dcli install"
-
 # linter
 alias lnt="golangci-lint run --config=~/.golangci.yaml ./..."
 

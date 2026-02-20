@@ -17,10 +17,11 @@ export HISTTIMEFORMAT='%F %T - '
 export HISTIGNORE='encfs *'
 
 # Add things to PATH
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.config/emacs/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+export PATH="/home/ami/.cache/.bun/bin:$PATH"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export DOT="$HOME/dotfiles"
