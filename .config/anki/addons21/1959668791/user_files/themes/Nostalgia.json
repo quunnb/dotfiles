@@ -437,7 +437,7 @@
     "REVIEW_COUNT": [
       "Review Count",
       "",
-      "#A3BE8C",
+      "#35474b",
       "#A3BE8C",
       "--review-count"
     ],
@@ -542,7 +542,7 @@
     "STATE_REVIEW": [
       "State Review",
       "Accent color for cards in review state",
-      "#A3BE8C",
+      "#74888c",
       "#A3BE8C",
       "--state-review"
     ],

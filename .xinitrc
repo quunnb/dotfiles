@@ -56,3 +56,4 @@ thunar --daemon &
 xss-lock slock &
 unclutter --jitter 10 --timeout 3 --ignore-scrolling &
 exec i3
+# exec dwm
