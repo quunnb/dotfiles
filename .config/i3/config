@@ -373,7 +373,5 @@ bar {
 # Application menu handled by dmenu #
 #####################################
 
-# bindsym $mod+d exec --no-startup-id dmenu_run_history -l 1 -z 720
-# bindsym $mod+d exec --no-startup-id dmenu_run_history -x 600 -y 500 -z 720
-bindsym $mod+d exec --no-startup-id dmenu_run_history -x 704 -y 480 -z 512
+bindsym $mod+d exec --no-startup-id "$HOME/.local/bin/dmenu_run_history -x 704 -y 480 -z 512"
 bindsym $mod+s exec --no-startup-id dmenu_websearch
