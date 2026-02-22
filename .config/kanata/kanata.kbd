@@ -1,0 +1,15 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  caps
+)
+
+(deflayer qwerty
+  @cap
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc lctl)
+)
